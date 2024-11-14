@@ -23,15 +23,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var PlayerController_1 = require("./PlayerController");
+var PlatformSpawner_1 = require("./PlatformSpawner");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameController = /** @class */ (function (_super) {
     __extends(GameController, _super);
     function GameController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.player = null;
-        _this.stick = null;
-        _this.platformContainer = null;
+        _this.platformSpawner = null;
         _this.isGameActive = false;
+        _this.currentStick = null;
+        _this.platforms = [];
         return _this;
     }
     GameController.prototype.start = function () {
@@ -42,38 +45,37 @@ var GameController = /** @class */ (function (_super) {
         this.resetGame();
     };
     GameController.prototype.resetGame = function () {
-        this.player.setPosition(cc.v2(-200, 0));
-        this.stick.setScale(1, 0);
-        this.spawnPlatforms();
+        this.player.node.setPosition(cc.v2(-600, -233));
+        this.clearPlatforms();
+        var initialPlatform = this.platformSpawner.spawnPlatform(cc.v2(-495, -708));
+        this.platforms.push(initialPlatform);
+        var nextPlatform = this.platformSpawner.spawnPlatform();
+        this.platforms.push(nextPlatform);
+        this.player.enableStickCreation();
     };
-    GameController.prototype.spawnPlatforms = function () {
-        // Примерный спавн платформ
-        this.platformContainer.removeAllChildren();
-        for (var i = 0; i < 5; i++) {
-            var newPlatform = new cc.Node("Platform");
-            newPlatform.addComponent(cc.Sprite);
-            newPlatform.setPosition(cc.v2(200 * i, -200));
-            this.platformContainer.addChild(newPlatform);
-        }
+    GameController.prototype.clearPlatforms = function () {
+        this.platforms.forEach(function (platform) { return platform.destroy(); });
+        this.platforms = [];
+    };
+    GameController.prototype.onStickFallen = function (stickNode) {
+        this.currentStick = stickNode;
+        this.player.moveToEndOfStick(stickNode, this.onPlayerReachedEnd.bind(this));
+    };
+    GameController.prototype.onPlayerReachedEnd = function () {
+        var newPlatform = this.platformSpawner.spawnPlatform(this.currentStick.getPosition());
+        this.platforms.push(newPlatform);
+        this.player.enableStickCreation();
     };
     GameController.prototype.endGame = function () {
         this.isGameActive = false;
         cc.log('Game Over');
     };
-    GameController.prototype.update = function (dt) {
-        if (!this.isGameActive)
-            return;
-        // Игровая логика обновлений
-    };
     __decorate([
-        property(cc.Node)
+        property(PlayerController_1.default)
     ], GameController.prototype, "player", void 0);
     __decorate([
-        property(cc.Node)
-    ], GameController.prototype, "stick", void 0);
-    __decorate([
-        property(cc.Node)
-    ], GameController.prototype, "platformContainer", void 0);
+        property(PlatformSpawner_1.default)
+    ], GameController.prototype, "platformSpawner", void 0);
     GameController = __decorate([
         ccclass
     ], GameController);

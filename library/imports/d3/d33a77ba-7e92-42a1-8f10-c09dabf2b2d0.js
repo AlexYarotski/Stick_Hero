@@ -28,10 +28,31 @@ var StickManager = /** @class */ (function (_super) {
     __extends(StickManager, _super);
     function StickManager() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.TOUCHED_START = 'touchStart';
+        _this.TOUCHED_END = 'touchEnd';
         _this.isGrowing = false;
+        _this.isStickPlaced = false;
         _this.growSpeed = 100;
         return _this;
     }
+    StickManager.prototype.onEnable = function () {
+        cc.systemEvent.on(this.TOUCHED_START, this.onTouchStart, this);
+        cc.systemEvent.on(this.TOUCHED_END, this.onTouchEnd, this);
+    };
+    StickManager.prototype.onDisable = function () {
+        cc.systemEvent.off(this.TOUCHED_START, this.onTouchStart, this);
+        cc.systemEvent.off(this.TOUCHED_END, this.onTouchEnd, this);
+    };
+    StickManager.prototype.onTouchStart = function () {
+        if (this.isStickPlaced)
+            return;
+        this.startGrowing();
+    };
+    StickManager.prototype.onTouchEnd = function () {
+        if (this.isStickPlaced)
+            return;
+        this.stopGrowing();
+    };
     StickManager.prototype.startGrowing = function () {
         this.isGrowing = true;
         this.schedule(this.growStick, 0.02);
@@ -40,6 +61,7 @@ var StickManager = /** @class */ (function (_super) {
         this.isGrowing = false;
         this.unschedule(this.growStick);
         this.rotateStick();
+        this.isStickPlaced = true;
     };
     StickManager.prototype.growStick = function () {
         if (!this.isGrowing)
@@ -49,6 +71,9 @@ var StickManager = /** @class */ (function (_super) {
     StickManager.prototype.rotateStick = function () {
         cc.tween(this.node)
             .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
+            // .call(() => {
+            //     this.isStickPlaced = false;
+            // })
             .start();
     };
     StickManager = __decorate([

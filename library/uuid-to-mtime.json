@@ -525,8 +525,8 @@
     "relativePath": "Scene"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731509350133,
-    "meta": 1731509350138,
+    "asset": 1731593392467,
+    "meta": 1731593392483,
     "relativePath": "Scene\\Game.fire"
   },
   "f56f1100-7039-4526-921e-806d437a2f86": {
@@ -539,30 +539,10 @@
     "meta": 1731509323446,
     "relativePath": "Prefab\\UI"
   },
-  "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731510446621,
-    "meta": 1731510446684,
-    "relativePath": "Scripts\\GameController.ts"
-  },
-  "d33a77ba-7e92-42a1-8f10-c09dabf2b2d0": {
-    "asset": 1731581503807,
-    "meta": 1731581512309,
-    "relativePath": "Scripts\\StickManager .ts"
-  },
   "0a464bfe-cebd-4fad-8547-564502a219c2": {
     "asset": 1731581529499,
     "meta": 1731581539574,
     "relativePath": "Scripts\\UIManager.ts"
-  },
-  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
-    "asset": 1731581552197,
-    "meta": 1731581879459,
-    "relativePath": "Scripts\\PlatformSpawner.ts"
-  },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731581705203,
-    "meta": 1731581879498,
-    "relativePath": "Scripts\\PlayerController.ts"
   },
   "511f5b68-0dc2-4ca2-94a7-b22c9919671d": {
     "asset": 1731582681502,
@@ -570,93 +550,123 @@
     "relativePath": "Scripts\\TouchController.ts"
   },
   "d7cb4798-0cf0-4ab0-aa33-76621cbae2aa": {
-    "asset": 1731583311275,
-    "meta": 1731583311307,
+    "asset": 1731583749621,
+    "meta": 1731583775976,
     "relativePath": "Art\\Sprite\\Hero"
   },
   "d6c20ca4-5af1-40b8-915e-265dbe596131": {
-    "asset": 1731583311301,
-    "meta": 1731583311332,
+    "asset": 1731583749676,
+    "meta": 1731583775981,
     "relativePath": "Art\\Sprite\\UI"
   },
-  "63a2b18f-68b6-41b7-b014-58b81a2ed796": {
-    "asset": 1731508171584,
-    "meta": 1731583311465,
-    "relativePath": "Art\\Sprite\\Red.png"
-  },
   "19bf6e53-beba-4ee0-a95b-557b18c5a1f1": {
-    "asset": 1731508171578,
-    "meta": 1731583311471,
+    "asset": 1731583749603,
+    "meta": 1731583776027,
     "relativePath": "Art\\Sprite\\Black.png"
   },
   "5925f8bd-6c84-4b0b-b64a-a82d47a89e53": {
-    "asset": 1731508171582,
-    "meta": 1731583311520,
+    "asset": 1731583749615,
+    "meta": 1731583776044,
     "relativePath": "Art\\Sprite\\Hero\\run_01.png"
   },
-  "dce61163-6d1a-433b-af4c-08e998f72b75": {
-    "asset": 1731508171581,
-    "meta": 1731583311553,
-    "relativePath": "Art\\Sprite\\Hero\\default.png"
-  },
-  "a3a80bb6-7cd8-4a15-9760-30ea5dde49d1": {
-    "asset": 1731508171584,
-    "meta": 1731583311581,
-    "relativePath": "Art\\Sprite\\Hero\\run_02.png"
+  "63a2b18f-68b6-41b7-b014-58b81a2ed796": {
+    "asset": 1731583749623,
+    "meta": 1731583776052,
+    "relativePath": "Art\\Sprite\\Red.png"
   },
   "e37903bc-ee71-49b5-9157-2e3246dae8db": {
-    "asset": 1731508171585,
-    "meta": 1731583311587,
+    "asset": 1731583749632,
+    "meta": 1731583776054,
     "relativePath": "Art\\Sprite\\UI\\counter (2).png"
   },
+  "a3a80bb6-7cd8-4a15-9760-30ea5dde49d1": {
+    "asset": 1731583749619,
+    "meta": 1731583776066,
+    "relativePath": "Art\\Sprite\\Hero\\run_02.png"
+  },
+  "dce61163-6d1a-433b-af4c-08e998f72b75": {
+    "asset": 1731583749610,
+    "meta": 1731583776074,
+    "relativePath": "Art\\Sprite\\Hero\\default.png"
+  },
   "846b8acf-f272-4814-ba54-8d1a13962564": {
-    "asset": 1731508171586,
-    "meta": 1731583311594,
+    "asset": 1731583749635,
+    "meta": 1731583776078,
     "relativePath": "Art\\Sprite\\UI\\game_over.png"
   },
   "5c6374ce-37f0-4d89-8e7c-4abf9b96c798": {
-    "asset": 1731508171587,
-    "meta": 1731583311648,
+    "asset": 1731583749642,
+    "meta": 1731583776122,
     "relativePath": "Art\\Sprite\\UI\\home_2.png"
   },
-  "afe26e31-5e5a-405f-bd2e-0c0ec32e4603": {
-    "asset": 1731508171587,
-    "meta": 1731583311656,
-    "relativePath": "Art\\Sprite\\UI\\home.png"
-  },
   "c968f6ff-063a-4b74-b642-07c096a7f8a6": {
-    "asset": 1731508171588,
-    "meta": 1731583311662,
+    "asset": 1731583749645,
+    "meta": 1731583776131,
     "relativePath": "Art\\Sprite\\UI\\play.png"
   },
-  "113e75a3-e96a-4916-90bb-f20592cdd676": {
-    "asset": 1731508171590,
-    "meta": 1731583311667,
-    "relativePath": "Art\\Sprite\\UI\\restart_2.png"
-  },
-  "516af462-7b15-4fe5-bd4b-50f43224e173": {
-    "asset": 1731508171590,
-    "meta": 1731583311677,
-    "relativePath": "Art\\Sprite\\UI\\restart.png"
-  },
-  "0445212e-399c-452c-8f22-dcdd19ca69dd": {
-    "asset": 1731508171591,
-    "meta": 1731583311702,
-    "relativePath": "Art\\Sprite\\UI\\sound_Off.png"
+  "afe26e31-5e5a-405f-bd2e-0c0ec32e4603": {
+    "asset": 1731583749638,
+    "meta": 1731583776137,
+    "relativePath": "Art\\Sprite\\UI\\home.png"
   },
   "e9f25312-e7de-48a6-83cd-ddae202d3e2c": {
-    "asset": 1731508171589,
-    "meta": 1731583311720,
+    "asset": 1731583749649,
+    "meta": 1731583776139,
     "relativePath": "Art\\Sprite\\UI\\play_2.png"
   },
+  "516af462-7b15-4fe5-bd4b-50f43224e173": {
+    "asset": 1731583749654,
+    "meta": 1731583776149,
+    "relativePath": "Art\\Sprite\\UI\\restart.png"
+  },
+  "113e75a3-e96a-4916-90bb-f20592cdd676": {
+    "asset": 1731583749659,
+    "meta": 1731583776152,
+    "relativePath": "Art\\Sprite\\UI\\restart_2.png"
+  },
+  "0445212e-399c-452c-8f22-dcdd19ca69dd": {
+    "asset": 1731583749664,
+    "meta": 1731583776164,
+    "relativePath": "Art\\Sprite\\UI\\sound_Off.png"
+  },
   "c2bb4686-a867-4406-a474-e37fac588072": {
-    "asset": 1731508171592,
-    "meta": 1731583311742,
+    "asset": 1731583749675,
+    "meta": 1731583776204,
     "relativePath": "Art\\Sprite\\UI\\sound_On.png"
   },
   "a335096c-d0ba-4b8b-bdc3-9871396a2a05": {
-    "asset": 1731508171577,
-    "meta": 1731583311812,
+    "asset": 1731583749598,
+    "meta": 1731583776264,
     "relativePath": "Art\\Sprite\\Background_02.png"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731587757138,
+    "meta": 1731587794580,
+    "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "6c5bb808-29e0-43e0-a725-1f54347da26b": {
+    "asset": 1731587859361,
+    "meta": 1731587862188,
+    "relativePath": "Scripts\\Platform.ts"
+  },
+  "d99bd238-9712-4279-823e-9a35d9d777ca": {
+    "asset": 1731588067892,
+    "meta": 1731588067906,
+    "relativePath": "Prefab\\Platform.prefab"
+  },
+  "bb1e92af-0585-4376-b235-518c5fc4be70": {
+    "asset": 1731593047286,
+    "meta": 1731593126997,
+    "relativePath": "Scripts\\GameController.ts"
+  },
+  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
+    "asset": 1731593240162,
+    "meta": 1731593241019,
+    "relativePath": "Scripts\\PlatformSpawner.ts"
+  },
+  "d33a77ba-7e92-42a1-8f10-c09dabf2b2d0": {
+    "asset": 1731593346377,
+    "meta": 1731593355196,
+    "relativePath": "Scripts\\StickManager .ts"
   }
 }

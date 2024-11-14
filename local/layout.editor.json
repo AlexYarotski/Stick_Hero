@@ -44,22 +44,37 @@
             "children": [
               {
                 "width": 1020,
-                "height": 682.984375,
-                "type": "panel",
-                "active": 0,
+                "height": 1012,
+                "type": "dock-h",
                 "children": [
-                  "scene"
+                  {
+                    "width": 498,
+                    "height": 1012,
+                    "type": "panel",
+                    "active": 0,
+                    "children": [
+                      "scene"
+                    ]
+                  },
+                  {
+                    "width": 519,
+                    "height": 1012,
+                    "type": "panel",
+                    "active": 0,
+                    "children": [
+                      "game-window"
+                    ]
+                  }
                 ]
               },
               {
                 "width": 1020,
-                "height": 595,
+                "height": 266,
                 "type": "panel",
-                "active": 2,
+                "active": 0,
                 "children": [
                   "console",
-                  "timeline",
-                  "game-window"
+                  "timeline"
                 ]
               }
             ]
@@ -82,18 +97,18 @@
         "scene",
         "console",
         "timeline",
-        "game-window",
         "inspector",
-        "cocos-services"
+        "cocos-services",
+        "game-window"
       ]
     },
-    "window-1731582822588": {
+    "window-1731596069875": {
       "main": false,
       "url": "unpack://static/window.html",
       "windowType": "dockable",
       "x": 1312,
       "y": 366,
-      "width": 816,
+      "width": 1649,
       "height": 639,
       "layout": {
         "type": "dock-v",
@@ -112,8 +127,14 @@
     "simulator-debugger": {
       "x": 1312,
       "y": 366,
-      "width": 816,
+      "width": 1649,
       "height": 639
+    },
+    "game-window": {
+      "x": 2172,
+      "y": 786,
+      "width": 516,
+      "height": 539
     }
   },
   "panelLabelWidth": {}

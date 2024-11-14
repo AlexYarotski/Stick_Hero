@@ -32,9 +32,39 @@ var PlayerController = /** @class */ (function (_super) {
         _this.isMoving = false;
         return _this;
     }
-    PlayerController.prototype.moveTo = function (targetPosition, onComplete) {
+    PlayerController.prototype.enableStickCreation = function () {
+        this.node.on(cc.Node.EventType.TOUCH_START, this.startCreatingStick, this);
+        this.node.on(cc.Node.EventType.TOUCH_END, this.stopCreatingStick, this);
+    };
+    PlayerController.prototype.startCreatingStick = function () {
+        this.stick = new cc.Node("Stick");
+        this.stick.addComponent(cc.Sprite);
+        this.stick.setPosition(this.node.position.add(cc.v3(0, this.node.height / 2, 0)));
+        this.stick.parent = this.node.parent;
+        this.stick.height = 0;
+        this.schedule(this.growStick, 0.02);
+    };
+    PlayerController.prototype.growStick = function () {
+        this.stick.height += 10; // Примерная скорость роста
+    };
+    PlayerController.prototype.stopCreatingStick = function () {
+        this.unschedule(this.growStick);
+        this.rotateStick();
+    };
+    PlayerController.prototype.rotateStick = function () {
+        var _this = this;
+        cc.tween(this.stick)
+            .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
+            .call(function () {
+            // Уведомляем GameController, что палка упала
+            cc.systemEvent.emit('stick-fallen', _this.stick);
+        })
+            .start();
+    };
+    PlayerController.prototype.moveToEndOfStick = function (stickNode, onComplete) {
         var _this = this;
         this.isMoving = true;
+        var targetPosition = stickNode.position.add(cc.v3(stickNode.width, 0, 0));
         var targetPosition3D = new cc.Vec3(targetPosition.x, targetPosition.y, 0);
         cc.tween(this.node)
             .to(1, { position: targetPosition3D }, { easing: 'sineInOut' })
@@ -45,14 +75,6 @@ var PlayerController = /** @class */ (function (_super) {
         })
             .start();
     };
-    PlayerController.prototype.fall = function () {
-        cc.tween(this.node)
-            .by(1, { position: new cc.Vec3(0, -1000, 0) }, { easing: 'sineIn' })
-            .start();
-    };
-    __decorate([
-        property(cc.Node)
-    ], PlayerController.prototype, "stick", void 0);
     PlayerController = __decorate([
         ccclass
     ], PlayerController);

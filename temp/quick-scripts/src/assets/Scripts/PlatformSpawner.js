@@ -23,18 +23,56 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var ccclass = cc._decorator.ccclass;
+var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlatformSpawner = /** @class */ (function (_super) {
     __extends(PlatformSpawner, _super);
     function PlatformSpawner() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.platformPrefab = null;
+        _this.minWidth = 50;
+        _this.maxWidth = 200;
+        _this.minXOffset = 100;
+        _this.maxXOffset = 400;
+        _this.platformAppearTime = 0.5; // Время появления платформы снизу вверх
+        return _this;
     }
-    PlatformSpawner.prototype.spawnPlatform = function () {
-        var newPlatform = new cc.Node("Platform");
-        newPlatform.addComponent(cc.Sprite); // Предполагается, что у платформ есть спрайты
+    PlatformSpawner.prototype.spawnPlatform = function (previousPlatformPosition) {
+        var newPlatform = cc.instantiate(this.platformPrefab);
+        var platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);
+        newPlatform.width = platformWidth;
+        if (previousPlatformPosition) {
+            newPlatform.setPosition(cc.v2(previousPlatformPosition.x, -708)); // Появляется сразу
+        }
+        else {
+            // Если позиция не передана, используем случайное значение
+            var newPositionX = -240 + Math.random() * (400 - (-240)); // Случайное значение в промежутке [-240, 400]
+            newPlatform.setPosition(cc.v2(newPositionX, -1080)); // Начальная позиция снизу экрана
+            // Анимация появления снизу вверх
+            cc.tween(newPlatform)
+                .to(this.platformAppearTime, { position: cc.v3(newPositionX, -708) }, { easing: 'cubicOut' })
+                .start();
+        }
         this.node.addChild(newPlatform);
-        newPlatform.setPosition(cc.v2(Math.random() * 400 - 200, -200));
+        return newPlatform;
     };
+    __decorate([
+        property(cc.Prefab)
+    ], PlatformSpawner.prototype, "platformPrefab", void 0);
+    __decorate([
+        property
+    ], PlatformSpawner.prototype, "minWidth", void 0);
+    __decorate([
+        property
+    ], PlatformSpawner.prototype, "maxWidth", void 0);
+    __decorate([
+        property
+    ], PlatformSpawner.prototype, "minXOffset", void 0);
+    __decorate([
+        property
+    ], PlatformSpawner.prototype, "maxXOffset", void 0);
+    __decorate([
+        property
+    ], PlatformSpawner.prototype, "platformAppearTime", void 0);
     PlatformSpawner = __decorate([
         ccclass
     ], PlatformSpawner);

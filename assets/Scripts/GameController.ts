@@ -1,52 +1,60 @@
+import PlayerController from "./PlayerController";
+import PlatformSpawner from "./PlatformSpawner";
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class GameController extends cc.Component {
-    @property(cc.Node)
-    player: cc.Node = null;
+    private startPlayerPos: cc.Vec2 = new cc.Vec2(-600, -233);
+    private startPlatformPos: cc.Vec2 = new cc.Vec2(-520, -708);
 
-    @property(cc.Node)
-    stick: cc.Node = null;
+    @property(PlayerController)
+    player: PlayerController = null;
 
-    @property(cc.Node)
-    platformContainer: cc.Node = null;
+    @property(PlatformSpawner)
+    platformSpawner: PlatformSpawner = null;
 
-    private isGameActive: boolean = false;
+    private currentStick: cc.Node = null;
+    private platforms: cc.Node[] = [];
 
-    start() {
+    protected start() {
         this.initGame();
     }
 
-    initGame() {
-        this.isGameActive = true;
+    private initGame() {
         this.resetGame();
     }
 
-    resetGame() {
-        this.player.setPosition(cc.v2(-200, 0));
-        this.stick.setScale(1, 0);
-        this.spawnPlatforms();
+    private resetGame() {
+        this.player.node.setPosition(this.startPlayerPos);
+        this.clearPlatforms();
+
+        const initialPlatform = this.platformSpawner.spawnPlatform(this.startPlatformPos);
+        this.platforms.push(initialPlatform);
+
+        const nextPlatform = this.platformSpawner.spawnPlatform();
+        this.platforms.push(nextPlatform);
+
+        this.player.enableStickCreation();
     }
 
-    spawnPlatforms() {
-        // Примерный спавн платформ
-        this.platformContainer.removeAllChildren();
-        for (let i = 0; i < 5; i++) {
-            const newPlatform = new cc.Node("Platform");
-            newPlatform.addComponent(cc.Sprite);
-            newPlatform.setPosition(cc.v2(200 * i, -200));
-            this.platformContainer.addChild(newPlatform);
-        }
+    private clearPlatforms() {
+        this.platforms.forEach(platform => platform.destroy());
+        this.platforms = [];
     }
 
-    endGame() {
-        this.isGameActive = false;
+    private onStickFallen(stickNode: cc.Node) {
+        this.currentStick = stickNode;
+        this.player.moveToEndOfStick(stickNode, this.onPlayerReachedEnd.bind(this));
+    }
+
+    private onPlayerReachedEnd() {
+        const newPlatform = this.platformSpawner.spawnPlatform(this.currentStick.getPosition());
+        this.platforms.push(newPlatform);
+        this.player.enableStickCreation();
+    }
+
+    private endGame() {
         cc.log('Game Over');
-    }
-
-    update(dt: number) {
-        if (!this.isGameActive) return;
-
-        // Игровая логика обновлений
     }
 }

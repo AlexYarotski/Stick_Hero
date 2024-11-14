@@ -7,12 +7,12 @@ export default class UIManager extends cc.Component {
 
     private score: number = 0;
 
-    updateScore(value: number) {
+    public updateScore(value: number) {
         this.score += value;
         this.scoreLabel.string = `Score: ${this.score}`;
     }
 
-    resetScore() {
+    public resetScore() {
         this.score = 0;
         this.updateScore(0);
     }
