@@ -2,10 +2,17 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class PlayerController extends cc.Component {
-    private readonly offsetStick: cc.Vec2 = new cc.Vec2(40, -76);
+    private readonly offsetPlatformX: number = -40;
+    private readonly offsetStickX: number = 40;
 
     @property(cc.Prefab)
     stickPrefab: cc.Prefab = null;
+
+    @property(Number)
+    moveDuration: number = 1;
+
+    @property(Number)
+    fallDuration: number = 0.2;
 
     private stick: cc.Node = null;
 
@@ -14,36 +21,38 @@ export default class PlayerController extends cc.Component {
     }
 
     private startCreatingStick() {
-        const position = cc.v2(this.node.position.x + this.offsetStick.x,
-            this.node.position.y + this.offsetStick.y);
+        const position = cc.v2(this.node.position.x + this.offsetStickX, this.node.position.y );
 
         this.stick = cc.instantiate(this.stickPrefab);
         this.stick.parent = this.node.parent;
         this.stick.setPosition(position);
     }
 
-    public moveToEndOfStick(stickNode: cc.Node) {
-        const targetPosition = stickNode.position.add(cc.v3(stickNode.width, 0, 0));
+    public moveToEndOfStick(xPos: number) {
+        const targetPosition = cc.v3(xPos, this.node.position.y);
         this.moveTowards(targetPosition, () => {
             this.initiateFall();
         });
     }
 
-    public moveToEndOfPlatform(platformNode: cc.Node) {
-        const targetPosition = platformNode.position.add(cc.v3(platformNode.width / 2, 0, 0));
+    public moveToEndOfPlatform(xPos: number) {
+        const targetPosition = cc.v3(xPos + this.offsetPlatformX, this.node.position.y);
         this.moveTowards(targetPosition, () => {
         });
     }
 
     private moveTowards(targetPosition: cc.Vec3, onComplete: Function) {
         cc.tween(this.node)
-            .to(1, { position: targetPosition }, { easing: 'sineInOut' })
+            .to(this.moveDuration, { position: targetPosition }, { easing: 'sineInOut' })
+            .call(() => {
+                if (onComplete) onComplete();
+            })
             .start();
     }
 
     private initiateFall() {
         cc.tween(this.node)
-            .to(0.5, { position: cc.v3(this.node.x, -1080) })
+            .to(this.fallDuration, { position: cc.v3(this.node.x, -1080) })
             .start();
     }
 }

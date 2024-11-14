@@ -402,15 +402,15 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -503.299,
-        -233.562,
+        -540.799,
+        -300,
         0,
         0,
         0,
@@ -445,6 +445,8 @@
     "stickPrefab": {
       "__uuid__": "763d902a-a23e-465e-973b-d3491244b529"
     },
+    "moveDuration": 1,
+    "fallDuration": 0.2,
     "_id": "bf5PmOTT5PdJ+roiHCuyGc"
   },
   {
@@ -659,7 +661,7 @@
     "minWidth": 80,
     "maxWidth": 200,
     "minXOffset": 100,
-    "maxXOffset": 400,
+    "maxXOffset": 200,
     "platformAppearTime": 0.5,
     "_id": "19DgapJYBMNY0F5TCTOizQ"
   },

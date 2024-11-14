@@ -30,7 +30,7 @@ var GameController = /** @class */ (function (_super) {
     __extends(GameController, _super);
     function GameController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.startPlayerPos = new cc.Vec2(-503, -233);
+        _this.startPlayerPos = new cc.Vec2(-503, -309.376);
         _this.startPlatformPos = new cc.Vec2(-500, -708);
         _this.player = null;
         _this.platformSpawner = null;
@@ -41,7 +41,7 @@ var GameController = /** @class */ (function (_super) {
     }
     GameController.prototype.start = function () {
         this.initGame();
-        cc.systemEvent.on('stickFallen', this.onStickFallen, this); // Подписываемся на событие падения стика
+        cc.systemEvent.on('stickFallen', this.onStickFallen, this);
     };
     GameController.prototype.initGame = function () {
         this.isGameActive = true;
@@ -62,16 +62,15 @@ var GameController = /** @class */ (function (_super) {
     };
     GameController.prototype.onStickFallen = function (stickNode) {
         this.currentStick = stickNode;
-        var playerPosition = this.player.node.getPosition();
-        var targetPlatform = this.getTargetPlatform(playerPosition);
-        var stickEndX = this.currentStick.x + this.currentStick.width;
+        var stickEndPosX = this.currentStick.x + this.currentStick.height - this.player.node.width / 2;
+        var targetPlatform = this.getTargetPlatform(cc.v2(this.player.node.x, this.player.node.y));
         var platformStartX = targetPlatform.x - targetPlatform.width / 2;
         var platformEndX = targetPlatform.x + targetPlatform.width / 2;
-        if (stickEndX >= platformStartX && stickEndX <= platformEndX) {
-            this.player.moveToEndOfPlatform(targetPlatform);
+        if (stickEndPosX >= platformStartX && stickEndPosX <= platformEndX) {
+            this.player.moveToEndOfPlatform(platformEndX);
         }
         else {
-            this.player.moveToEndOfStick(this.currentStick);
+            this.player.moveToEndOfStick(stickEndPosX);
         }
     };
     GameController.prototype.getTargetPlatform = function (playerPosition) {

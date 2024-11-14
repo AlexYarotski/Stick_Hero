@@ -5,7 +5,7 @@ import PlatformSpawner from "./PlatformSpawner";
 
 @ccclass
 export default class GameController extends cc.Component {
-    private readonly startPlayerPos: cc.Vec2 = new cc.Vec2(-503, -233);
+    private readonly startPlayerPos: cc.Vec2 = new cc.Vec2(-503, -309.376);
     private readonly startPlatformPos: cc.Vec2 = new cc.Vec2(-500, -708);
 
     @property(PlayerController)
@@ -20,7 +20,7 @@ export default class GameController extends cc.Component {
 
     protected start() {
         this.initGame();
-        cc.systemEvent.on('stickFallen', this.onStickFallen, this);  // Подписываемся на событие падения стика
+        cc.systemEvent.on('stickFallen', this.onStickFallen, this);
     }
 
     private initGame() {
@@ -48,19 +48,21 @@ export default class GameController extends cc.Component {
 
     private onStickFallen(stickNode: cc.Node) {
         this.currentStick = stickNode;
-        const playerPosition = this.player.node.getPosition();
-        const targetPlatform = this.getTargetPlatform(playerPosition);
 
-        const stickEndX = this.currentStick.x + this.currentStick.width;
+        const stickEndPosX = this.currentStick.x + this.currentStick.height - this.player.node.width / 2;
+
+        const targetPlatform = this.getTargetPlatform(cc.v2(this.player.node.x, this.player.node.y));
+
         const platformStartX = targetPlatform.x - targetPlatform.width / 2;
         const platformEndX = targetPlatform.x + targetPlatform.width / 2;
 
-        if (stickEndX >= platformStartX && stickEndX <= platformEndX) {
-            this.player.moveToEndOfPlatform(targetPlatform);
+        if (stickEndPosX >= platformStartX && stickEndPosX <= platformEndX) {
+            this.player.moveToEndOfPlatform(platformEndX);
         } else {
-            this.player.moveToEndOfStick(this.currentStick);
+            this.player.moveToEndOfStick(stickEndPosX);
         }
     }
+
 
     private getTargetPlatform(playerPosition: cc.Vec2): cc.Node {
         for (const platform of this.platforms) {

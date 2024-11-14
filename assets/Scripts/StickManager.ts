@@ -46,7 +46,7 @@ export default class StickManager extends cc.Component {
 
     private growStick() {
         if (!this.isGrowing) return;
-        this.node.height += this.growSpeed * 0.02;
+        this.node.height += this.growSpeed * 0.2;
     }
 
     private rotateStick() {

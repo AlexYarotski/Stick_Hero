@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, 'd33a7e6fpJCoY8QwJ2r8rLQ', 'StickManager ');
-// Scripts/StickManager .ts
+cc._RF.push(module, '5dbd4rMfm5MgKFgI39UqgKV', 'StickManager');
+// Scripts/StickManager.ts
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -67,7 +67,7 @@ var StickManager = /** @class */ (function (_super) {
     StickManager.prototype.growStick = function () {
         if (!this.isGrowing)
             return;
-        this.node.height += this.growSpeed * 0.02;
+        this.node.height += this.growSpeed * 0.2;
     };
     StickManager.prototype.rotateStick = function () {
         var _this = this;
