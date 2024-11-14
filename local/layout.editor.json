@@ -15,26 +15,10 @@
           {
             "width": 278,
             "height": 1281,
-            "type": "dock-v",
+            "type": "panel",
+            "active": 0,
             "children": [
-              {
-                "width": 278,
-                "height": 640,
-                "type": "panel",
-                "active": 0,
-                "children": [
-                  "hierarchy"
-                ]
-              },
-              {
-                "width": 278,
-                "height": 638,
-                "type": "panel",
-                "active": 0,
-                "children": [
-                  "assets"
-                ]
-              }
+              "hierarchy"
             ]
           },
           {
@@ -44,12 +28,12 @@
             "children": [
               {
                 "width": 1020,
-                "height": 640,
+                "height": 682.984375,
                 "type": "dock-h",
                 "children": [
                   {
-                    "width": 658,
-                    "height": 640,
+                    "width": 739,
+                    "height": 682.984375,
                     "type": "panel",
                     "active": 0,
                     "children": [
@@ -57,19 +41,19 @@
                     ]
                   },
                   {
-                    "width": 359,
-                    "height": 640,
+                    "width": 278,
+                    "height": 682.984375,
                     "type": "panel",
                     "active": 0,
                     "children": [
-                      "node-library"
+                      "assets"
                     ]
                   }
                 ]
               },
               {
                 "width": 1020,
-                "height": 638,
+                "height": 595,
                 "type": "panel",
                 "active": 2,
                 "children": [
@@ -96,7 +80,6 @@
         "hierarchy",
         "assets",
         "scene",
-        "node-library",
         "console",
         "timeline",
         "game-window",

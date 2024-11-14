@@ -500,8 +500,8 @@
     "relativePath": "model\\primitives.fbx"
   },
   "3ce6db62-eb87-4bc6-9393-65dc6904fe72": {
-    "asset": 1731509255781,
-    "meta": 1731509255782,
+    "asset": 1731510446621,
+    "meta": 1731580350298,
     "relativePath": "Scripts"
   },
   "f2c59888-a972-4147-919a-d160c227567c": {
@@ -543,5 +543,25 @@
     "asset": 1731510446621,
     "meta": 1731510446684,
     "relativePath": "Scripts\\GameController.ts"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731581452773,
+    "meta": 1731581464701,
+    "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "d33a77ba-7e92-42a1-8f10-c09dabf2b2d0": {
+    "asset": 1731581503807,
+    "meta": 1731581512309,
+    "relativePath": "Scripts\\StickManager .ts"
+  },
+  "0a464bfe-cebd-4fad-8547-564502a219c2": {
+    "asset": 1731581529499,
+    "meta": 1731581539574,
+    "relativePath": "Scripts\\UIManager.ts"
+  },
+  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
+    "asset": 1731581541623,
+    "meta": 1731581543200,
+    "relativePath": "Scripts\\PlatformSpawner.ts"
   }
 }
