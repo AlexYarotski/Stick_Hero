@@ -30,9 +30,10 @@ var StickManager = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.TOUCHED_START = 'touchStart';
         _this.TOUCHED_END = 'touchEnd';
+        _this.STICK_FALLEN = 'stickFallen';
+        _this.growSpeed = 100;
         _this.isGrowing = false;
         _this.isStickPlaced = false;
-        _this.growSpeed = 100;
         return _this;
     }
     StickManager.prototype.onEnable = function () {
@@ -69,13 +70,20 @@ var StickManager = /** @class */ (function (_super) {
         this.node.height += this.growSpeed * 0.02;
     };
     StickManager.prototype.rotateStick = function () {
+        var _this = this;
         cc.tween(this.node)
             .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
-            // .call(() => {
-            //     this.isStickPlaced = false;
-            // })
+            .call(function () {
+            _this.emitStickFallenEvent(); // Когда стик вращается, он падает
+        })
             .start();
     };
+    StickManager.prototype.emitStickFallenEvent = function () {
+        cc.systemEvent.emit(this.STICK_FALLEN, this.node); // Создаем кастомное событие
+    };
+    __decorate([
+        property(Number)
+    ], StickManager.prototype, "growSpeed", void 0);
     StickManager = __decorate([
         ccclass
     ], StickManager);

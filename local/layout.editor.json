@@ -101,20 +101,6 @@
         "cocos-services",
         "game-window"
       ]
-    },
-    "window-1731596069875": {
-      "main": false,
-      "url": "unpack://static/window.html",
-      "windowType": "dockable",
-      "x": 1312,
-      "y": 366,
-      "width": 1649,
-      "height": 639,
-      "layout": {
-        "type": "dock-v",
-        "children": []
-      },
-      "panels": []
     }
   },
   "panels": {

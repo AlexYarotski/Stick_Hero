@@ -525,8 +525,8 @@
     "relativePath": "Scene"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731593392467,
-    "meta": 1731593392483,
+    "asset": 1731599965564,
+    "meta": 1731599965579,
     "relativePath": "Scene\\Game.fire"
   },
   "f56f1100-7039-4526-921e-806d437a2f86": {
@@ -538,11 +538,6 @@
     "asset": 1731509323445,
     "meta": 1731509323446,
     "relativePath": "Prefab\\UI"
-  },
-  "0a464bfe-cebd-4fad-8547-564502a219c2": {
-    "asset": 1731581529499,
-    "meta": 1731581539574,
-    "relativePath": "Scripts\\UIManager.ts"
   },
   "511f5b68-0dc2-4ca2-94a7-b22c9919671d": {
     "asset": 1731582681502,
@@ -639,11 +634,6 @@
     "meta": 1731583776264,
     "relativePath": "Art\\Sprite\\Background_02.png"
   },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731587757138,
-    "meta": 1731587794580,
-    "relativePath": "Scripts\\PlayerController.ts"
-  },
   "6c5bb808-29e0-43e0-a725-1f54347da26b": {
     "asset": 1731587859361,
     "meta": 1731587862188,
@@ -654,19 +644,39 @@
     "meta": 1731588067906,
     "relativePath": "Prefab\\Platform.prefab"
   },
-  "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731593047286,
-    "meta": 1731593126997,
-    "relativePath": "Scripts\\GameController.ts"
-  },
   "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
-    "asset": 1731593240162,
-    "meta": 1731593241019,
+    "asset": 1731596425333,
+    "meta": 1731596840288,
     "relativePath": "Scripts\\PlatformSpawner.ts"
   },
+  "0a464bfe-cebd-4fad-8547-564502a219c2": {
+    "asset": 1731596530706,
+    "meta": 1731596840406,
+    "relativePath": "Scripts\\UIManager.ts"
+  },
+  "763d902a-a23e-465e-973b-d3491244b529": {
+    "asset": 1731597989229,
+    "meta": 1731597989242,
+    "relativePath": "Prefab\\Stick.prefab"
+  },
+  "38013cd5-3e43-4df6-a0c4-72b8693420cd": {
+    "asset": 1731596869115,
+    "meta": 1731596869144,
+    "relativePath": "Prefab\\Player.prefab"
+  },
   "d33a77ba-7e92-42a1-8f10-c09dabf2b2d0": {
-    "asset": 1731593346377,
-    "meta": 1731593355196,
+    "asset": 1731599714581,
+    "meta": 1731599715651,
     "relativePath": "Scripts\\StickManager .ts"
+  },
+  "bb1e92af-0585-4376-b235-518c5fc4be70": {
+    "asset": 1731599859265,
+    "meta": 1731599860401,
+    "relativePath": "Scripts\\GameController.ts"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731599963386,
+    "meta": 1731599965361,
+    "relativePath": "Scripts\\PlayerController.ts"
   }
 }

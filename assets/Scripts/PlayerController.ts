@@ -2,54 +2,48 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class PlayerController extends cc.Component {
-    private stick: cc.Node = null;
-    private isMoving: boolean = false;
+    private readonly startStickPos: cc.Vec2 = new cc.Vec2(44, -75);
 
-    protected enableStickCreation() {
-        this.node.on(cc.Node.EventType.TOUCH_START, this.startCreatingStick, this);
-        this.node.on(cc.Node.EventType.TOUCH_END, this.stopCreatingStick, this);
+    @property(cc.Prefab)
+    stickPrefab: cc.Prefab = null;
+
+    private stick: cc.Node = null;
+
+    public reset() {
+        this.startCreatingStick();
     }
 
     private startCreatingStick() {
-        this.stick = new cc.Node("Stick");
-        this.stick.addComponent(cc.Sprite);
-        this.stick.setPosition(this.node.position.add(cc.v3(0, this.node.height / 2, 0)));
+        this.stick = cc.instantiate(this.stickPrefab);
         this.stick.parent = this.node.parent;
-        this.stick.height = 0;
+        this.stick.setPosition(this.startStickPos);
 
-        this.schedule(this.growStick, 0.02);
     }
 
-    private growStick() {
-        this.stick.height += 10; // Примерная скорость роста
+    public moveToEndOfStick(stickNode: cc.Node) {
+        const targetPosition = stickNode.position.add(cc.v3(stickNode.width, 0, 0));
+        this.moveTowards(targetPosition, () => {
+            this.initiateFall();
+        });
     }
 
-    private stopCreatingStick() {
-        this.unschedule(this.growStick);
-        this.rotateStick();
+    public moveToEndOfPlatform(platformNode: cc.Node) {
+        const targetPosition = platformNode.position.add(cc.v3(platformNode.width / 2, 0, 0));
+        this.moveTowards(targetPosition, () => {});
     }
 
-    private rotateStick() {
-        cc.tween(this.stick)
-            .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
+    private moveTowards(targetPosition: cc.Vec3, onComplete: Function) {
+        cc.tween(this.node)
+            .to(1, { position: targetPosition }, { easing: 'sineInOut' })
             .call(() => {
-                // Уведомляем GameController, что палка упала
-                cc.systemEvent.emit('stick-fallen', this.stick);
+                if (onComplete) onComplete();
             })
             .start();
     }
 
-    private moveToEndOfStick(stickNode: cc.Node, onComplete: Function) {
-        this.isMoving = true;
-        const targetPosition = stickNode.position.add(cc.v3(stickNode.width, 0, 0));
-        const targetPosition3D = new cc.Vec3(targetPosition.x, targetPosition.y, 0);
-
+    private initiateFall() {
         cc.tween(this.node)
-            .to(1, { position: targetPosition3D }, { easing: 'sineInOut' })
-            .call(() => {
-                this.isMoving = false;
-                if (onComplete) onComplete();
-            })
+            .to(0.5, { position: cc.v3(this.node.x, -1080) })
             .start();
     }
 }

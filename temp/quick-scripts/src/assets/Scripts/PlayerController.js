@@ -28,53 +28,47 @@ var PlayerController = /** @class */ (function (_super) {
     __extends(PlayerController, _super);
     function PlayerController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.startStickPos = new cc.Vec2(44, -75);
+        _this.stickPrefab = null;
         _this.stick = null;
-        _this.isMoving = false;
         return _this;
     }
-    PlayerController.prototype.enableStickCreation = function () {
-        this.node.on(cc.Node.EventType.TOUCH_START, this.startCreatingStick, this);
-        this.node.on(cc.Node.EventType.TOUCH_END, this.stopCreatingStick, this);
+    PlayerController.prototype.reset = function () {
+        this.startCreatingStick();
     };
     PlayerController.prototype.startCreatingStick = function () {
-        this.stick = new cc.Node("Stick");
-        this.stick.addComponent(cc.Sprite);
-        this.stick.setPosition(this.node.position.add(cc.v3(0, this.node.height / 2, 0)));
+        this.stick = cc.instantiate(this.stickPrefab);
         this.stick.parent = this.node.parent;
-        this.stick.height = 0;
-        this.schedule(this.growStick, 0.02);
+        this.stick.setPosition(this.startStickPos);
     };
-    PlayerController.prototype.growStick = function () {
-        this.stick.height += 10; // Примерная скорость роста
-    };
-    PlayerController.prototype.stopCreatingStick = function () {
-        this.unschedule(this.growStick);
-        this.rotateStick();
-    };
-    PlayerController.prototype.rotateStick = function () {
+    PlayerController.prototype.moveToEndOfStick = function (stickNode) {
         var _this = this;
-        cc.tween(this.stick)
-            .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
-            .call(function () {
-            // Уведомляем GameController, что палка упала
-            cc.systemEvent.emit('stick-fallen', _this.stick);
-        })
-            .start();
-    };
-    PlayerController.prototype.moveToEndOfStick = function (stickNode, onComplete) {
-        var _this = this;
-        this.isMoving = true;
         var targetPosition = stickNode.position.add(cc.v3(stickNode.width, 0, 0));
-        var targetPosition3D = new cc.Vec3(targetPosition.x, targetPosition.y, 0);
+        this.moveTowards(targetPosition, function () {
+            _this.initiateFall();
+        });
+    };
+    PlayerController.prototype.moveToEndOfPlatform = function (platformNode) {
+        var targetPosition = platformNode.position.add(cc.v3(platformNode.width / 2, 0, 0));
+        this.moveTowards(targetPosition, function () { });
+    };
+    PlayerController.prototype.moveTowards = function (targetPosition, onComplete) {
         cc.tween(this.node)
-            .to(1, { position: targetPosition3D }, { easing: 'sineInOut' })
+            .to(1, { position: targetPosition }, { easing: 'sineInOut' })
             .call(function () {
-            _this.isMoving = false;
             if (onComplete)
                 onComplete();
         })
             .start();
     };
+    PlayerController.prototype.initiateFall = function () {
+        cc.tween(this.node)
+            .to(0.5, { position: cc.v3(this.node.x, -1080) })
+            .start();
+    };
+    __decorate([
+        property(cc.Prefab)
+    ], PlayerController.prototype, "stickPrefab", void 0);
     PlayerController = __decorate([
         ccclass
     ], PlayerController);

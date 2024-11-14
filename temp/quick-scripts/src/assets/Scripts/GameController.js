@@ -23,13 +23,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlayerController_1 = require("./PlayerController");
 var PlatformSpawner_1 = require("./PlatformSpawner");
-var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameController = /** @class */ (function (_super) {
     __extends(GameController, _super);
     function GameController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.startPlayerPos = new cc.Vec2(-503, -233);
+        _this.startPlatformPos = new cc.Vec2(-500, -708);
         _this.player = null;
         _this.platformSpawner = null;
         _this.isGameActive = false;
@@ -39,19 +41,20 @@ var GameController = /** @class */ (function (_super) {
     }
     GameController.prototype.start = function () {
         this.initGame();
+        cc.systemEvent.on('stickFallen', this.onStickFallen, this); // Подписываемся на событие падения стика
     };
     GameController.prototype.initGame = function () {
         this.isGameActive = true;
         this.resetGame();
     };
     GameController.prototype.resetGame = function () {
-        this.player.node.setPosition(cc.v2(-600, -233));
+        this.player.node.setPosition(this.startPlayerPos);
         this.clearPlatforms();
-        var initialPlatform = this.platformSpawner.spawnPlatform(cc.v2(-495, -708));
+        var initialPlatform = this.platformSpawner.spawnPlatform(cc.v2(this.startPlatformPos));
         this.platforms.push(initialPlatform);
         var nextPlatform = this.platformSpawner.spawnPlatform();
         this.platforms.push(nextPlatform);
-        this.player.enableStickCreation();
+        this.player.reset();
     };
     GameController.prototype.clearPlatforms = function () {
         this.platforms.forEach(function (platform) { return platform.destroy(); });
@@ -59,12 +62,31 @@ var GameController = /** @class */ (function (_super) {
     };
     GameController.prototype.onStickFallen = function (stickNode) {
         this.currentStick = stickNode;
-        this.player.moveToEndOfStick(stickNode, this.onPlayerReachedEnd.bind(this));
+        var playerPosition = this.player.node.getPosition();
+        var targetPlatform = this.getTargetPlatform(playerPosition);
+        var stickEndX = this.currentStick.x + this.currentStick.width;
+        var platformStartX = targetPlatform.x - targetPlatform.width / 2;
+        var platformEndX = targetPlatform.x + targetPlatform.width / 2;
+        if (stickEndX >= platformStartX && stickEndX <= platformEndX) {
+            this.player.moveToEndOfPlatform(targetPlatform);
+        }
+        else {
+            this.player.moveToEndOfStick(this.currentStick);
+        }
     };
-    GameController.prototype.onPlayerReachedEnd = function () {
-        var newPlatform = this.platformSpawner.spawnPlatform(this.currentStick.getPosition());
+    GameController.prototype.getTargetPlatform = function (playerPosition) {
+        for (var _i = 0, _a = this.platforms; _i < _a.length; _i++) {
+            var platform = _a[_i];
+            if (platform.x > playerPosition.x) {
+                return platform;
+            }
+        }
+        return null;
+    };
+    GameController.prototype.spawnPlatforms = function () {
+        var previousPlatform = this.platforms[this.platforms.length - 1];
+        var newPlatform = this.platformSpawner.spawnPlatform(previousPlatform.getPosition());
         this.platforms.push(newPlatform);
-        this.player.enableStickCreation();
     };
     GameController.prototype.endGame = function () {
         this.isGameActive = false;

@@ -4,10 +4,13 @@ const { ccclass, property } = cc._decorator;
 export default class StickManager extends cc.Component {
     private readonly TOUCHED_START: string = 'touchStart';
     private readonly TOUCHED_END: string = 'touchEnd';
+    private readonly STICK_FALLEN: string = 'stickFallen';
+
+    @property(Number)
+    private growSpeed: number = 100;
 
     private isGrowing: boolean = false;
     private isStickPlaced: boolean = false;
-    private growSpeed: number = 100;
 
     protected onEnable() {
         cc.systemEvent.on(this.TOUCHED_START, this.onTouchStart, this);
@@ -49,9 +52,13 @@ export default class StickManager extends cc.Component {
     private rotateStick() {
         cc.tween(this.node)
             .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
-            // .call(() => {
-            //     this.isStickPlaced = false;
-            // })
+            .call(() => {
+                this.emitStickFallenEvent();
+            })
             .start();
+    }
+
+    private emitStickFallenEvent() {
+        cc.systemEvent.emit(this.STICK_FALLEN, this.node);
     }
 }
