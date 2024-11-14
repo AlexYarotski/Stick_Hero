@@ -3,12 +3,6 @@ cc._RF.push(module, 'bbcd75L1a9BBLSrHghUc+6U', 'PlatformSpawner');
 // Scripts/PlatformSpawner.ts
 
 "use strict";
-// Learn TypeScript:
-//  - https://docs.cocos.com/creator/2.4/manual/en/scripting/typescript.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/2.4/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -29,31 +23,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NewClass = /** @class */ (function (_super) {
-    __extends(NewClass, _super);
-    function NewClass() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.label = null;
-        _this.text = 'hello';
-        return _this;
-        // update (dt) {}
+var ccclass = cc._decorator.ccclass;
+var PlatformSpawner = /** @class */ (function (_super) {
+    __extends(PlatformSpawner, _super);
+    function PlatformSpawner() {
+        return _super !== null && _super.apply(this, arguments) || this;
     }
-    // LIFE-CYCLE CALLBACKS:
-    // onLoad () {}
-    NewClass.prototype.start = function () {
+    PlatformSpawner.prototype.spawnPlatform = function () {
+        var newPlatform = new cc.Node("Platform");
+        newPlatform.addComponent(cc.Sprite); // Предполагается, что у платформ есть спрайты
+        this.node.addChild(newPlatform);
+        newPlatform.setPosition(cc.v2(Math.random() * 400 - 200, -200));
     };
-    __decorate([
-        property(cc.Label)
-    ], NewClass.prototype, "label", void 0);
-    __decorate([
-        property
-    ], NewClass.prototype, "text", void 0);
-    NewClass = __decorate([
+    PlatformSpawner = __decorate([
         ccclass
-    ], NewClass);
-    return NewClass;
+    ], PlatformSpawner);
+    return PlatformSpawner;
 }(cc.Component));
-exports.default = NewClass;
+exports.default = PlatformSpawner;
 
 cc._RF.pop();

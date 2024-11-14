@@ -544,11 +544,6 @@
     "meta": 1731510446684,
     "relativePath": "Scripts\\GameController.ts"
   },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731581452773,
-    "meta": 1731581464701,
-    "relativePath": "Scripts\\PlayerController.ts"
-  },
   "d33a77ba-7e92-42a1-8f10-c09dabf2b2d0": {
     "asset": 1731581503807,
     "meta": 1731581512309,
@@ -560,8 +555,18 @@
     "relativePath": "Scripts\\UIManager.ts"
   },
   "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
-    "asset": 1731581541623,
-    "meta": 1731581543200,
+    "asset": 1731581552197,
+    "meta": 1731581879459,
     "relativePath": "Scripts\\PlatformSpawner.ts"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731581705203,
+    "meta": 1731581879498,
+    "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "511f5b68-0dc2-4ca2-94a7-b22c9919671d": {
+    "asset": 1731582681502,
+    "meta": 1731582702498,
+    "relativePath": "Scripts\\TouchController.ts"
   }
 }

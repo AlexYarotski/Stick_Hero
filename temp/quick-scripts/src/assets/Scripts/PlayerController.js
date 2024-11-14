@@ -35,8 +35,9 @@ var PlayerController = /** @class */ (function (_super) {
     PlayerController.prototype.moveTo = function (targetPosition, onComplete) {
         var _this = this;
         this.isMoving = true;
+        var targetPosition3D = new cc.Vec3(targetPosition.x, targetPosition.y, 0);
         cc.tween(this.node)
-            .to(1, { position: targetPosition }, { easing: 'sineInOut' })
+            .to(1, { position: targetPosition3D }, { easing: 'sineInOut' })
             .call(function () {
             _this.isMoving = false;
             if (onComplete)
@@ -46,7 +47,7 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.fall = function () {
         cc.tween(this.node)
-            .by(1, { position: cc.v2(0, -1000) }, { easing: 'sineIn' })
+            .by(1, { position: new cc.Vec3(0, -1000, 0) }, { easing: 'sineIn' })
             .start();
     };
     __decorate([

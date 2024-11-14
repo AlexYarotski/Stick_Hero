@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '9e355XdrLVNvZtw0ohF1eL6', 'PlayerController');
-// Scripts/PlayerController.ts
+cc._RF.push(module, '511f5toDcJMopSnsiyZGWcd', 'TouchController');
+// Scripts/TouchController.ts
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -24,40 +24,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var PlayerController = /** @class */ (function (_super) {
-    __extends(PlayerController, _super);
-    function PlayerController() {
+var TouchController = /** @class */ (function (_super) {
+    __extends(TouchController, _super);
+    function TouchController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.stick = null;
-        _this.isMoving = false;
+        _this.TOUCHED_START = 'touchStart';
+        _this.TOUCHED_END = 'touchEnd';
         return _this;
     }
-    PlayerController.prototype.moveTo = function (targetPosition, onComplete) {
-        var _this = this;
-        this.isMoving = true;
-        var targetPosition3D = new cc.Vec3(targetPosition.x, targetPosition.y, 0);
-        cc.tween(this.node)
-            .to(1, { position: targetPosition3D }, { easing: 'sineInOut' })
-            .call(function () {
-            _this.isMoving = false;
-            if (onComplete)
-                onComplete();
-        })
-            .start();
+    TouchController.prototype.onLoad = function () {
+        this.node.on(cc.Node.EventType.TOUCH_START, this.onTouchStart, this);
+        this.node.on(cc.Node.EventType.TOUCH_END, this.onTouchEnd, this);
     };
-    PlayerController.prototype.fall = function () {
-        cc.tween(this.node)
-            .by(1, { position: new cc.Vec3(0, -1000, 0) }, { easing: 'sineIn' })
-            .start();
+    TouchController.prototype.onTouchStart = function () {
+        if (this.checkTime())
+            cc.systemEvent.emit(this.TOUCHED_START);
     };
-    __decorate([
-        property(cc.Node)
-    ], PlayerController.prototype, "stick", void 0);
-    PlayerController = __decorate([
+    TouchController.prototype.onTouchEnd = function () {
+        if (this.checkTime())
+            cc.systemEvent.emit(this.TOUCHED_END);
+    };
+    TouchController.prototype.checkTime = function () {
+        return cc.director.getScheduler().getTimeScale() !== 0;
+    };
+    TouchController = __decorate([
         ccclass
-    ], PlayerController);
-    return PlayerController;
+    ], TouchController);
+    return TouchController;
 }(cc.Component));
-exports.default = PlayerController;
+exports.default = TouchController;
 
 cc._RF.pop();
