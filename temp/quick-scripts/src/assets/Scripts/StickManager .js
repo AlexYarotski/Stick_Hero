@@ -74,12 +74,12 @@ var StickManager = /** @class */ (function (_super) {
         cc.tween(this.node)
             .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
             .call(function () {
-            _this.emitStickFallenEvent(); // Когда стик вращается, он падает
+            _this.emitStickFallenEvent();
         })
             .start();
     };
     StickManager.prototype.emitStickFallenEvent = function () {
-        cc.systemEvent.emit(this.STICK_FALLEN, this.node); // Создаем кастомное событие
+        cc.systemEvent.emit(this.STICK_FALLEN, this.node);
     };
     __decorate([
         property(Number)

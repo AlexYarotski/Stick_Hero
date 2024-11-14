@@ -28,7 +28,7 @@ var PlayerController = /** @class */ (function (_super) {
     __extends(PlayerController, _super);
     function PlayerController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.startStickPos = new cc.Vec2(44, -75);
+        _this.offsetStick = new cc.Vec2(40, -76);
         _this.stickPrefab = null;
         _this.stick = null;
         return _this;
@@ -37,9 +37,10 @@ var PlayerController = /** @class */ (function (_super) {
         this.startCreatingStick();
     };
     PlayerController.prototype.startCreatingStick = function () {
+        var position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y + this.offsetStick.y);
         this.stick = cc.instantiate(this.stickPrefab);
         this.stick.parent = this.node.parent;
-        this.stick.setPosition(this.startStickPos);
+        this.stick.setPosition(position);
     };
     PlayerController.prototype.moveToEndOfStick = function (stickNode) {
         var _this = this;
@@ -50,15 +51,12 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.moveToEndOfPlatform = function (platformNode) {
         var targetPosition = platformNode.position.add(cc.v3(platformNode.width / 2, 0, 0));
-        this.moveTowards(targetPosition, function () { });
+        this.moveTowards(targetPosition, function () {
+        });
     };
     PlayerController.prototype.moveTowards = function (targetPosition, onComplete) {
         cc.tween(this.node)
             .to(1, { position: targetPosition }, { easing: 'sineInOut' })
-            .call(function () {
-            if (onComplete)
-                onComplete();
-        })
             .start();
     };
     PlayerController.prototype.initiateFall = function () {

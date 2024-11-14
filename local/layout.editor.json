@@ -14,12 +14,12 @@
         "children": [
           {
             "width": 278,
-            "height": 1281,
+            "height": 1274,
             "type": "dock-v",
             "children": [
               {
                 "width": 278,
-                "height": 595,
+                "height": 591.734375,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -28,7 +28,7 @@
               },
               {
                 "width": 278,
-                "height": 682.984375,
+                "height": 679.25,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -39,17 +39,17 @@
           },
           {
             "width": 1020,
-            "height": 1281,
+            "height": 1274,
             "type": "dock-v",
             "children": [
               {
                 "width": 1020,
-                "height": 1012,
+                "height": 1005,
                 "type": "dock-h",
                 "children": [
                   {
                     "width": 498,
-                    "height": 1012,
+                    "height": 1005,
                     "type": "panel",
                     "active": 0,
                     "children": [
@@ -58,7 +58,7 @@
                   },
                   {
                     "width": 519,
-                    "height": 1012,
+                    "height": 1005,
                     "type": "panel",
                     "active": 0,
                     "children": [
@@ -81,7 +81,7 @@
           },
           {
             "width": 414,
-            "height": 1281,
+            "height": 1274,
             "type": "panel",
             "active": 0,
             "children": [
@@ -95,12 +95,26 @@
         "hierarchy",
         "assets",
         "scene",
+        "game-window",
         "console",
         "timeline",
         "inspector",
-        "cocos-services",
-        "game-window"
+        "cocos-services"
       ]
+    },
+    "window-1731613474202": {
+      "main": false,
+      "url": "unpack://static/window.html",
+      "windowType": "dockable",
+      "x": 1312,
+      "y": 366,
+      "width": 1649,
+      "height": 639,
+      "layout": {
+        "type": "dock-v",
+        "children": []
+      },
+      "panels": []
     }
   },
   "panels": {
