@@ -568,5 +568,95 @@
     "asset": 1731582681502,
     "meta": 1731582702498,
     "relativePath": "Scripts\\TouchController.ts"
+  },
+  "d7cb4798-0cf0-4ab0-aa33-76621cbae2aa": {
+    "asset": 1731583311275,
+    "meta": 1731583311307,
+    "relativePath": "Art\\Sprite\\Hero"
+  },
+  "d6c20ca4-5af1-40b8-915e-265dbe596131": {
+    "asset": 1731583311301,
+    "meta": 1731583311332,
+    "relativePath": "Art\\Sprite\\UI"
+  },
+  "63a2b18f-68b6-41b7-b014-58b81a2ed796": {
+    "asset": 1731508171584,
+    "meta": 1731583311465,
+    "relativePath": "Art\\Sprite\\Red.png"
+  },
+  "19bf6e53-beba-4ee0-a95b-557b18c5a1f1": {
+    "asset": 1731508171578,
+    "meta": 1731583311471,
+    "relativePath": "Art\\Sprite\\Black.png"
+  },
+  "5925f8bd-6c84-4b0b-b64a-a82d47a89e53": {
+    "asset": 1731508171582,
+    "meta": 1731583311520,
+    "relativePath": "Art\\Sprite\\Hero\\run_01.png"
+  },
+  "dce61163-6d1a-433b-af4c-08e998f72b75": {
+    "asset": 1731508171581,
+    "meta": 1731583311553,
+    "relativePath": "Art\\Sprite\\Hero\\default.png"
+  },
+  "a3a80bb6-7cd8-4a15-9760-30ea5dde49d1": {
+    "asset": 1731508171584,
+    "meta": 1731583311581,
+    "relativePath": "Art\\Sprite\\Hero\\run_02.png"
+  },
+  "e37903bc-ee71-49b5-9157-2e3246dae8db": {
+    "asset": 1731508171585,
+    "meta": 1731583311587,
+    "relativePath": "Art\\Sprite\\UI\\counter (2).png"
+  },
+  "846b8acf-f272-4814-ba54-8d1a13962564": {
+    "asset": 1731508171586,
+    "meta": 1731583311594,
+    "relativePath": "Art\\Sprite\\UI\\game_over.png"
+  },
+  "5c6374ce-37f0-4d89-8e7c-4abf9b96c798": {
+    "asset": 1731508171587,
+    "meta": 1731583311648,
+    "relativePath": "Art\\Sprite\\UI\\home_2.png"
+  },
+  "afe26e31-5e5a-405f-bd2e-0c0ec32e4603": {
+    "asset": 1731508171587,
+    "meta": 1731583311656,
+    "relativePath": "Art\\Sprite\\UI\\home.png"
+  },
+  "c968f6ff-063a-4b74-b642-07c096a7f8a6": {
+    "asset": 1731508171588,
+    "meta": 1731583311662,
+    "relativePath": "Art\\Sprite\\UI\\play.png"
+  },
+  "113e75a3-e96a-4916-90bb-f20592cdd676": {
+    "asset": 1731508171590,
+    "meta": 1731583311667,
+    "relativePath": "Art\\Sprite\\UI\\restart_2.png"
+  },
+  "516af462-7b15-4fe5-bd4b-50f43224e173": {
+    "asset": 1731508171590,
+    "meta": 1731583311677,
+    "relativePath": "Art\\Sprite\\UI\\restart.png"
+  },
+  "0445212e-399c-452c-8f22-dcdd19ca69dd": {
+    "asset": 1731508171591,
+    "meta": 1731583311702,
+    "relativePath": "Art\\Sprite\\UI\\sound_Off.png"
+  },
+  "e9f25312-e7de-48a6-83cd-ddae202d3e2c": {
+    "asset": 1731508171589,
+    "meta": 1731583311720,
+    "relativePath": "Art\\Sprite\\UI\\play_2.png"
+  },
+  "c2bb4686-a867-4406-a474-e37fac588072": {
+    "asset": 1731508171592,
+    "meta": 1731583311742,
+    "relativePath": "Art\\Sprite\\UI\\sound_On.png"
+  },
+  "a335096c-d0ba-4b8b-bdc3-9871396a2a05": {
+    "asset": 1731508171577,
+    "meta": 1731583311812,
+    "relativePath": "Art\\Sprite\\Background_02.png"
   }
 }
