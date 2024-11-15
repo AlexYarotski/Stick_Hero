@@ -1,5 +1,6 @@
 
 require('./assets/Scripts/GameController');
+require('./assets/Scripts/GameMover');
 require('./assets/Scripts/Platform');
 require('./assets/Scripts/PlatformSpawner');
 require('./assets/Scripts/PlayerController');

@@ -37,6 +37,7 @@ var PlayerController = /** @class */ (function (_super) {
         _this.stick = null;
         return _this;
     }
+    PlayerController_1 = PlayerController;
     PlayerController.prototype.reset = function () {
         this.startCreatingStick();
     };
@@ -56,9 +57,12 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.moveToEndOfPlatform = function (xPos) {
         var worldTargetPosition = cc.v3(xPos + this.offsetPlatformX, this.node.position.y);
-        var localTargetPosition = this.node.parent.convertToNodeSpaceAR(cc.v3(worldTargetPosition.x, this.node.position.y));
-        var endPlatformPos = cc.v3(localTargetPosition.x - this.offsetEndPlatformX, this.node.position.y);
-        this.moveTowards(endPlatformPos, function () { });
+        var localTargetPosition = this.node.parent.convertToNodeSpaceAR(worldTargetPosition);
+        var endPlatformPos = cc.v3(localTargetPosition.x + this.offsetPlatformX, this.node.position.y);
+        var distanceTravelled = Math.abs(this.node.position.x - endPlatformPos.x); // Расчет пройденного расстояния
+        this.moveTowards(endPlatformPos, function () {
+            cc.systemEvent.emit(PlayerController_1.PLAYER_REACHED_EVENT, distanceTravelled); // Передаем расстояние как параметр
+        });
     };
     PlayerController.prototype.moveTowards = function (targetPosition, onComplete) {
         cc.tween(this.node)
@@ -74,6 +78,8 @@ var PlayerController = /** @class */ (function (_super) {
             .to(this.fallDuration, { position: cc.v3(this.node.x, -1080) })
             .start();
     };
+    var PlayerController_1;
+    PlayerController.PLAYER_REACHED_EVENT = 'playerReached';
     __decorate([
         property(cc.Prefab)
     ], PlayerController.prototype, "stickPrefab", void 0);
@@ -83,7 +89,7 @@ var PlayerController = /** @class */ (function (_super) {
     __decorate([
         property(cc.Float)
     ], PlayerController.prototype, "fallDuration", void 0);
-    PlayerController = __decorate([
+    PlayerController = PlayerController_1 = __decorate([
         ccclass
     ], PlayerController);
     return PlayerController;
