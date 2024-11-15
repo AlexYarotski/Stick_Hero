@@ -25,24 +25,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var StickManager_1 = require("./StickManager");
 var StickSpawner_1 = require("./StickSpawner");
+var PlayerFlip_1 = require("./PlayerFlip");
+var Platform_1 = require("./Platform"); // Добавим импорт Platform для проверки типа объекта
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlayerController = /** @class */ (function (_super) {
     __extends(PlayerController, _super);
     function PlayerController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.COLLISION_ENTER = 'collision-enter';
         _this.offsetPlatformX = -50;
         _this.offsetStick = cc.v2(80, 10);
         _this.stickPrefab = null;
         _this.moveDuration = 1;
         _this.fallDuration = 0.2;
         _this.stickSpawner = null;
+        _this.playerFlip = null;
         _this.stick = null;
         _this.previousStick = null;
+        _this.boxCollider = null;
         return _this;
     }
     PlayerController_1 = PlayerController;
+    PlayerController.prototype.onLoad = function () {
+        this.boxCollider = this.getComponent(cc.BoxCollider);
+        this.boxCollider.node.on(this.COLLISION_ENTER, this.onCollisionEnter, this);
+    };
     PlayerController.prototype.reset = function () {
         this.spawnStick();
+    };
+    PlayerController.prototype.onCollisionEnter = function (other, self) {
+        if (other.node.getComponent(Platform_1.default)) {
+            this.initiateFall();
+        }
     };
     PlayerController.prototype.spawnStick = function () {
         var position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y + this.offsetStick.y);
@@ -72,14 +86,17 @@ var PlayerController = /** @class */ (function (_super) {
             this.stickSpawner.deactivateNode(this.previousStick.node);
         }
         this.previousStick = this.stick;
-        cc.systemEvent.emit(PlayerController_1.PLAYER_REACHED_EVENT, distanceTravelled);
+        cc.systemEvent.emit(PlayerController_1.PLAYER_REACHED, distanceTravelled);
     };
     PlayerController.prototype.moveTowards = function (targetPosition, onComplete) {
+        var _this = this;
+        this.playerFlip.disableFlip();
         cc.tween(this.node)
             .to(this.moveDuration, { position: targetPosition }, { easing: 'sineInOut' })
             .call(function () {
             if (onComplete)
                 onComplete();
+            _this.playerFlip.enableFlip();
         })
             .start();
     };
@@ -90,7 +107,7 @@ var PlayerController = /** @class */ (function (_super) {
         this.stick.initiateFall(this.fallDuration);
     };
     var PlayerController_1;
-    PlayerController.PLAYER_REACHED_EVENT = 'playerReached';
+    PlayerController.PLAYER_REACHED = 'playerReached';
     __decorate([
         property(cc.Prefab)
     ], PlayerController.prototype, "stickPrefab", void 0);
@@ -103,6 +120,9 @@ var PlayerController = /** @class */ (function (_super) {
     __decorate([
         property(StickSpawner_1.default)
     ], PlayerController.prototype, "stickSpawner", void 0);
+    __decorate([
+        property(PlayerFlip_1.default)
+    ], PlayerController.prototype, "playerFlip", void 0);
     PlayerController = PlayerController_1 = __decorate([
         ccclass
     ], PlayerController);

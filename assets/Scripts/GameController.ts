@@ -1,10 +1,10 @@
 import StickManager from "./StickManager";
-
-const { ccclass, property } = cc._decorator;
-
 import PlayerController from "./PlayerController";
 import PlatformSpawner from "./PlatformSpawner";
 import StickSpawner from "./StickSpawner";
+import DoubleSpawner from "./DoubleSpawner"; // Импорт класса DoubleSpawner
+
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class GameController extends cc.Component {
@@ -22,6 +22,9 @@ export default class GameController extends cc.Component {
 
     @property(StickSpawner)
     stickSpawner: StickSpawner = null;
+
+    @property(DoubleSpawner)
+    doubleSpawner: DoubleSpawner = null;
 
     private currentStick: cc.Node = null;
     private currentPlatform: cc.Node = null;
@@ -73,12 +76,17 @@ export default class GameController extends cc.Component {
     }
 
     private onMovementComplete() {
-        this.player.reset();
         if (this.previousPlatform) {
             this.platformSpawner.deactivateNode(this.previousPlatform);
         }
         this.previousPlatform = this.currentPlatform;
         this.currentPlatform = this.platformSpawner.spawnNode();
+
+        this.player.reset();
+
+        if (this.doubleSpawner) {
+            this.doubleSpawner.spawnDouble(this.previousPlatform, this.currentPlatform);
+        }
     }
 
     private endGame() {

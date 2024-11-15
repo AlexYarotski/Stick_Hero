@@ -1,4 +1,5 @@
 import { Spawner } from "./Spawner";
+import Platform from "./Platform";
 
 const { ccclass, property } = cc._decorator;
 
@@ -21,32 +22,35 @@ export default class PlatformSpawner extends Spawner {
     @property
     private platformAppearTime: number = 0.5;
 
-    private lastPlatform: cc.Node = null;
+    private lastPlatform: Platform = null;
 
     public spawnNode(position?: cc.Vec2): cc.Node {
-        const newPlatform = this.getOrCreateNode();
+        const newPlatform = this.getOrCreateNode().getComponent(Platform);
         if (position) {
-            newPlatform.setPosition(cc.v2(position.x, this.posY));
-            newPlatform.active = true;
+            newPlatform.node.setPosition(cc.v2(position.x, this.posY));
+            newPlatform.node.active = true;
         } else {
             this.setRandomPlatformAttributes(newPlatform);
         }
 
         this.lastPlatform = newPlatform;
-        return newPlatform;
+
+        return newPlatform.node;
     }
 
 
-    private setRandomPlatformAttributes(platform: cc.Node) {
+    private setRandomPlatformAttributes(platform: Platform) {
         const platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);
-        platform.width = platformWidth;
+        platform.node.width = platformWidth;
 
         const offsetX = this.minXOffset + Math.random() * (this.maxXOffset - this.minXOffset);
-        const newPositionX = this.lastPlatform ? this.lastPlatform.x + this.lastPlatform.width + offsetX : 0;
+        const newPositionX = this.lastPlatform ? this.lastPlatform.node.x + this.lastPlatform.node.width + offsetX : 0;
 
-        platform.setPosition(cc.v2(newPositionX, this.posY * 2));
+        platform.node.setPosition(cc.v2(newPositionX, this.posY * 2));
 
-        cc.tween(platform)
+        platform.updatePlatformSize();
+
+        cc.tween(platform.node)
             .to(this.platformAppearTime, { position: cc.v3(newPositionX, -1100) }, { easing: 'cubicOut' })
             .start();
     }

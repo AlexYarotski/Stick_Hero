@@ -54,7 +54,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -504.09,
+        -514.59,
         -1100,
         0,
         0,
@@ -87,6 +87,7 @@
       "__id__": 1
     },
     "_enabled": true,
+    "boxCollider": null,
     "_id": ""
   },
   {
@@ -122,30 +123,24 @@
     "_id": ""
   },
   {
-    "__type__": "cc.Widget",
+    "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "alignMode": 1,
-    "_target": null,
-    "_alignFlags": 4,
-    "_left": 0,
-    "_right": 0,
-    "_top": 0,
-    "_bottom": -1100,
-    "_verticalCenter": 0,
-    "_horizontalCenter": 0,
-    "_isAbsLeft": true,
-    "_isAbsRight": true,
-    "_isAbsTop": true,
-    "_isAbsBottom": true,
-    "_isAbsHorizontalCenter": true,
-    "_isAbsVerticalCenter": true,
-    "_originalWidth": 0,
-    "_originalHeight": 0,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 70,
+      "y": 400
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 140,
+      "height": 800
+    },
     "_id": ""
   },
   {

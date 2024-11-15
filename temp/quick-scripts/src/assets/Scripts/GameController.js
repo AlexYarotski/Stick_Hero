@@ -23,10 +23,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlayerController_1 = require("./PlayerController");
 var PlatformSpawner_1 = require("./PlatformSpawner");
 var StickSpawner_1 = require("./StickSpawner");
+var DoubleSpawner_1 = require("./DoubleSpawner"); // Импорт класса DoubleSpawner
+var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameController = /** @class */ (function (_super) {
     __extends(GameController, _super);
     function GameController() {
@@ -38,6 +39,7 @@ var GameController = /** @class */ (function (_super) {
         _this.player = null;
         _this.platformSpawner = null;
         _this.stickSpawner = null;
+        _this.doubleSpawner = null;
         _this.currentStick = null;
         _this.currentPlatform = null;
         _this.previousPlatform = null;
@@ -78,12 +80,15 @@ var GameController = /** @class */ (function (_super) {
         }
     };
     GameController.prototype.onMovementComplete = function () {
-        this.player.reset();
         if (this.previousPlatform) {
             this.platformSpawner.deactivateNode(this.previousPlatform);
         }
         this.previousPlatform = this.currentPlatform;
         this.currentPlatform = this.platformSpawner.spawnNode();
+        this.player.reset();
+        if (this.doubleSpawner) {
+            this.doubleSpawner.spawnDouble(this.previousPlatform, this.currentPlatform);
+        }
     };
     GameController.prototype.endGame = function () {
         cc.log('Game Over');
@@ -97,6 +102,9 @@ var GameController = /** @class */ (function (_super) {
     __decorate([
         property(StickSpawner_1.default)
     ], GameController.prototype, "stickSpawner", void 0);
+    __decorate([
+        property(DoubleSpawner_1.default)
+    ], GameController.prototype, "doubleSpawner", void 0);
     GameController = __decorate([
         ccclass
     ], GameController);

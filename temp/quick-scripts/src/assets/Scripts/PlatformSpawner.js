@@ -24,6 +24,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Spawner_1 = require("./Spawner");
+var Platform_1 = require("./Platform");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlatformSpawner = /** @class */ (function (_super) {
     __extends(PlatformSpawner, _super);
@@ -39,24 +40,25 @@ var PlatformSpawner = /** @class */ (function (_super) {
         return _this;
     }
     PlatformSpawner.prototype.spawnNode = function (position) {
-        var newPlatform = this.getOrCreateNode();
+        var newPlatform = this.getOrCreateNode().getComponent(Platform_1.default);
         if (position) {
-            newPlatform.setPosition(cc.v2(position.x, this.posY));
-            newPlatform.active = true;
+            newPlatform.node.setPosition(cc.v2(position.x, this.posY));
+            newPlatform.node.active = true;
         }
         else {
             this.setRandomPlatformAttributes(newPlatform);
         }
         this.lastPlatform = newPlatform;
-        return newPlatform;
+        return newPlatform.node;
     };
     PlatformSpawner.prototype.setRandomPlatformAttributes = function (platform) {
         var platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);
-        platform.width = platformWidth;
+        platform.node.width = platformWidth;
         var offsetX = this.minXOffset + Math.random() * (this.maxXOffset - this.minXOffset);
-        var newPositionX = this.lastPlatform ? this.lastPlatform.x + this.lastPlatform.width + offsetX : 0;
-        platform.setPosition(cc.v2(newPositionX, this.posY * 2));
-        cc.tween(platform)
+        var newPositionX = this.lastPlatform ? this.lastPlatform.node.x + this.lastPlatform.node.width + offsetX : 0;
+        platform.node.setPosition(cc.v2(newPositionX, this.posY * 2));
+        platform.updatePlatformSize();
+        cc.tween(platform.node)
             .to(this.platformAppearTime, { position: cc.v3(newPositionX, -1100) }, { easing: 'cubicOut' })
             .start();
     };

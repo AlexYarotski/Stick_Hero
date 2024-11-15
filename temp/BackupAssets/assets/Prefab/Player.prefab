@@ -27,10 +27,13 @@
       },
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
       }
     ],
     "_prefab": {
-      "__id__": 5
+      "__id__": 6
     },
     "_opacity": 255,
     "_color": {
@@ -47,15 +50,15 @@
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
-      "y": 0.5
+      "x": 0,
+      "y": 0
     },
     "_trs": {
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        36.70100000000002,
-        -233.562,
+        -510,
+        -310,
         0,
         0,
         0,
@@ -90,6 +93,23 @@
     "stickPrefab": {
       "__uuid__": "763d902a-a23e-465e-973b-d3491244b529"
     },
+    "moveDuration": 1,
+    "fallDuration": 0.3,
+    "stickSpawner": null,
+    "playerFlip": {
+      "__id__": 3
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "c3be937gYBFDozwDodDxJNQ",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "flipDuration": 0.1,
     "_id": ""
   },
   {
@@ -125,30 +145,24 @@
     "_id": ""
   },
   {
-    "__type__": "cc.Widget",
+    "__type__": "cc.BoxCollider",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "alignMode": 1,
-    "_target": null,
-    "_alignFlags": 8,
-    "_left": -0.7989999999999782,
-    "_right": 0,
-    "_top": 822.481,
-    "_bottom": 407.519,
-    "_verticalCenter": 0,
-    "_horizontalCenter": 0,
-    "_isAbsLeft": true,
-    "_isAbsRight": true,
-    "_isAbsTop": true,
-    "_isAbsBottom": true,
-    "_isAbsHorizontalCenter": true,
-    "_isAbsVerticalCenter": true,
-    "_originalWidth": 0,
-    "_originalHeight": 50,
+    "tag": 0,
+    "_offset": {
+      "__type__": "cc.Vec2",
+      "x": 37.5,
+      "y": 84
+    },
+    "_size": {
+      "__type__": "cc.Size",
+      "width": 75,
+      "height": 132.1
+    },
     "_id": ""
   },
   {

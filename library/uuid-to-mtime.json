@@ -500,8 +500,8 @@
     "relativePath": "model\\primitives.fbx"
   },
   "3ce6db62-eb87-4bc6-9393-65dc6904fe72": {
-    "asset": 1731620951526,
-    "meta": 1731652581780,
+    "asset": 1731678544463,
+    "meta": 1731678614062,
     "relativePath": "Scripts"
   },
   "f2c59888-a972-4147-919a-d160c227567c": {
@@ -525,8 +525,8 @@
     "relativePath": "Scene"
   },
   "f56f1100-7039-4526-921e-806d437a2f86": {
-    "asset": 1731596849701,
-    "meta": 1731611689898,
+    "asset": 1731677309715,
+    "meta": 1731678614062,
     "relativePath": "Prefab"
   },
   "a905444c-8e92-4919-bfea-38d1517e17f5": {
@@ -629,24 +629,19 @@
     "meta": 1731583776264,
     "relativePath": "Art\\Sprite\\Background_02.png"
   },
-  "6c5bb808-29e0-43e0-a725-1f54347da26b": {
-    "asset": 1731587859361,
-    "meta": 1731587862188,
-    "relativePath": "Scripts\\Platform.ts"
-  },
   "0a464bfe-cebd-4fad-8547-564502a219c2": {
     "asset": 1731596530706,
     "meta": 1731596840406,
     "relativePath": "Scripts\\UIManager.ts"
   },
   "38013cd5-3e43-4df6-a0c4-72b8693420cd": {
-    "asset": 1731619482117,
-    "meta": 1731619482139,
+    "asset": 1731680016017,
+    "meta": 1731680016037,
     "relativePath": "Prefab\\Player.prefab"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731673567252,
-    "meta": 1731673567266,
+    "asset": 1731682392299,
+    "meta": 1731682392323,
     "relativePath": "Scene\\Game.fire"
   },
   "763d902a-a23e-465e-973b-d3491244b529": {
@@ -655,8 +650,8 @@
     "relativePath": "Prefab\\Stick.prefab"
   },
   "d99bd238-9712-4279-823e-9a35d9d777ca": {
-    "asset": 1731669195425,
-    "meta": 1731669195434,
+    "asset": 1731680008022,
+    "meta": 1731680008048,
     "relativePath": "Prefab\\Platform.prefab"
   },
   "91713957-6d37-4701-8dd0-557ea3729f9b": {
@@ -674,24 +669,59 @@
     "meta": 1731674138334,
     "relativePath": "Scripts\\StickSpawner.ts"
   },
-  "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731674172149,
-    "meta": 1731674172656,
-    "relativePath": "Scripts\\GameController.ts"
-  },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731674325581,
-    "meta": 1731674326283,
-    "relativePath": "Scripts\\PlayerController.ts"
-  },
-  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
-    "asset": 1731674545529,
-    "meta": 1731674546543,
-    "relativePath": "Scripts\\PlatformSpawner.ts"
-  },
   "5dbd4acc-7e6e-4c80-a160-237f54aa0295": {
     "asset": 1731674640241,
     "meta": 1731674641811,
     "relativePath": "Scripts\\StickManager.ts"
+  },
+  "a25bb01a-000f-4cd2-9277-c3b775c7fce8": {
+    "asset": 1731674874080,
+    "meta": 1731674892572,
+    "relativePath": "Scripts\\ScoreCounter.ts"
+  },
+  "6c5bb808-29e0-43e0-a725-1f54347da26b": {
+    "asset": 1731678495294,
+    "meta": 1731678501987,
+    "relativePath": "Scripts\\Platform.ts"
+  },
+  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
+    "asset": 1731678544463,
+    "meta": 1731678545445,
+    "relativePath": "Scripts\\PlatformSpawner.ts"
+  },
+  "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
+    "asset": 1731678654937,
+    "meta": 1731678663133,
+    "relativePath": "Scripts\\PlayerFlip.ts"
+  },
+  "2a549eac-ca43-499f-a57d-d4bc6931a925": {
+    "asset": 1731680585782,
+    "meta": 1731680588918,
+    "relativePath": "Scripts\\SystemManager.ts"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731680667888,
+    "meta": 1731680858543,
+    "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "99b54ef3-5a8b-43ec-bb0a-acadf8c687fa": {
+    "asset": 1731681306782,
+    "meta": 1731681306785,
+    "relativePath": "Prefab\\Double.prefab"
+  },
+  "663e2ed0-162b-4c47-a22c-01c97999f61d": {
+    "asset": 1731682004538,
+    "meta": 1731682167986,
+    "relativePath": "Scripts\\Double.ts"
+  },
+  "bb1e92af-0585-4376-b235-518c5fc4be70": {
+    "asset": 1731682177383,
+    "meta": 1731682177455,
+    "relativePath": "Scripts\\GameController.ts"
+  },
+  "b4abe9c6-d024-4d95-b6cb-d388d456fd37": {
+    "asset": 1731682355849,
+    "meta": 1731682356556,
+    "relativePath": "Scripts\\DoubleSpawner.ts"
   }
 }
