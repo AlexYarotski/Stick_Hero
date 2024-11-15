@@ -24,10 +24,11 @@ export default class StickManager extends cc.Component {
         cc.systemEvent.off(this.TOUCHED_END, this.onTouchEnd, this);
     }
 
-    public reset(){
+    public reset() {
         this.node.height = this.size;
         this.node.width = this.size;
-        this.node.setRotation(cc.quat());
+        this.node.angle = 0; // Сброс угла поворота с использованием свойства angle
+        this.node.stopAllActions(); // Останавливаем все активные действия и твины
 
         this.isGrowing = false;
         this.isStickPlaced = false;

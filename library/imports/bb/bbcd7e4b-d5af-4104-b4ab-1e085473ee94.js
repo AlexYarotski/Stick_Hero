@@ -35,25 +35,46 @@ var PlatformSpawner = /** @class */ (function (_super) {
         _this.minXOffset = 100;
         _this.maxXOffset = 400;
         _this.platformAppearTime = 0.5;
+        _this.lastPlatform = null;
+        _this.platformPool = [];
         return _this;
     }
     PlatformSpawner.prototype.spawnPlatform = function (previousPlatformPosition) {
-        var newPlatform = cc.instantiate(this.platformPrefab);
+        var newPlatform = this.getOrCreatePlatform();
         if (previousPlatformPosition) {
             newPlatform.setPosition(cc.v2(previousPlatformPosition.x, this.posY));
+            newPlatform.active = true;
         }
         else {
-            var platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);
-            newPlatform.width = platformWidth;
-            var newPositionX = this.minXOffset + Math.random() * (this.maxXOffset - (this.minXOffset)); // Случайное значение в промежутке [-240, 400]
-            newPlatform.setPosition(cc.v2(newPositionX, this.posY * 2)); // Начальная позиция снизу экрана
-            // Анимация появления снизу вверх
-            cc.tween(newPlatform)
-                .to(this.platformAppearTime, { position: cc.v3(newPositionX, this.posY) }, { easing: 'cubicOut' })
-                .start();
+            this.setRandomPlatformAttributes(newPlatform);
         }
+        this.lastPlatform = newPlatform;
+        return newPlatform;
+    };
+    PlatformSpawner.prototype.deactivatePlatform = function (platform) {
+        platform.setPosition(cc.v2(platform.x, this.posY * 2));
+        platform.active = false;
+        this.platformPool.push(platform);
+    };
+    PlatformSpawner.prototype.getOrCreatePlatform = function () {
+        if (this.platformPool.length > 0) {
+            var reusedPlatform = this.platformPool.pop();
+            return reusedPlatform;
+        }
+        var newPlatform = cc.instantiate(this.platformPrefab);
         this.node.addChild(newPlatform);
         return newPlatform;
+    };
+    PlatformSpawner.prototype.setRandomPlatformAttributes = function (platform) {
+        var platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);
+        platform.width = platformWidth;
+        var offsetX = this.minXOffset + Math.random() * (this.maxXOffset - this.minXOffset);
+        var newPositionX = this.lastPlatform ? this.lastPlatform.x + this.lastPlatform.width + offsetX : 0;
+        platform.setPosition(cc.v2(newPositionX, this.posY * 2));
+        platform.active = true;
+        cc.tween(platform)
+            .to(this.platformAppearTime, { position: cc.v3(newPositionX, this.posY) }, { easing: 'cubicOut' })
+            .start();
     };
     __decorate([
         property(cc.Prefab)

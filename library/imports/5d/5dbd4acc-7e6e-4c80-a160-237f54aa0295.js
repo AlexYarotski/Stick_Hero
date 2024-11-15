@@ -48,7 +48,8 @@ var StickManager = /** @class */ (function (_super) {
     StickManager.prototype.reset = function () {
         this.node.height = this.size;
         this.node.width = this.size;
-        this.node.setRotation(cc.quat());
+        this.node.angle = 0; // Сброс угла поворота с использованием свойства angle
+        this.node.stopAllActions(); // Останавливаем все активные действия и твины
         this.isGrowing = false;
         this.isStickPlaced = false;
     };

@@ -37,7 +37,8 @@ var GameController = /** @class */ (function (_super) {
         _this.player = null;
         _this.platformSpawner = null;
         _this.currentStick = null;
-        _this.platforms = [];
+        _this.currentPlatform = null;
+        _this.previousPlatform = null;
         return _this;
     }
     GameController.prototype.onLoad = function () {
@@ -57,24 +58,16 @@ var GameController = /** @class */ (function (_super) {
     GameController.prototype.resetGame = function () {
         this.player.node.setPosition(this.startPlayerPos);
         this.player.reset();
-        this.clearPlatforms();
-        var initialPlatform = this.platformSpawner.spawnPlatform(cc.v2(this.startPlatformPos));
-        this.platforms.push(initialPlatform);
-        var nextPlatform = this.platformSpawner.spawnPlatform();
-        this.platforms.push(nextPlatform);
-    };
-    GameController.prototype.clearPlatforms = function () {
-        this.platforms.forEach(function (platform) { return platform.destroy(); });
-        this.platforms = [];
+        this.previousPlatform = this.platformSpawner.spawnPlatform(cc.v2(this.startPlatformPos));
+        this.currentPlatform = this.platformSpawner.spawnPlatform();
     };
     GameController.prototype.onStickFallen = function (stick) {
         this.currentStick = stick;
         var stickEndPosX = this.currentStick.x + this.currentStick.height - this.player.node.width / 2;
         var stickWorldEndPos = this.currentStick.parent.convertToWorldSpaceAR(cc.v2(this.currentStick.x + this.currentStick.height, this.currentStick.y));
-        var targetPlatform = this.getTargetPlatform(cc.v2(this.player.node.x, this.player.node.y));
-        var platformWorldPos = targetPlatform.parent.convertToWorldSpaceAR(targetPlatform.getPosition());
+        var platformWorldPos = this.currentPlatform.parent.convertToWorldSpaceAR(this.currentPlatform.getPosition());
         var platformStartX = platformWorldPos.x;
-        var platformEndX = platformWorldPos.x + targetPlatform.width;
+        var platformEndX = platformWorldPos.x + this.currentPlatform.width;
         if (stickWorldEndPos.x >= platformStartX && stickWorldEndPos.x <= platformEndX) {
             this.player.moveToEndOfPlatform(platformEndX);
         }
@@ -84,20 +77,11 @@ var GameController = /** @class */ (function (_super) {
     };
     GameController.prototype.onMovementComplete = function () {
         this.player.reset();
-    };
-    GameController.prototype.getTargetPlatform = function (playerPosition) {
-        for (var _i = 0, _a = this.platforms; _i < _a.length; _i++) {
-            var platform = _a[_i];
-            if (platform.x > playerPosition.x) {
-                return platform;
-            }
+        if (this.previousPlatform) {
+            this.platformSpawner.deactivatePlatform(this.previousPlatform);
         }
-        return null;
-    };
-    GameController.prototype.spawnPlatforms = function () {
-        var previousPlatform = this.platforms[this.platforms.length - 1];
-        var newPlatform = this.platformSpawner.spawnPlatform(previousPlatform.getPosition());
-        this.platforms.push(newPlatform);
+        this.previousPlatform = this.currentPlatform;
+        this.currentPlatform = this.platformSpawner.spawnPlatform();
     };
     GameController.prototype.endGame = function () {
         cc.log('Game Over');

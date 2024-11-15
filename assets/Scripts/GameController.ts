@@ -10,7 +10,6 @@ export default class GameController extends cc.Component {
     private readonly Stick_Fallen: string = 'stickFallen';
     private readonly MOVEMENT_COMPLETE: string = 'movementComplete';
 
-
     private readonly startPlayerPos: cc.Vec2 = new cc.Vec2(-510, -310);
     private readonly startPlatformPos: cc.Vec2 = new cc.Vec2(-553, -1100);
 
@@ -21,9 +20,10 @@ export default class GameController extends cc.Component {
     platformSpawner: PlatformSpawner = null;
 
     private currentStick: cc.Node = null;
-    private platforms: cc.Node[] = [];
+    private currentPlatform: cc.Node = null;
+    private previousPlatform: cc.Node = null;
 
-    protected onLoad(){
+    protected onLoad() {
         cc.systemEvent.on(this.Stick_Fallen, this.onStickFallen, this);
         cc.systemEvent.on(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
     }
@@ -45,35 +45,21 @@ export default class GameController extends cc.Component {
         this.player.node.setPosition(this.startPlayerPos);
         this.player.reset();
 
-        this.clearPlatforms();
-
-        const initialPlatform = this.platformSpawner.spawnPlatform(cc.v2(this.startPlatformPos));
-        this.platforms.push(initialPlatform);
-
-        const nextPlatform = this.platformSpawner.spawnPlatform();
-        this.platforms.push(nextPlatform);
-    }
-
-    private clearPlatforms() {
-        this.platforms.forEach(platform => platform.destroy());
-        this.platforms = [];
+        this.previousPlatform = this.platformSpawner.spawnPlatform(cc.v2(this.startPlatformPos));
+        this.currentPlatform = this.platformSpawner.spawnPlatform();
     }
 
     private onStickFallen(stick: cc.Node) {
         this.currentStick = stick;
 
         const stickEndPosX = this.currentStick.x + this.currentStick.height - this.player.node.width / 2;
-
         const stickWorldEndPos = this.currentStick.parent.convertToWorldSpaceAR(
             cc.v2(this.currentStick.x + this.currentStick.height, this.currentStick.y)
         );
 
-        const targetPlatform = this.getTargetPlatform(cc.v2(this.player.node.x, this.player.node.y));
-
-        const platformWorldPos = targetPlatform.parent.convertToWorldSpaceAR(targetPlatform.getPosition());
-
+        const platformWorldPos = this.currentPlatform.parent.convertToWorldSpaceAR(this.currentPlatform.getPosition());
         const platformStartX = platformWorldPos.x;
-        const platformEndX = platformWorldPos.x + targetPlatform.width;
+        const platformEndX = platformWorldPos.x + this.currentPlatform.width;
 
         if (stickWorldEndPos.x >= platformStartX && stickWorldEndPos.x <= platformEndX) {
             this.player.moveToEndOfPlatform(platformEndX);
@@ -82,24 +68,13 @@ export default class GameController extends cc.Component {
         }
     }
 
-    private onMovementComplete(){
+    private onMovementComplete() {
         this.player.reset();
-    }
-
-
-    private getTargetPlatform(playerPosition: cc.Vec2): cc.Node {
-        for (const platform of this.platforms) {
-            if (platform.x > playerPosition.x) {
-                return platform;
-            }
+        if (this.previousPlatform) {
+            this.platformSpawner.deactivatePlatform(this.previousPlatform);
         }
-        return null;
-    }
-
-    private spawnPlatforms() {
-        const previousPlatform = this.platforms[this.platforms.length - 1];
-        const newPlatform = this.platformSpawner.spawnPlatform(previousPlatform.getPosition());
-        this.platforms.push(newPlatform);
+        this.previousPlatform = this.currentPlatform;
+        this.currentPlatform = this.platformSpawner.spawnPlatform();
     }
 
     private endGame() {

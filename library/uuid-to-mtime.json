@@ -645,23 +645,18 @@
     "relativePath": "Prefab\\Player.prefab"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731665968105,
-    "meta": 1731665968123,
+    "asset": 1731669499279,
+    "meta": 1731669499289,
     "relativePath": "Scene\\Game.fire"
   },
   "763d902a-a23e-465e-973b-d3491244b529": {
-    "asset": 1731620132993,
-    "meta": 1731620133014,
+    "asset": 1731669199522,
+    "meta": 1731669199536,
     "relativePath": "Prefab\\Stick.prefab"
   },
-  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
-    "asset": 1731663135986,
-    "meta": 1731663154284,
-    "relativePath": "Scripts\\PlatformSpawner.ts"
-  },
   "d99bd238-9712-4279-823e-9a35d9d777ca": {
-    "asset": 1731663160451,
-    "meta": 1731663160461,
+    "asset": 1731669195425,
+    "meta": 1731669195434,
     "relativePath": "Prefab\\Platform.prefab"
   },
   "91713957-6d37-4701-8dd0-557ea3729f9b": {
@@ -669,19 +664,24 @@
     "meta": 1731665245017,
     "relativePath": "Scripts\\GameMover.ts"
   },
-  "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731665743216,
-    "meta": 1731665743751,
-    "relativePath": "Scripts\\GameController.ts"
-  },
-  "5dbd4acc-7e6e-4c80-a160-237f54aa0295": {
-    "asset": 1731666095402,
-    "meta": 1731666095914,
-    "relativePath": "Scripts\\StickManager.ts"
-  },
   "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
     "asset": 1731666111044,
     "meta": 1731666112626,
     "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "bb1e92af-0585-4376-b235-518c5fc4be70": {
+    "asset": 1731667625603,
+    "meta": 1731667626279,
+    "relativePath": "Scripts\\GameController.ts"
+  },
+  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
+    "asset": 1731669020947,
+    "meta": 1731669021858,
+    "relativePath": "Scripts\\PlatformSpawner.ts"
+  },
+  "5dbd4acc-7e6e-4c80-a160-237f54aa0295": {
+    "asset": 1731669467357,
+    "meta": 1731669468147,
+    "relativePath": "Scripts\\StickManager.ts"
   }
 }
