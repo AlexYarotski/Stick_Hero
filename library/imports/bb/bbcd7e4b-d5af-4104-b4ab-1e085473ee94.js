@@ -28,28 +28,28 @@ var PlatformSpawner = /** @class */ (function (_super) {
     __extends(PlatformSpawner, _super);
     function PlatformSpawner() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.posY = -1100;
         _this.platformPrefab = null;
         _this.minWidth = 50;
         _this.maxWidth = 200;
         _this.minXOffset = 100;
         _this.maxXOffset = 400;
-        _this.platformAppearTime = 0.5; // Время появления платформы снизу вверх
+        _this.platformAppearTime = 0.5;
         return _this;
     }
     PlatformSpawner.prototype.spawnPlatform = function (previousPlatformPosition) {
         var newPlatform = cc.instantiate(this.platformPrefab);
-        var platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);
-        newPlatform.width = platformWidth;
         if (previousPlatformPosition) {
-            newPlatform.setPosition(cc.v2(previousPlatformPosition.x, -708)); // Появляется сразу
+            newPlatform.setPosition(cc.v2(previousPlatformPosition.x, this.posY));
         }
         else {
-            // Если позиция не передана, используем случайное значение
-            var newPositionX = -240 + Math.random() * (400 - (-240)); // Случайное значение в промежутке [-240, 400]
-            newPlatform.setPosition(cc.v2(newPositionX, -1080)); // Начальная позиция снизу экрана
+            var platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);
+            newPlatform.width = platformWidth;
+            var newPositionX = this.minXOffset + Math.random() * (this.maxXOffset - (this.minXOffset)); // Случайное значение в промежутке [-240, 400]
+            newPlatform.setPosition(cc.v2(newPositionX, this.posY * 2)); // Начальная позиция снизу экрана
             // Анимация появления снизу вверх
             cc.tween(newPlatform)
-                .to(this.platformAppearTime, { position: cc.v3(newPositionX, -708) }, { easing: 'cubicOut' })
+                .to(this.platformAppearTime, { position: cc.v3(newPositionX, this.posY) }, { easing: 'cubicOut' })
                 .start();
         }
         this.node.addChild(newPlatform);

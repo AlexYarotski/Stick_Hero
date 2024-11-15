@@ -82,7 +82,7 @@ var StickManager = /** @class */ (function (_super) {
         cc.systemEvent.emit(this.STICK_FALLEN, this.node);
     };
     __decorate([
-        property(Number)
+        property(cc.Float)
     ], StickManager.prototype, "growSpeed", void 0);
     StickManager = __decorate([
         ccclass

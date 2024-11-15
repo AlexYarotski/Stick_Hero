@@ -29,7 +29,8 @@ var PlayerController = /** @class */ (function (_super) {
     function PlayerController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.offsetPlatformX = -40;
-        _this.offsetStickX = 40;
+        _this.offsetEndPlatformX = 12;
+        _this.offsetStick = cc.v2(90, 10);
         _this.stickPrefab = null;
         _this.moveDuration = 1;
         _this.fallDuration = 0.2;
@@ -40,7 +41,8 @@ var PlayerController = /** @class */ (function (_super) {
         this.startCreatingStick();
     };
     PlayerController.prototype.startCreatingStick = function () {
-        var position = cc.v2(this.node.position.x + this.offsetStickX, this.node.position.y);
+        var position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y
+            + this.offsetStick.y);
         this.stick = cc.instantiate(this.stickPrefab);
         this.stick.parent = this.node.parent;
         this.stick.setPosition(position);
@@ -53,9 +55,10 @@ var PlayerController = /** @class */ (function (_super) {
         });
     };
     PlayerController.prototype.moveToEndOfPlatform = function (xPos) {
-        var targetPosition = cc.v3(xPos + this.offsetPlatformX, this.node.position.y);
-        this.moveTowards(targetPosition, function () {
-        });
+        var worldTargetPosition = cc.v3(xPos + this.offsetPlatformX, this.node.position.y);
+        var localTargetPosition = this.node.parent.convertToNodeSpaceAR(cc.v3(worldTargetPosition.x, this.node.position.y));
+        var endPlatformPos = cc.v3(localTargetPosition.x - this.offsetEndPlatformX, this.node.position.y);
+        this.moveTowards(endPlatformPos, function () { });
     };
     PlayerController.prototype.moveTowards = function (targetPosition, onComplete) {
         cc.tween(this.node)
@@ -75,10 +78,10 @@ var PlayerController = /** @class */ (function (_super) {
         property(cc.Prefab)
     ], PlayerController.prototype, "stickPrefab", void 0);
     __decorate([
-        property(Number)
+        property(cc.Float)
     ], PlayerController.prototype, "moveDuration", void 0);
     __decorate([
-        property(Number)
+        property(cc.Float)
     ], PlayerController.prototype, "fallDuration", void 0);
     PlayerController = __decorate([
         ccclass

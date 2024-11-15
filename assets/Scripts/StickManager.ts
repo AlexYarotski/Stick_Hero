@@ -6,7 +6,7 @@ export default class StickManager extends cc.Component {
     private readonly TOUCHED_END: string = 'touchEnd';
     private readonly STICK_FALLEN: string = 'stickFallen';
 
-    @property(Number)
+    @property(cc.Float)
     private growSpeed: number = 100;
 
     private isGrowing: boolean = false;

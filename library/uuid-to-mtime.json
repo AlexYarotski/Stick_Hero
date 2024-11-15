@@ -500,8 +500,8 @@
     "relativePath": "model\\primitives.fbx"
   },
   "3ce6db62-eb87-4bc6-9393-65dc6904fe72": {
-    "asset": 1731599963388,
-    "meta": 1731611689898,
+    "asset": 1731620951526,
+    "meta": 1731652581780,
     "relativePath": "Scripts"
   },
   "f2c59888-a972-4147-919a-d160c227567c": {
@@ -634,16 +634,6 @@
     "meta": 1731587862188,
     "relativePath": "Scripts\\Platform.ts"
   },
-  "d99bd238-9712-4279-823e-9a35d9d777ca": {
-    "asset": 1731588067892,
-    "meta": 1731588067906,
-    "relativePath": "Prefab\\Platform.prefab"
-  },
-  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
-    "asset": 1731596425333,
-    "meta": 1731596840288,
-    "relativePath": "Scripts\\PlatformSpawner.ts"
-  },
   "0a464bfe-cebd-4fad-8547-564502a219c2": {
     "asset": 1731596530706,
     "meta": 1731596840406,
@@ -655,28 +645,38 @@
     "relativePath": "Prefab\\Player.prefab"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731620993106,
-    "meta": 1731620993121,
+    "asset": 1731663048362,
+    "meta": 1731663048377,
     "relativePath": "Scene\\Game.fire"
-  },
-  "5dbd4acc-7e6e-4c80-a160-237f54aa0295": {
-    "asset": 1731620065530,
-    "meta": 1731620066800,
-    "relativePath": "Scripts\\StickManager.ts"
   },
   "763d902a-a23e-465e-973b-d3491244b529": {
     "asset": 1731620132993,
     "meta": 1731620133014,
     "relativePath": "Prefab\\Stick.prefab"
   },
+  "5dbd4acc-7e6e-4c80-a160-237f54aa0295": {
+    "asset": 1731658918776,
+    "meta": 1731658919362,
+    "relativePath": "Scripts\\StickManager.ts"
+  },
   "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731620692735,
-    "meta": 1731620693355,
+    "asset": 1731663001636,
+    "meta": 1731663007252,
     "relativePath": "Scripts\\GameController.ts"
   },
+  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
+    "asset": 1731663135986,
+    "meta": 1731663154284,
+    "relativePath": "Scripts\\PlatformSpawner.ts"
+  },
+  "d99bd238-9712-4279-823e-9a35d9d777ca": {
+    "asset": 1731663160451,
+    "meta": 1731663160461,
+    "relativePath": "Prefab\\Platform.prefab"
+  },
   "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731620951526,
-    "meta": 1731620954398,
+    "asset": 1731663190473,
+    "meta": 1731663191901,
     "relativePath": "Scripts\\PlayerController.ts"
   }
 }

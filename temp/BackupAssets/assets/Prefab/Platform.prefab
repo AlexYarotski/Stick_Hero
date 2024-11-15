@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "Platform",
+    "_name": "",
     "_objFlags": 0,
     "_native": "",
     "data": {
@@ -39,7 +39,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 140,
+      "width": 120,
       "height": 800
     },
     "_anchorPoint": {
