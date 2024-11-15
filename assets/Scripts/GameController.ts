@@ -8,6 +8,8 @@ import PlatformSpawner from "./PlatformSpawner";
 @ccclass
 export default class GameController extends cc.Component {
     private readonly Stick_Fallen: string = 'stickFallen';
+    private readonly MOVEMENT_COMPLETE: string = 'movementComplete';
+
 
     private readonly startPlayerPos: cc.Vec2 = new cc.Vec2(-510, -310);
     private readonly startPlatformPos: cc.Vec2 = new cc.Vec2(-553, -1100);
@@ -21,9 +23,18 @@ export default class GameController extends cc.Component {
     private currentStick: cc.Node = null;
     private platforms: cc.Node[] = [];
 
+    protected onLoad(){
+        cc.systemEvent.on(this.Stick_Fallen, this.onStickFallen, this);
+        cc.systemEvent.on(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
+    }
+
     protected start() {
         this.initGame();
-        cc.systemEvent.on(this.Stick_Fallen, this.onStickFallen, this);
+    }
+
+    protected onDestroy() {
+        cc.systemEvent.off(this.Stick_Fallen, this.onStickFallen, this);
+        cc.systemEvent.off(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
     }
 
     private initGame() {
@@ -69,6 +80,10 @@ export default class GameController extends cc.Component {
         } else {
             this.player.moveToEndOfStick(stickEndPosX);
         }
+    }
+
+    private onMovementComplete(){
+        this.player.reset();
     }
 
 

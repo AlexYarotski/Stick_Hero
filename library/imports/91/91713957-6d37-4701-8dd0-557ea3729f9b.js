@@ -24,22 +24,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NewClass = /** @class */ (function (_super) {
-    __extends(NewClass, _super);
-    function NewClass() {
+var GameMover = /** @class */ (function (_super) {
+    __extends(GameMover, _super);
+    function GameMover() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.PLAYER_REACHED_EVENT = 'playerReached';
-        _this.moveDuration = 3;
+        _this.MOVEMENT_COMPLETE_EVENT = 'movementComplete';
+        _this.moveDuration = 1;
         _this.isMoving = false;
         return _this;
     }
-    NewClass.prototype.onLoad = function () {
+    GameMover.prototype.onLoad = function () {
         cc.systemEvent.on(this.PLAYER_REACHED_EVENT, this.startMoving, this);
     };
-    NewClass.prototype.onDestroy = function () {
+    GameMover.prototype.onDestroy = function () {
         cc.systemEvent.off(this.PLAYER_REACHED_EVENT, this.startMoving, this);
     };
-    NewClass.prototype.startMoving = function (distance) {
+    GameMover.prototype.startMoving = function (distance) {
         var _this = this;
         if (this.isMoving)
             return;
@@ -48,17 +49,18 @@ var NewClass = /** @class */ (function (_super) {
             .by(this.moveDuration, { position: cc.v3(-distance, 0) }, { easing: 'sineInOut' })
             .call(function () {
             _this.isMoving = false;
+            cc.systemEvent.emit(_this.MOVEMENT_COMPLETE_EVENT);
         })
             .start();
     };
     __decorate([
         property(cc.Float)
-    ], NewClass.prototype, "moveDuration", void 0);
-    NewClass = __decorate([
+    ], GameMover.prototype, "moveDuration", void 0);
+    GameMover = __decorate([
         ccclass
-    ], NewClass);
-    return NewClass;
+    ], GameMover);
+    return GameMover;
 }(cc.Component));
-exports.default = NewClass;
+exports.default = GameMover;
 
 cc._RF.pop();

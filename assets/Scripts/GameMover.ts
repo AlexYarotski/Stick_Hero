@@ -1,8 +1,9 @@
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class GameMover extends cc.Component {
     private readonly PLAYER_REACHED_EVENT: string = 'playerReached';
+    private readonly MOVEMENT_COMPLETE_EVENT: string = 'movementComplete';
 
     @property(cc.Float)
     moveDuration: number = 1;
@@ -25,6 +26,7 @@ export default class NewClass extends cc.Component {
             .by(this.moveDuration, { position: cc.v3(-distance, 0) }, { easing: 'sineInOut' })
             .call(() => {
                 this.isMoving = false;
+                cc.systemEvent.emit(this.MOVEMENT_COMPLETE_EVENT);
             })
             .start();
     }

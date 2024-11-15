@@ -721,7 +721,7 @@
       "__id__": 5
     },
     "_enabled": true,
-    "moveSpeed": 80,
+    "moveDuration": 3,
     "_id": "66D1bW8Z1D5KtyS3AvgMoj"
   },
   {

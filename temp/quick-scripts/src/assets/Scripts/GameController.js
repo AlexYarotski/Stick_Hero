@@ -31,6 +31,7 @@ var GameController = /** @class */ (function (_super) {
     function GameController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.Stick_Fallen = 'stickFallen';
+        _this.MOVEMENT_COMPLETE = 'movementComplete';
         _this.startPlayerPos = new cc.Vec2(-510, -310);
         _this.startPlatformPos = new cc.Vec2(-553, -1100);
         _this.player = null;
@@ -39,9 +40,16 @@ var GameController = /** @class */ (function (_super) {
         _this.platforms = [];
         return _this;
     }
+    GameController.prototype.onLoad = function () {
+        cc.systemEvent.on(this.Stick_Fallen, this.onStickFallen, this);
+        cc.systemEvent.on(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
+    };
     GameController.prototype.start = function () {
         this.initGame();
-        cc.systemEvent.on(this.Stick_Fallen, this.onStickFallen, this);
+    };
+    GameController.prototype.onDestroy = function () {
+        cc.systemEvent.off(this.Stick_Fallen, this.onStickFallen, this);
+        cc.systemEvent.off(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
     };
     GameController.prototype.initGame = function () {
         this.resetGame();
@@ -73,6 +81,9 @@ var GameController = /** @class */ (function (_super) {
         else {
             this.player.moveToEndOfStick(stickEndPosX);
         }
+    };
+    GameController.prototype.onMovementComplete = function () {
+        this.player.reset();
     };
     GameController.prototype.getTargetPlatform = function (playerPosition) {
         for (var _i = 0, _a = this.platforms; _i < _a.length; _i++) {

@@ -1,13 +1,14 @@
+import StickManager from "./StickManager";
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class PlayerController extends cc.Component {
     private static readonly PLAYER_REACHED_EVENT = 'playerReached';
 
-    private readonly offsetPlatformX: number = -40;
-    private readonly offsetEndPlatformX: number = 12;
+    private readonly offsetPlatformX: number = -50;
 
-    private readonly offsetStick: cc.Vec2 = cc.v2(90, 10);
+    private readonly offsetStick: cc.Vec2 = cc.v2(80, 10);
 
     @property(cc.Prefab)
     stickPrefab: cc.Prefab = null;
@@ -18,20 +19,24 @@ export default class PlayerController extends cc.Component {
     @property(cc.Float)
     fallDuration: number = 0.2;
 
-    private stick: cc.Node = null;
+    private stick: StickManager = null;
 
     public reset() {
-        this.startCreatingStick();
+        this.spawnStick();
     }
 
-    private startCreatingStick() {
-        const position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y
-            + this.offsetStick.y);
+    private spawnStick() {
+        const position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y + this.offsetStick.y);
 
-        this.stick = cc.instantiate(this.stickPrefab);
-        this.stick.parent = this.node.parent;
-        this.stick.setPosition(position);
+        if (!this.stick) {
+            this.stick = cc.instantiate(this.stickPrefab).getComponent(StickManager);
+            this.stick.node.parent = this.node.parent;
+        }
+
+        this.stick.reset();
+        this.stick.node.setPosition(position);
     }
+
 
     public moveToEndOfStick(xPos: number) {
         const targetPosition = cc.v3(xPos, this.node.position.y);

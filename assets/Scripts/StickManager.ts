@@ -6,6 +6,8 @@ export default class StickManager extends cc.Component {
     private readonly TOUCHED_END: string = 'touchEnd';
     private readonly STICK_FALLEN: string = 'stickFallen';
 
+    private readonly size: number = 10;
+
     @property(cc.Float)
     private growSpeed: number = 100;
 
@@ -20,6 +22,15 @@ export default class StickManager extends cc.Component {
     protected onDisable() {
         cc.systemEvent.off(this.TOUCHED_START, this.onTouchStart, this);
         cc.systemEvent.off(this.TOUCHED_END, this.onTouchEnd, this);
+    }
+
+    public reset(){
+        this.node.height = this.size;
+        this.node.width = this.size;
+        this.node.setRotation(cc.quat());
+
+        this.isGrowing = false;
+        this.isStickPlaced = false;
     }
 
     private onTouchStart() {

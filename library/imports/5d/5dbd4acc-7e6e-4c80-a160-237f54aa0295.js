@@ -31,6 +31,7 @@ var StickManager = /** @class */ (function (_super) {
         _this.TOUCHED_START = 'touchStart';
         _this.TOUCHED_END = 'touchEnd';
         _this.STICK_FALLEN = 'stickFallen';
+        _this.size = 10;
         _this.growSpeed = 100;
         _this.isGrowing = false;
         _this.isStickPlaced = false;
@@ -43,6 +44,13 @@ var StickManager = /** @class */ (function (_super) {
     StickManager.prototype.onDisable = function () {
         cc.systemEvent.off(this.TOUCHED_START, this.onTouchStart, this);
         cc.systemEvent.off(this.TOUCHED_END, this.onTouchEnd, this);
+    };
+    StickManager.prototype.reset = function () {
+        this.node.height = this.size;
+        this.node.width = this.size;
+        this.node.setRotation(cc.quat());
+        this.isGrowing = false;
+        this.isStickPlaced = false;
     };
     StickManager.prototype.onTouchStart = function () {
         if (this.isStickPlaced)
