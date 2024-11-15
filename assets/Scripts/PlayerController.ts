@@ -1,4 +1,5 @@
 import StickManager from "./StickManager";
+import StickSpawner from "./StickSpawner";
 
 const { ccclass, property } = cc._decorator;
 
@@ -7,7 +8,6 @@ export default class PlayerController extends cc.Component {
     private static readonly PLAYER_REACHED_EVENT = 'playerReached';
 
     private readonly offsetPlatformX: number = -50;
-
     private readonly offsetStick: cc.Vec2 = cc.v2(80, 10);
 
     @property(cc.Prefab)
@@ -15,11 +15,14 @@ export default class PlayerController extends cc.Component {
 
     @property(cc.Float)
     moveDuration: number = 1;
-
     @property(cc.Float)
     fallDuration: number = 0.2;
 
+    @property(StickSpawner)
+    private stickSpawner: StickSpawner = null;
+
     private stick: StickManager = null;
+    private previousStick: StickManager = null;
 
     public reset() {
         this.spawnStick();
@@ -27,16 +30,10 @@ export default class PlayerController extends cc.Component {
 
     private spawnStick() {
         const position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y + this.offsetStick.y);
-
-        if (!this.stick) {
-            this.stick = cc.instantiate(this.stickPrefab).getComponent(StickManager);
-            this.stick.node.parent = this.node.parent;
-        }
-
+        this.stick = this.stickSpawner.spawnNode(position).getComponent(StickManager);
+        this.stick.node.parent = this.node.parent;
         this.stick.reset();
-        this.stick.node.setPosition(position);
     }
-
 
     public moveToEndOfStick(xPos: number) {
         const targetPosition = cc.v3(xPos, this.node.position.y);
@@ -50,13 +47,22 @@ export default class PlayerController extends cc.Component {
         const localTargetPosition = this.node.parent.convertToNodeSpaceAR(worldTargetPosition);
         const endPlatformPos = cc.v3(localTargetPosition.x + this.offsetPlatformX, this.node.position.y);
 
-        const distanceTravelled = Math.abs(this.node.position.x - endPlatformPos.x); // Расчет пройденного расстояния
+        const distanceTravelled = Math.abs(this.node.position.x - endPlatformPos.x);
 
         this.moveTowards(endPlatformPos, () => {
-            cc.systemEvent.emit(PlayerController.PLAYER_REACHED_EVENT, distanceTravelled); // Передаем расстояние как параметр
+            this.onReachEndOfPlatform(distanceTravelled);
         });
     }
 
+    private onReachEndOfPlatform(distanceTravelled: number) {
+        if (this.previousStick) {
+            this.stickSpawner.deactivateNode(this.previousStick.node);
+        }
+
+        this.previousStick = this.stick;
+
+        cc.systemEvent.emit(PlayerController.PLAYER_REACHED_EVENT, distanceTravelled);
+    }
 
     private moveTowards(targetPosition: cc.Vec3, onComplete: Function) {
         cc.tween(this.node)
@@ -71,5 +77,7 @@ export default class PlayerController extends cc.Component {
         cc.tween(this.node)
             .to(this.fallDuration, { position: cc.v3(this.node.x, -1080) })
             .start();
+
+        this.stick.initiateFall(this.fallDuration);
     }
 }

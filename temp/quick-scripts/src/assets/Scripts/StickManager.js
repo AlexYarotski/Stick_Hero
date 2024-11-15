@@ -46,12 +46,17 @@ var StickManager = /** @class */ (function (_super) {
         cc.systemEvent.off(this.TOUCHED_END, this.onTouchEnd, this);
     };
     StickManager.prototype.reset = function () {
-        this.node.height = this.size;
         this.node.width = this.size;
-        this.node.angle = 0; // Сброс угла поворота с использованием свойства angle
-        this.node.stopAllActions(); // Останавливаем все активные действия и твины
+        this.node.height = 0;
+        this.node.angle = 0;
+        this.node.stopAllActions();
         this.isGrowing = false;
         this.isStickPlaced = false;
+    };
+    StickManager.prototype.initiateFall = function (fallDuration) {
+        cc.tween(this.node)
+            .to(fallDuration, { position: cc.v3(this.node.x, -1080) })
+            .start();
     };
     StickManager.prototype.onTouchStart = function () {
         if (this.isStickPlaced)

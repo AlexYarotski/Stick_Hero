@@ -4,6 +4,7 @@ const { ccclass, property } = cc._decorator;
 
 import PlayerController from "./PlayerController";
 import PlatformSpawner from "./PlatformSpawner";
+import StickSpawner from "./StickSpawner";
 
 @ccclass
 export default class GameController extends cc.Component {
@@ -18,6 +19,9 @@ export default class GameController extends cc.Component {
 
     @property(PlatformSpawner)
     platformSpawner: PlatformSpawner = null;
+
+    @property(StickSpawner)
+    stickSpawner: StickSpawner = null;
 
     private currentStick: cc.Node = null;
     private currentPlatform: cc.Node = null;
@@ -45,8 +49,8 @@ export default class GameController extends cc.Component {
         this.player.node.setPosition(this.startPlayerPos);
         this.player.reset();
 
-        this.previousPlatform = this.platformSpawner.spawnPlatform(cc.v2(this.startPlatformPos));
-        this.currentPlatform = this.platformSpawner.spawnPlatform();
+        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
+        this.currentPlatform = this.platformSpawner.spawnNode();
     }
 
     private onStickFallen(stick: cc.Node) {
@@ -71,10 +75,10 @@ export default class GameController extends cc.Component {
     private onMovementComplete() {
         this.player.reset();
         if (this.previousPlatform) {
-            this.platformSpawner.deactivatePlatform(this.previousPlatform);
+            this.platformSpawner.deactivateNode(this.previousPlatform);
         }
         this.previousPlatform = this.currentPlatform;
-        this.currentPlatform = this.platformSpawner.spawnPlatform();
+        this.currentPlatform = this.platformSpawner.spawnNode();
     }
 
     private endGame() {

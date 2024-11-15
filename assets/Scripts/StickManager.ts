@@ -25,13 +25,19 @@ export default class StickManager extends cc.Component {
     }
 
     public reset() {
-        this.node.height = this.size;
         this.node.width = this.size;
-        this.node.angle = 0; // Сброс угла поворота с использованием свойства angle
-        this.node.stopAllActions(); // Останавливаем все активные действия и твины
+        this.node.height = 0;
+        this.node.angle = 0;
+        this.node.stopAllActions();
 
         this.isGrowing = false;
         this.isStickPlaced = false;
+    }
+
+    public initiateFall(fallDuration: number){
+        cc.tween(this.node)
+            .to(fallDuration, { position: cc.v3(this.node.x, -1080) })
+            .start();
     }
 
     private onTouchStart() {

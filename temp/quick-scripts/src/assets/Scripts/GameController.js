@@ -26,6 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlayerController_1 = require("./PlayerController");
 var PlatformSpawner_1 = require("./PlatformSpawner");
+var StickSpawner_1 = require("./StickSpawner");
 var GameController = /** @class */ (function (_super) {
     __extends(GameController, _super);
     function GameController() {
@@ -36,6 +37,7 @@ var GameController = /** @class */ (function (_super) {
         _this.startPlatformPos = new cc.Vec2(-553, -1100);
         _this.player = null;
         _this.platformSpawner = null;
+        _this.stickSpawner = null;
         _this.currentStick = null;
         _this.currentPlatform = null;
         _this.previousPlatform = null;
@@ -58,8 +60,8 @@ var GameController = /** @class */ (function (_super) {
     GameController.prototype.resetGame = function () {
         this.player.node.setPosition(this.startPlayerPos);
         this.player.reset();
-        this.previousPlatform = this.platformSpawner.spawnPlatform(cc.v2(this.startPlatformPos));
-        this.currentPlatform = this.platformSpawner.spawnPlatform();
+        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
+        this.currentPlatform = this.platformSpawner.spawnNode();
     };
     GameController.prototype.onStickFallen = function (stick) {
         this.currentStick = stick;
@@ -78,10 +80,10 @@ var GameController = /** @class */ (function (_super) {
     GameController.prototype.onMovementComplete = function () {
         this.player.reset();
         if (this.previousPlatform) {
-            this.platformSpawner.deactivatePlatform(this.previousPlatform);
+            this.platformSpawner.deactivateNode(this.previousPlatform);
         }
         this.previousPlatform = this.currentPlatform;
-        this.currentPlatform = this.platformSpawner.spawnPlatform();
+        this.currentPlatform = this.platformSpawner.spawnNode();
     };
     GameController.prototype.endGame = function () {
         cc.log('Game Over');
@@ -92,6 +94,9 @@ var GameController = /** @class */ (function (_super) {
     __decorate([
         property(PlatformSpawner_1.default)
     ], GameController.prototype, "platformSpawner", void 0);
+    __decorate([
+        property(StickSpawner_1.default)
+    ], GameController.prototype, "stickSpawner", void 0);
     GameController = __decorate([
         ccclass
     ], GameController);

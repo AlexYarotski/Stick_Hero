@@ -24,6 +24,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var StickManager_1 = require("./StickManager");
+var StickSpawner_1 = require("./StickSpawner");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlayerController = /** @class */ (function (_super) {
     __extends(PlayerController, _super);
@@ -34,7 +35,9 @@ var PlayerController = /** @class */ (function (_super) {
         _this.stickPrefab = null;
         _this.moveDuration = 1;
         _this.fallDuration = 0.2;
+        _this.stickSpawner = null;
         _this.stick = null;
+        _this.previousStick = null;
         return _this;
     }
     PlayerController_1 = PlayerController;
@@ -43,12 +46,9 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.spawnStick = function () {
         var position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y + this.offsetStick.y);
-        if (!this.stick) {
-            this.stick = cc.instantiate(this.stickPrefab).getComponent(StickManager_1.default);
-            this.stick.node.parent = this.node.parent;
-        }
+        this.stick = this.stickSpawner.spawnNode(position).getComponent(StickManager_1.default);
+        this.stick.node.parent = this.node.parent;
         this.stick.reset();
-        this.stick.node.setPosition(position);
     };
     PlayerController.prototype.moveToEndOfStick = function (xPos) {
         var _this = this;
@@ -58,13 +58,21 @@ var PlayerController = /** @class */ (function (_super) {
         });
     };
     PlayerController.prototype.moveToEndOfPlatform = function (xPos) {
+        var _this = this;
         var worldTargetPosition = cc.v3(xPos + this.offsetPlatformX, this.node.position.y);
         var localTargetPosition = this.node.parent.convertToNodeSpaceAR(worldTargetPosition);
         var endPlatformPos = cc.v3(localTargetPosition.x + this.offsetPlatformX, this.node.position.y);
-        var distanceTravelled = Math.abs(this.node.position.x - endPlatformPos.x); // Расчет пройденного расстояния
+        var distanceTravelled = Math.abs(this.node.position.x - endPlatformPos.x);
         this.moveTowards(endPlatformPos, function () {
-            cc.systemEvent.emit(PlayerController_1.PLAYER_REACHED_EVENT, distanceTravelled); // Передаем расстояние как параметр
+            _this.onReachEndOfPlatform(distanceTravelled);
         });
+    };
+    PlayerController.prototype.onReachEndOfPlatform = function (distanceTravelled) {
+        if (this.previousStick) {
+            this.stickSpawner.deactivateNode(this.previousStick.node);
+        }
+        this.previousStick = this.stick;
+        cc.systemEvent.emit(PlayerController_1.PLAYER_REACHED_EVENT, distanceTravelled);
     };
     PlayerController.prototype.moveTowards = function (targetPosition, onComplete) {
         cc.tween(this.node)
@@ -79,6 +87,7 @@ var PlayerController = /** @class */ (function (_super) {
         cc.tween(this.node)
             .to(this.fallDuration, { position: cc.v3(this.node.x, -1080) })
             .start();
+        this.stick.initiateFall(this.fallDuration);
     };
     var PlayerController_1;
     PlayerController.PLAYER_REACHED_EVENT = 'playerReached';
@@ -91,6 +100,9 @@ var PlayerController = /** @class */ (function (_super) {
     __decorate([
         property(cc.Float)
     ], PlayerController.prototype, "fallDuration", void 0);
+    __decorate([
+        property(StickSpawner_1.default)
+    ], PlayerController.prototype, "stickSpawner", void 0);
     PlayerController = PlayerController_1 = __decorate([
         ccclass
     ], PlayerController);

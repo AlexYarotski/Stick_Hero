@@ -23,26 +23,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Spawner_1 = require("./Spawner");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlatformSpawner = /** @class */ (function (_super) {
     __extends(PlatformSpawner, _super);
     function PlatformSpawner() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.posY = -1100;
-        _this.platformPrefab = null;
         _this.minWidth = 50;
         _this.maxWidth = 200;
         _this.minXOffset = 100;
         _this.maxXOffset = 400;
         _this.platformAppearTime = 0.5;
         _this.lastPlatform = null;
-        _this.platformPool = [];
         return _this;
     }
-    PlatformSpawner.prototype.spawnPlatform = function (previousPlatformPosition) {
-        var newPlatform = this.getOrCreatePlatform();
-        if (previousPlatformPosition) {
-            newPlatform.setPosition(cc.v2(previousPlatformPosition.x, this.posY));
+    PlatformSpawner.prototype.spawnNode = function (position) {
+        var newPlatform = this.getOrCreateNode();
+        if (position) {
+            newPlatform.setPosition(cc.v2(position.x, this.posY));
             newPlatform.active = true;
         }
         else {
@@ -51,34 +50,16 @@ var PlatformSpawner = /** @class */ (function (_super) {
         this.lastPlatform = newPlatform;
         return newPlatform;
     };
-    PlatformSpawner.prototype.deactivatePlatform = function (platform) {
-        platform.setPosition(cc.v2(platform.x, this.posY * 2));
-        platform.active = false;
-        this.platformPool.push(platform);
-    };
-    PlatformSpawner.prototype.getOrCreatePlatform = function () {
-        if (this.platformPool.length > 0) {
-            var reusedPlatform = this.platformPool.pop();
-            return reusedPlatform;
-        }
-        var newPlatform = cc.instantiate(this.platformPrefab);
-        this.node.addChild(newPlatform);
-        return newPlatform;
-    };
     PlatformSpawner.prototype.setRandomPlatformAttributes = function (platform) {
         var platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);
         platform.width = platformWidth;
         var offsetX = this.minXOffset + Math.random() * (this.maxXOffset - this.minXOffset);
         var newPositionX = this.lastPlatform ? this.lastPlatform.x + this.lastPlatform.width + offsetX : 0;
         platform.setPosition(cc.v2(newPositionX, this.posY * 2));
-        platform.active = true;
         cc.tween(platform)
-            .to(this.platformAppearTime, { position: cc.v3(newPositionX, this.posY) }, { easing: 'cubicOut' })
+            .to(this.platformAppearTime, { position: cc.v3(newPositionX, -1100) }, { easing: 'cubicOut' })
             .start();
     };
-    __decorate([
-        property(cc.Prefab)
-    ], PlatformSpawner.prototype, "platformPrefab", void 0);
     __decorate([
         property
     ], PlatformSpawner.prototype, "minWidth", void 0);
@@ -98,7 +79,7 @@ var PlatformSpawner = /** @class */ (function (_super) {
         ccclass
     ], PlatformSpawner);
     return PlatformSpawner;
-}(cc.Component));
+}(Spawner_1.Spawner));
 exports.default = PlatformSpawner;
 
 cc._RF.pop();
