@@ -25,7 +25,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var PlayerController_1 = require("./PlayerController");
 var PlatformSpawner_1 = require("./Spawner/PlatformSpawner");
-var StickSpawner_1 = require("./Spawner/StickSpawner");
 var DoubleSpawner_1 = require("./Spawner/DoubleSpawner");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameController = /** @class */ (function (_super) {
@@ -34,11 +33,11 @@ var GameController = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.Stick_Fallen = 'stickFallen';
         _this.MOVEMENT_COMPLETE = 'movementComplete';
+        _this.START_GAME = 'startGame';
         _this.startPlayerPos = new cc.Vec2(-510, -310);
-        _this.startPlatformPos = new cc.Vec2(-553, -1100);
+        _this.startPlatformPos = new cc.Vec2(-105, -1100);
         _this.player = null;
         _this.platformSpawner = null;
-        _this.stickSpawner = null;
         _this.doubleSpawner = null;
         _this.currentStick = null;
         _this.currentPlatform = null;
@@ -50,7 +49,7 @@ var GameController = /** @class */ (function (_super) {
         cc.systemEvent.on(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
     };
     GameController.prototype.start = function () {
-        this.initGame();
+        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
     };
     GameController.prototype.onDestroy = function () {
         cc.systemEvent.off(this.Stick_Fallen, this.onStickFallen, this);
@@ -62,7 +61,6 @@ var GameController = /** @class */ (function (_super) {
     GameController.prototype.resetGame = function () {
         this.player.node.setPosition(this.startPlayerPos);
         this.player.reset();
-        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
         this.currentPlatform = this.platformSpawner.spawnNode();
     };
     GameController.prototype.onStickFallen = function (stick) {
@@ -80,10 +78,16 @@ var GameController = /** @class */ (function (_super) {
         }
     };
     GameController.prototype.onMovementComplete = function () {
-        this.platformSpawner.deactivateNode(this.previousPlatform);
-        this.previousPlatform = this.currentPlatform;
-        this.currentPlatform = this.platformSpawner.spawnNode();
-        this.player.reset();
+        if (!this.currentPlatform) {
+            this.player.reset();
+            this.currentPlatform = this.platformSpawner.spawnNode();
+        }
+        else {
+            this.platformSpawner.deactivateNode(this.previousPlatform);
+            this.previousPlatform = this.currentPlatform;
+            this.currentPlatform = this.platformSpawner.spawnNode();
+            this.player.reset();
+        }
         var previousWorldPos = this.previousPlatform.parent.convertToWorldSpaceAR(this.previousPlatform.position);
         var currentWorldPos = this.currentPlatform.parent.convertToWorldSpaceAR(this.currentPlatform.position);
         this.doubleSpawner.spawnNode(cc.v3(previousWorldPos.x + this.previousPlatform.width), currentWorldPos);
@@ -97,9 +101,6 @@ var GameController = /** @class */ (function (_super) {
     __decorate([
         property(PlatformSpawner_1.default)
     ], GameController.prototype, "platformSpawner", void 0);
-    __decorate([
-        property(StickSpawner_1.default)
-    ], GameController.prototype, "stickSpawner", void 0);
     __decorate([
         property(DoubleSpawner_1.default)
     ], GameController.prototype, "doubleSpawner", void 0);

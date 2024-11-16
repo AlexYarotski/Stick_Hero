@@ -30,15 +30,19 @@ var GameMover = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.PLAYER_REACHED = 'playerReached';
         _this.MOVEMENT_COMPLETE = 'movementComplete';
+        _this.START_GAME = 'startGame';
+        _this.startDistance = 460;
         _this.moveDuration = 1;
         _this.isMoving = false;
         return _this;
     }
     GameMover.prototype.onLoad = function () {
         cc.systemEvent.on(this.PLAYER_REACHED, this.startMoving, this);
+        cc.systemEvent.on(this.START_GAME, this.onStartGame, this);
     };
     GameMover.prototype.onDestroy = function () {
         cc.systemEvent.off(this.PLAYER_REACHED, this.startMoving, this);
+        cc.systemEvent.off(this.START_GAME, this.onStartGame, this);
     };
     GameMover.prototype.startMoving = function (distance) {
         var _this = this;
@@ -52,6 +56,9 @@ var GameMover = /** @class */ (function (_super) {
             cc.systemEvent.emit(_this.MOVEMENT_COMPLETE);
         })
             .start();
+    };
+    GameMover.prototype.onStartGame = function () {
+        this.startMoving(this.startDistance);
     };
     __decorate([
         property(cc.Float)

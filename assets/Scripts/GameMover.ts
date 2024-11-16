@@ -4,6 +4,9 @@ const { ccclass, property } = cc._decorator;
 export default class GameMover extends cc.Component {
     private readonly PLAYER_REACHED: string = 'playerReached';
     private readonly MOVEMENT_COMPLETE: string = 'movementComplete';
+    private readonly START_GAME: string = 'startGame';
+
+    private readonly startDistance: number = 460;
 
     @property(cc.Float)
     moveDuration: number = 1;
@@ -12,10 +15,12 @@ export default class GameMover extends cc.Component {
 
     protected onLoad() {
         cc.systemEvent.on(this.PLAYER_REACHED, this.startMoving, this);
+        cc.systemEvent.on(this.START_GAME, this.onStartGame, this);
     }
 
     protected onDestroy() {
         cc.systemEvent.off(this.PLAYER_REACHED, this.startMoving, this);
+        cc.systemEvent.off(this.START_GAME, this.onStartGame, this);
     }
 
     private startMoving(distance: number) {
@@ -29,5 +34,9 @@ export default class GameMover extends cc.Component {
                 cc.systemEvent.emit(this.MOVEMENT_COMPLETE);
             })
             .start();
+    }
+
+    private onStartGame(){
+        this.startMoving(this.startDistance);
     }
 }

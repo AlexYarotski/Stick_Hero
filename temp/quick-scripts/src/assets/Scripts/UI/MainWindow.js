@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '91713lXbTdHAY3QVX6jcp+b', 'GameMover');
-// Scripts/GameMover.ts
+cc._RF.push(module, '15d42JDXLpAFZTvEYZSYIPp', 'MainWindow');
+// Scripts/UI/MainWindow.ts
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -23,51 +23,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Window_1 = require("./Window");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var GameMover = /** @class */ (function (_super) {
-    __extends(GameMover, _super);
-    function GameMover() {
+var MainWindow = /** @class */ (function (_super) {
+    __extends(MainWindow, _super);
+    function MainWindow() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.PLAYER_REACHED = 'playerReached';
-        _this.MOVEMENT_COMPLETE = 'movementComplete';
         _this.START_GAME = 'startGame';
-        _this.startDistance = 460;
-        _this.moveDuration = 1;
-        _this.isMoving = false;
+        _this.startButton = null;
         return _this;
     }
-    GameMover.prototype.onLoad = function () {
-        cc.systemEvent.on(this.PLAYER_REACHED, this.startMoving, this);
-        cc.systemEvent.on(this.START_GAME, this.onStartGame, this);
+    Object.defineProperty(MainWindow.prototype, "isPopUp", {
+        get: function () {
+            return false;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    MainWindow.prototype.onLoad = function () {
+        this.startButton.node.on(cc.Node.EventType.TOUCH_END, this.handleClick, this);
     };
-    GameMover.prototype.onDestroy = function () {
-        cc.systemEvent.off(this.PLAYER_REACHED, this.startMoving, this);
-        cc.systemEvent.off(this.START_GAME, this.onStartGame, this);
-    };
-    GameMover.prototype.startMoving = function (distance) {
-        var _this = this;
-        if (this.isMoving)
-            return;
-        this.isMoving = true;
-        cc.tween(this.node)
-            .by(this.moveDuration, { position: cc.v3(-distance, 0) }, { easing: 'sineInOut' })
-            .call(function () {
-            _this.isMoving = false;
-            cc.systemEvent.emit(_this.MOVEMENT_COMPLETE);
-        })
-            .start();
-    };
-    GameMover.prototype.onStartGame = function () {
-        this.startMoving(this.startDistance);
+    MainWindow.prototype.handleClick = function () {
+        cc.systemEvent.emit(this.START_GAME);
+        this.hide();
     };
     __decorate([
-        property(cc.Float)
-    ], GameMover.prototype, "moveDuration", void 0);
-    GameMover = __decorate([
+        property(cc.Button)
+    ], MainWindow.prototype, "startButton", void 0);
+    MainWindow = __decorate([
         ccclass
-    ], GameMover);
-    return GameMover;
-}(cc.Component));
-exports.default = GameMover;
+    ], MainWindow);
+    return MainWindow;
+}(Window_1.default));
+exports.default = MainWindow;
 
 cc._RF.pop();

@@ -1,5 +1,4 @@
-import Window from "./Window";
-//import MainWindow from "./MainWindow";
+import Window from "./Window";import MainWindow from "./MainWindow";
 //import GameWindow from "./GameWindow";
 //import LoseWindow from "./LoseWindow";
 
@@ -7,8 +6,8 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class WindowSwitcher extends cc.Component {
-    //@property(MainWindow)
-    //private mainWindow: MainWindow = null;
+    @property(MainWindow)
+    private mainWindow: MainWindow = null;
     // @property(GameWindow)
     // private gameWindow: GameWindow = null;
     // @property(LoseWindow)
@@ -36,15 +35,15 @@ export default class WindowSwitcher extends cc.Component {
     }
 
     private GetWindow<T extends Window>(windowType: new () => T): T {
-        const window = this.node.getChildByName(windowType.name);
+        const window = this.node.getComponentInChildren(windowType);
         if (window) {
-            return window.getComponent(windowType) as T;
+            return window as T;
         }
         throw new Error(`Window of type ${windowType.name} not found.`);
     }
 
     private hideWindowsInChild() {
-        //this.windowMap.set(MainWindow, this.mainWindow);
+        this.windowMap.set(MainWindow, this.mainWindow);
         //this.windowMap.set(GameWindow, this.gameWindow);
         //this.windowMap.set(LoseWindow, this.loseWindow);
 

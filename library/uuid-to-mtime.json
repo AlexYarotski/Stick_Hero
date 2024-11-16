@@ -614,16 +614,6 @@
     "meta": 1731583776152,
     "relativePath": "Art\\Sprite\\UI\\restart_2.png"
   },
-  "0445212e-399c-452c-8f22-dcdd19ca69dd": {
-    "asset": 1731583749664,
-    "meta": 1731583776164,
-    "relativePath": "Art\\Sprite\\UI\\sound_Off.png"
-  },
-  "c2bb4686-a867-4406-a474-e37fac588072": {
-    "asset": 1731583749675,
-    "meta": 1731583776204,
-    "relativePath": "Art\\Sprite\\UI\\sound_On.png"
-  },
   "a335096c-d0ba-4b8b-bdc3-9871396a2a05": {
     "asset": 1731583749598,
     "meta": 1731583776264,
@@ -640,8 +630,8 @@
     "relativePath": "Prefab\\Player.prefab"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731766545397,
-    "meta": 1731766545408,
+    "asset": 1731769950701,
+    "meta": 1731769950715,
     "relativePath": "Scene\\Game.fire"
   },
   "763d902a-a23e-465e-973b-d3491244b529": {
@@ -699,16 +689,6 @@
     "meta": 1731763417667,
     "relativePath": "Scripts\\Spawner\\PlatformSpawner.ts"
   },
-  "91713957-6d37-4701-8dd0-557ea3729f9b": {
-    "asset": 1731763951865,
-    "meta": 1731764064294,
-    "relativePath": "Scripts\\GameMover.ts"
-  },
-  "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731764663330,
-    "meta": 1731764663842,
-    "relativePath": "Scripts\\GameController.ts"
-  },
   "ef9a230a-0c28-4456-b5f3-e1b4163fa829": {
     "asset": 1731766043565,
     "meta": 1731766044406,
@@ -728,5 +708,40 @@
     "asset": 1731766933774,
     "meta": 1731766934442,
     "relativePath": "Scripts\\Spawner\\DoubleSpawner.ts"
+  },
+  "bccb4ac2-6a8d-4040-83e3-861609e0ebcd": {
+    "asset": 1731768506071,
+    "meta": 1731768506088,
+    "relativePath": "Scripts\\UI"
+  },
+  "cd3286bb-5504-4f6e-af24-01f865c72ad8": {
+    "asset": 1731768360202,
+    "meta": 1731768506131,
+    "relativePath": "Scripts\\UI\\Window.ts"
+  },
+  "15d42243-5cba-4015-94ef-1186526083e9": {
+    "asset": 1731769182230,
+    "meta": 1731769185642,
+    "relativePath": "Scripts\\UI\\MainWindow.ts"
+  },
+  "91713957-6d37-4701-8dd0-557ea3729f9b": {
+    "asset": 1731769371966,
+    "meta": 1731769373594,
+    "relativePath": "Scripts\\GameMover.ts"
+  },
+  "1def7989-73b7-4900-8e43-7d1d62b8575b": {
+    "asset": 1731770005385,
+    "meta": 1731770006543,
+    "relativePath": "Scripts\\UI\\WindowManager.ts"
+  },
+  "030f978a-5879-437f-9b64-3fb24ea5b85f": {
+    "asset": 1731770180204,
+    "meta": 1731770181148,
+    "relativePath": "Scripts\\UI\\WindowSwitcher.ts"
+  },
+  "bb1e92af-0585-4376-b235-518c5fc4be70": {
+    "asset": 1731771963811,
+    "meta": 1731771964280,
+    "relativePath": "Scripts\\GameController.ts"
   }
 }

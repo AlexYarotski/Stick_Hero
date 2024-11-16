@@ -2,6 +2,7 @@ import PlayerController from "./PlayerController";
 import PlatformSpawner from "./Spawner/PlatformSpawner";
 import StickSpawner from "./Spawner/StickSpawner";
 import DoubleSpawner from "./Spawner/DoubleSpawner";
+import Platform from "./Platform";
 
 
 const { ccclass, property } = cc._decorator;
@@ -10,21 +11,20 @@ const { ccclass, property } = cc._decorator;
 export default class GameController extends cc.Component {
     private readonly Stick_Fallen: string = 'stickFallen';
     private readonly MOVEMENT_COMPLETE: string = 'movementComplete';
+    private readonly START_GAME: string = 'startGame';
+
 
     private readonly startPlayerPos: cc.Vec2 = new cc.Vec2(-510, -310);
-    private readonly startPlatformPos: cc.Vec2 = new cc.Vec2(-553, -1100);
+    private readonly startPlatformPos: cc.Vec2 = new cc.Vec2(-105, -1100);
 
     @property(PlayerController)
-    player: PlayerController = null;
+    private player: PlayerController = null;
 
     @property(PlatformSpawner)
-    platformSpawner: PlatformSpawner = null;
-
-    @property(StickSpawner)
-    stickSpawner: StickSpawner = null;
+    private platformSpawner: PlatformSpawner = null;
 
     @property(DoubleSpawner)
-    doubleSpawner: DoubleSpawner = null;
+    private doubleSpawner: DoubleSpawner = null;
 
     private currentStick: cc.Node = null;
     private currentPlatform: cc.Node = null;
@@ -36,7 +36,7 @@ export default class GameController extends cc.Component {
     }
 
     protected start() {
-        this.initGame();
+        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
     }
 
     protected onDestroy() {
@@ -52,7 +52,6 @@ export default class GameController extends cc.Component {
         this.player.node.setPosition(this.startPlayerPos);
         this.player.reset();
 
-        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
         this.currentPlatform = this.platformSpawner.spawnNode();
     }
 
@@ -76,17 +75,26 @@ export default class GameController extends cc.Component {
     }
 
     private onMovementComplete() {
-        this.platformSpawner.deactivateNode(this.previousPlatform);
+        if (!this.currentPlatform) {
+            this.player.reset();
+            this.currentPlatform = this.platformSpawner.spawnNode();
+        } else {
+            if (this.previousPlatform) {
+                this.platformSpawner.deactivateNode(this.previousPlatform);
+            }
 
-        this.previousPlatform = this.currentPlatform;
-        this.currentPlatform = this.platformSpawner.spawnNode();
+            this.previousPlatform = this.currentPlatform;
+            this.currentPlatform = this.platformSpawner.spawnNode();
 
-        this.player.reset();
+            this.player.reset();
+        }
 
-        const previousWorldPos = this.previousPlatform.parent.convertToWorldSpaceAR(this.previousPlatform.position);
+        const previousWorldPos = this.previousPlatform?.parent.convertToWorldSpaceAR(this.previousPlatform.position);
         const currentWorldPos = this.currentPlatform.parent.convertToWorldSpaceAR(this.currentPlatform.position);
+
         this.doubleSpawner.spawnNode(cc.v3(previousWorldPos.x + this.previousPlatform.width), currentWorldPos);
     }
+
 
     private endGame() {
         cc.log('Game Over');
