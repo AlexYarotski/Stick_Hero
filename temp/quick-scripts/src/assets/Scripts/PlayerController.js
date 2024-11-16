@@ -34,8 +34,8 @@ var PlayerController = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.PLAYER_FALL = 'playerFall';
         _this.COLLISION_ENTER = 'collision-enter';
-        _this.offsetPlatformX = -50;
         _this.offsetStick = cc.v2(80, 10);
+        _this.offsetPlatformX = -50;
         _this.stickPrefab = null;
         _this.moveDuration = 1;
         _this.fallDuration = 0.2;
@@ -53,6 +53,7 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.reset = function () {
         this.spawnStick();
+        this.node.active = true;
     };
     PlayerController.prototype.onCollisionEnter = function (other, self) {
         if (other.node.getComponent(Platform_1.default)) {
@@ -104,9 +105,9 @@ var PlayerController = /** @class */ (function (_super) {
     PlayerController.prototype.initiateFall = function () {
         cc.systemEvent.emit(this.PLAYER_FALL);
         cc.tween(this.node)
-            .to(this.fallDuration, { position: cc.v3(this.node.x, 2000) })
+            .to(this.fallDuration, { position: cc.v3(this.node.x, -2000) })
             .start();
-        this.stick.initiateFall(this.fallDuration);
+        this.stick.initiateFall();
     };
     var PlayerController_1;
     PlayerController.PLAYER_REACHED = 'playerReached';

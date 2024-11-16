@@ -117,6 +117,7 @@
     },
     "_enabled": true,
     "growSpeed": 100,
+    "duration": 0.5,
     "_id": ""
   },
   {

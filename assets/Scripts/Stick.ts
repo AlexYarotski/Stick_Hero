@@ -11,6 +11,9 @@ export default class Stick extends cc.Component{
     @property(cc.Float)
     private growSpeed: number = 100;
 
+    @property(cc.Float)
+    private duration: number = 0.5;
+
     private isGrowing: boolean = false;
     private isStickPlaced: boolean = false;
 
@@ -34,9 +37,9 @@ export default class Stick extends cc.Component{
         this.isStickPlaced = false;
     }
 
-    public initiateFall(fallDuration: number){
+    public initiateFall(){
         cc.tween(this.node)
-            .to(fallDuration, { position: cc.v3(this.node.x, -1080) })
+            .to(this.duration, { angle: -180 }, { easing: 'cubicOut' })
             .start();
     }
 
@@ -69,7 +72,7 @@ export default class Stick extends cc.Component{
 
     private rotateStick() {
         cc.tween(this.node)
-            .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
+            .to(this.duration, { angle: -90 }, { easing: 'cubicOut' })
             .call(() => {
                 this.emitStickFallenEvent();
             })

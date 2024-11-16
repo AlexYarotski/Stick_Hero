@@ -26,22 +26,32 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var WindowSwitcher_1 = require("./WindowSwitcher");
 var MainWindow_1 = require("./MainWindow");
 var GameWindow_1 = require("./GameWindow");
+var LoseWindow_1 = require("./LoseWindow");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var WindowManager = /** @class */ (function (_super) {
     __extends(WindowManager, _super);
     function WindowManager() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.START_GAME = 'startGame';
+        _this.PLAYER_FALL = 'playerFall';
+        _this.MAIN_CLICKED = 'mainClicked';
+        _this.RESTART_CLICKED = 'restartClicked';
         _this.windowSwitcher = null;
         return _this;
     }
     WindowManager.prototype.onLoad = function () {
         var _this = this;
         cc.systemEvent.on(this.START_GAME, function () { return _this.windowSwitcher.show(GameWindow_1.default); }, this);
+        cc.systemEvent.on(this.PLAYER_FALL, function () { return _this.windowSwitcher.show(LoseWindow_1.default); }, this);
+        cc.systemEvent.on(this.MAIN_CLICKED, function () { return _this.windowSwitcher.show(MainWindow_1.default); }, this);
+        cc.systemEvent.on(this.RESTART_CLICKED, function () { return _this.windowSwitcher.show(GameWindow_1.default); }, this);
     };
     WindowManager.prototype.onDestroy = function () {
         var _this = this;
         cc.systemEvent.off(this.START_GAME, function () { return _this.windowSwitcher.show(GameWindow_1.default); }, this);
+        cc.systemEvent.off(this.PLAYER_FALL, function () { return _this.windowSwitcher.show(LoseWindow_1.default); }, this);
+        cc.systemEvent.off(this.MAIN_CLICKED, function () { return _this.windowSwitcher.show(MainWindow_1.default); }, this);
+        cc.systemEvent.off(this.RESTART_CLICKED, function () { return _this.windowSwitcher.show(GameWindow_1.default); }, this);
     };
     WindowManager.prototype.start = function () {
         this.windowSwitcher.show(MainWindow_1.default);

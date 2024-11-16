@@ -1,7 +1,7 @@
 export default class DataCounter {
     private static readonly SCORE_KEY: string = 'score';
     private static readonly BEST_SCORE_KEY: string = 'best_score';
-    private static readonly DOUBLE_KEY: string = 'best_score';
+    private static readonly DOUBLE_KEY: string = 'double';
 
     public static getScore(): number {
         const scoreString = cc.sys.localStorage.getItem(this.SCORE_KEY);

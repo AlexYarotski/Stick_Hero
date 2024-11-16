@@ -12,6 +12,7 @@ export default class GameMover extends cc.Component {
     moveDuration: number = 1;
 
     private isMoving: boolean = false;
+    private isStart: boolean = false;
 
     protected onLoad() {
         cc.systemEvent.on(this.PLAYER_REACHED, this.startMoving, this);
@@ -37,6 +38,9 @@ export default class GameMover extends cc.Component {
     }
 
     private onStartGame(){
-        this.startMoving(this.startDistance);
+        if(!this.isStart) {
+            this.startMoving(this.startDistance);
+            this.isStart = true;
+        }
     }
 }

@@ -8,10 +8,12 @@ const { ccclass, property } = cc._decorator;
 export default class GameWindow extends Window {
     private readonly DOUBLE: string = 'double';
     private readonly PLAYER_REACHED: string = 'playerReached';
-    private readonly PLAYER_FALL: string = 'playerFall';
 
     @property(Label)
     private counter: Label = null;
+
+    @property(Label)
+    private bestScore: Label = null;
 
     @property(Number)
     private scaleDuration: number = 0.5;
@@ -30,13 +32,11 @@ export default class GameWindow extends Window {
     protected onEnable() {
         cc.systemEvent.on(this.PLAYER_REACHED, this.onPlayerReached, this);
         cc.systemEvent.on(this.DOUBLE, this.onDouble, this);
-        cc.systemEvent.on(this.PLAYER_FALL, this.onDouble, this);
     }
 
     protected onDisable() {
         cc.systemEvent.off(this.PLAYER_REACHED, this.onPlayerReached, this);
         cc.systemEvent.off(this.DOUBLE, this.onDouble, this);
-        cc.systemEvent.off(this.PLAYER_FALL, this.onPlayerFall, this);
     }
 
     protected start() {
@@ -46,6 +46,18 @@ export default class GameWindow extends Window {
     public show() {
         super.show();
         this.resetCounter();
+
+        this.bestScore.string = DataCounter.getBestScore().toString();
+    }
+
+    public hide(){
+        DataCounter.setScore(this.count);
+
+        if (DataCounter.getBestScore() < this.count) {
+            DataCounter.setBestScore(this.count);
+        }
+
+        super.hide();
     }
 
     private resetCounter() {
@@ -67,14 +79,6 @@ export default class GameWindow extends Window {
         this.animateCounter();
 
         this.point = 0;
-    }
-
-    private onPlayerFall(){
-        DataCounter.setScore(this.count);
-
-        if (DataCounter.getBestScore() < this.count) {
-            DataCounter.setBestScore(this.count);
-        }
     }
 
     private updateCounterDisplay() {

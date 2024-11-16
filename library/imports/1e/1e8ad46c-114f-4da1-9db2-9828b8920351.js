@@ -33,6 +33,7 @@ var Stick = /** @class */ (function (_super) {
         _this.STICK_FALLEN = 'stickFallen';
         _this.size = 10;
         _this.growSpeed = 100;
+        _this.duration = 0.5;
         _this.isGrowing = false;
         _this.isStickPlaced = false;
         return _this;
@@ -53,9 +54,9 @@ var Stick = /** @class */ (function (_super) {
         this.isGrowing = false;
         this.isStickPlaced = false;
     };
-    Stick.prototype.initiateFall = function (fallDuration) {
+    Stick.prototype.initiateFall = function () {
         cc.tween(this.node)
-            .to(fallDuration, { position: cc.v3(this.node.x, -1080) })
+            .to(this.duration, { angle: -180 }, { easing: 'cubicOut' })
             .start();
     };
     Stick.prototype.onTouchStart = function () {
@@ -86,7 +87,7 @@ var Stick = /** @class */ (function (_super) {
     Stick.prototype.rotateStick = function () {
         var _this = this;
         cc.tween(this.node)
-            .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
+            .to(this.duration, { angle: -90 }, { easing: 'cubicOut' })
             .call(function () {
             _this.emitStickFallenEvent();
         })
@@ -98,6 +99,9 @@ var Stick = /** @class */ (function (_super) {
     __decorate([
         property(cc.Float)
     ], Stick.prototype, "growSpeed", void 0);
+    __decorate([
+        property(cc.Float)
+    ], Stick.prototype, "duration", void 0);
     Stick = __decorate([
         ccclass
     ], Stick);

@@ -33,8 +33,8 @@ var GameWindow = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.DOUBLE = 'double';
         _this.PLAYER_REACHED = 'playerReached';
-        _this.PLAYER_FALL = 'playerFall';
         _this.counter = null;
+        _this.bestScore = null;
         _this.scaleDuration = 0.5;
         _this.increase = 1.5;
         _this.originalScale = 0;
@@ -52,12 +52,10 @@ var GameWindow = /** @class */ (function (_super) {
     GameWindow.prototype.onEnable = function () {
         cc.systemEvent.on(this.PLAYER_REACHED, this.onPlayerReached, this);
         cc.systemEvent.on(this.DOUBLE, this.onDouble, this);
-        cc.systemEvent.on(this.PLAYER_FALL, this.onDouble, this);
     };
     GameWindow.prototype.onDisable = function () {
         cc.systemEvent.off(this.PLAYER_REACHED, this.onPlayerReached, this);
         cc.systemEvent.off(this.DOUBLE, this.onDouble, this);
-        cc.systemEvent.off(this.PLAYER_FALL, this.onPlayerFall, this);
     };
     GameWindow.prototype.start = function () {
         this.originalScale = this.counter.node.scale;
@@ -65,6 +63,14 @@ var GameWindow = /** @class */ (function (_super) {
     GameWindow.prototype.show = function () {
         _super.prototype.show.call(this);
         this.resetCounter();
+        this.bestScore.string = DataCounter_1.default.getBestScore().toString();
+    };
+    GameWindow.prototype.hide = function () {
+        DataCounter_1.default.setScore(this.count);
+        if (DataCounter_1.default.getBestScore() < this.count) {
+            DataCounter_1.default.setBestScore(this.count);
+        }
+        _super.prototype.hide.call(this);
     };
     GameWindow.prototype.resetCounter = function () {
         this.count = 0;
@@ -81,12 +87,6 @@ var GameWindow = /** @class */ (function (_super) {
         this.animateCounter();
         this.point = 0;
     };
-    GameWindow.prototype.onPlayerFall = function () {
-        DataCounter_1.default.setScore(this.count);
-        if (DataCounter_1.default.getBestScore() < this.count) {
-            DataCounter_1.default.setBestScore(this.count);
-        }
-    };
     GameWindow.prototype.updateCounterDisplay = function () {
         this.counter.string = this.count.toString();
     };
@@ -100,6 +100,9 @@ var GameWindow = /** @class */ (function (_super) {
     __decorate([
         property(Label)
     ], GameWindow.prototype, "counter", void 0);
+    __decorate([
+        property(Label)
+    ], GameWindow.prototype, "bestScore", void 0);
     __decorate([
         property(Number)
     ], GameWindow.prototype, "scaleDuration", void 0);

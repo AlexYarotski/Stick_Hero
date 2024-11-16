@@ -30,7 +30,7 @@ var DataCounter = /** @class */ (function () {
     };
     DataCounter.SCORE_KEY = 'score';
     DataCounter.BEST_SCORE_KEY = 'best_score';
-    DataCounter.DOUBLE_KEY = 'best_score';
+    DataCounter.DOUBLE_KEY = 'double';
     return DataCounter;
 }());
 exports.default = DataCounter;

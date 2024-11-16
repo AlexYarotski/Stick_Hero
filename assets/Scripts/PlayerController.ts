@@ -12,8 +12,9 @@ export default class PlayerController extends cc.Component {
     private readonly  PLAYER_FALL: string = 'playerFall';
     private readonly COLLISION_ENTER: string = 'collision-enter';
 
-    private readonly offsetPlatformX: number = -50;
     private readonly offsetStick: cc.Vec2 = cc.v2(80, 10);
+
+    public readonly offsetPlatformX: number = -50;
 
     @property(cc.Prefab)
     stickPrefab: cc.Prefab = null;
@@ -42,6 +43,8 @@ export default class PlayerController extends cc.Component {
 
     public reset() {
         this.spawnStick();
+
+        this.node.active = true;
     }
 
     protected onCollisionEnter(other: cc.Collider, self: cc.Collider) {
@@ -99,12 +102,12 @@ export default class PlayerController extends cc.Component {
     }
 
     private initiateFall() {
-        cc.systemEvent.emit(this.PLAYER_FALL);
+        cc.systemEvent.emit(this.PLAYER_FALL)
 
         cc.tween(this.node)
-            .to(this.fallDuration, { position: cc.v3(this.node.x, 2000) })
+            .to(this.fallDuration, { position: cc.v3(this.node.x, -2000) })
             .start();
 
-        this.stick.initiateFall(this.fallDuration);
+        this.stick.initiateFall();
     }
 }

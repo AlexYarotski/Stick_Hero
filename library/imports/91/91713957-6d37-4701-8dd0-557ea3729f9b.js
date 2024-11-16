@@ -34,6 +34,7 @@ var GameMover = /** @class */ (function (_super) {
         _this.startDistance = 460;
         _this.moveDuration = 1;
         _this.isMoving = false;
+        _this.isStart = false;
         return _this;
     }
     GameMover.prototype.onLoad = function () {
@@ -58,7 +59,10 @@ var GameMover = /** @class */ (function (_super) {
             .start();
     };
     GameMover.prototype.onStartGame = function () {
-        this.startMoving(this.startDistance);
+        if (!this.isStart) {
+            this.startMoving(this.startDistance);
+            this.isStart = true;
+        }
     };
     __decorate([
         property(cc.Float)
