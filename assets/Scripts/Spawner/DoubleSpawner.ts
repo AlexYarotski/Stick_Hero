@@ -1,4 +1,3 @@
-import Double from "../Double";
 import { Spawner } from "./Spawner";
 
 const { ccclass, property } = cc._decorator;
