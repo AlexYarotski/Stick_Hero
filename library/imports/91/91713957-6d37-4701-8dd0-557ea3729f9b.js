@@ -28,17 +28,17 @@ var GameMover = /** @class */ (function (_super) {
     __extends(GameMover, _super);
     function GameMover() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.PLAYER_REACHED_EVENT = 'playerReached';
-        _this.MOVEMENT_COMPLETE_EVENT = 'movementComplete';
+        _this.PLAYER_REACHED = 'playerReached';
+        _this.MOVEMENT_COMPLETE = 'movementComplete';
         _this.moveDuration = 1;
         _this.isMoving = false;
         return _this;
     }
     GameMover.prototype.onLoad = function () {
-        cc.systemEvent.on(this.PLAYER_REACHED_EVENT, this.startMoving, this);
+        cc.systemEvent.on(this.PLAYER_REACHED, this.startMoving, this);
     };
     GameMover.prototype.onDestroy = function () {
-        cc.systemEvent.off(this.PLAYER_REACHED_EVENT, this.startMoving, this);
+        cc.systemEvent.off(this.PLAYER_REACHED, this.startMoving, this);
     };
     GameMover.prototype.startMoving = function (distance) {
         var _this = this;
@@ -49,7 +49,7 @@ var GameMover = /** @class */ (function (_super) {
             .by(this.moveDuration, { position: cc.v3(-distance, 0) }, { easing: 'sineInOut' })
             .call(function () {
             _this.isMoving = false;
-            cc.systemEvent.emit(_this.MOVEMENT_COMPLETE_EVENT);
+            cc.systemEvent.emit(_this.MOVEMENT_COMPLETE);
         })
             .start();
     };

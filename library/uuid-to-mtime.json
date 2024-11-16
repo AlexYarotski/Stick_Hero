@@ -500,8 +500,8 @@
     "relativePath": "model\\primitives.fbx"
   },
   "3ce6db62-eb87-4bc6-9393-65dc6904fe72": {
-    "asset": 1731678544463,
-    "meta": 1731678614062,
+    "asset": 1731761946584,
+    "meta": 1731762897281,
     "relativePath": "Scripts"
   },
   "f2c59888-a972-4147-919a-d160c227567c": {
@@ -525,8 +525,8 @@
     "relativePath": "Scene"
   },
   "f56f1100-7039-4526-921e-806d437a2f86": {
-    "asset": 1731677309715,
-    "meta": 1731678614062,
+    "asset": 1731680959578,
+    "meta": 1731757820740,
     "relativePath": "Prefab"
   },
   "a905444c-8e92-4919-bfea-38d1517e17f5": {
@@ -640,54 +640,24 @@
     "relativePath": "Prefab\\Player.prefab"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731682392299,
-    "meta": 1731682392323,
+    "asset": 1731766545397,
+    "meta": 1731766545408,
     "relativePath": "Scene\\Game.fire"
   },
   "763d902a-a23e-465e-973b-d3491244b529": {
-    "asset": 1731673130810,
-    "meta": 1731673130832,
+    "asset": 1731763323001,
+    "meta": 1731763323011,
     "relativePath": "Prefab\\Stick.prefab"
   },
   "d99bd238-9712-4279-823e-9a35d9d777ca": {
-    "asset": 1731680008022,
-    "meta": 1731680008048,
+    "asset": 1731763314252,
+    "meta": 1731763314263,
     "relativePath": "Prefab\\Platform.prefab"
-  },
-  "91713957-6d37-4701-8dd0-557ea3729f9b": {
-    "asset": 1731664901161,
-    "meta": 1731665245017,
-    "relativePath": "Scripts\\GameMover.ts"
-  },
-  "c3b0c8b1-745e-4c55-a6c1-6915ba0f7f0e": {
-    "asset": 1731673822726,
-    "meta": 1731674138321,
-    "relativePath": "Scripts\\Spawner.ts"
-  },
-  "ef9a230a-0c28-4456-b5f3-e1b4163fa829": {
-    "asset": 1731673898134,
-    "meta": 1731674138334,
-    "relativePath": "Scripts\\StickSpawner.ts"
-  },
-  "5dbd4acc-7e6e-4c80-a160-237f54aa0295": {
-    "asset": 1731674640241,
-    "meta": 1731674641811,
-    "relativePath": "Scripts\\StickManager.ts"
   },
   "a25bb01a-000f-4cd2-9277-c3b775c7fce8": {
     "asset": 1731674874080,
     "meta": 1731674892572,
     "relativePath": "Scripts\\ScoreCounter.ts"
-  },
-  "6c5bb808-29e0-43e0-a725-1f54347da26b": {
-    "asset": 1731678495294,
-    "meta": 1731678501987,
-    "relativePath": "Scripts\\Platform.ts"
-  },
-  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
-    "asset": 1731678544463,
-    "meta": 1731678545445,
-    "relativePath": "Scripts\\PlatformSpawner.ts"
   },
   "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
     "asset": 1731678654937,
@@ -699,29 +669,64 @@
     "meta": 1731680588918,
     "relativePath": "Scripts\\SystemManager.ts"
   },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731680667888,
-    "meta": 1731680858543,
-    "relativePath": "Scripts\\PlayerController.ts"
-  },
   "99b54ef3-5a8b-43ec-bb0a-acadf8c687fa": {
-    "asset": 1731681306782,
-    "meta": 1731681306785,
+    "asset": 1731759204426,
+    "meta": 1731759204436,
     "relativePath": "Prefab\\Double.prefab"
   },
-  "663e2ed0-162b-4c47-a22c-01c97999f61d": {
-    "asset": 1731682004538,
-    "meta": 1731682167986,
-    "relativePath": "Scripts\\Double.ts"
+  "75066714-4f58-42c2-8ba1-d5e9e074be15": {
+    "asset": 1731762038384,
+    "meta": 1731762897282,
+    "relativePath": "Scripts\\Spawner"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731761465725,
+    "meta": 1731761468403,
+    "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "6c5bb808-29e0-43e0-a725-1f54347da26b": {
+    "asset": 1731761762120,
+    "meta": 1731761781982,
+    "relativePath": "Scripts\\Platform.ts"
+  },
+  "1e8ad46c-114f-4da1-9db2-9828b8920351": {
+    "asset": 1731761781263,
+    "meta": 1731761782009,
+    "relativePath": "Scripts\\Stick.ts"
+  },
+  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
+    "asset": 1731763403609,
+    "meta": 1731763417667,
+    "relativePath": "Scripts\\Spawner\\PlatformSpawner.ts"
+  },
+  "91713957-6d37-4701-8dd0-557ea3729f9b": {
+    "asset": 1731763951865,
+    "meta": 1731764064294,
+    "relativePath": "Scripts\\GameMover.ts"
   },
   "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731682177383,
-    "meta": 1731682177455,
+    "asset": 1731764663330,
+    "meta": 1731764663842,
     "relativePath": "Scripts\\GameController.ts"
   },
+  "ef9a230a-0c28-4456-b5f3-e1b4163fa829": {
+    "asset": 1731766043565,
+    "meta": 1731766044406,
+    "relativePath": "Scripts\\Spawner\\StickSpawner.ts"
+  },
+  "c3b0c8b1-745e-4c55-a6c1-6915ba0f7f0e": {
+    "asset": 1731766455754,
+    "meta": 1731766505266,
+    "relativePath": "Scripts\\Spawner\\Spawner.ts"
+  },
+  "663e2ed0-162b-4c47-a22c-01c97999f61d": {
+    "asset": 1731766508916,
+    "meta": 1731766511307,
+    "relativePath": "Scripts\\Double.ts"
+  },
   "b4abe9c6-d024-4d95-b6cb-d388d456fd37": {
-    "asset": 1731682355849,
-    "meta": 1731682356556,
-    "relativePath": "Scripts\\DoubleSpawner.ts"
+    "asset": 1731766510527,
+    "meta": 1731766511335,
+    "relativePath": "Scripts\\Spawner\\DoubleSpawner.ts"
   }
 }

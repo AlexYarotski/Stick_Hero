@@ -1,8 +1,8 @@
-import StickManager from "./StickManager";
 import PlayerController from "./PlayerController";
-import PlatformSpawner from "./PlatformSpawner";
-import StickSpawner from "./StickSpawner";
-import DoubleSpawner from "./DoubleSpawner"; // Импорт класса DoubleSpawner
+import PlatformSpawner from "./Spawner/PlatformSpawner";
+import StickSpawner from "./Spawner/StickSpawner";
+import DoubleSpawner from "./Spawner/DoubleSpawner";
+
 
 const { ccclass, property } = cc._decorator;
 
@@ -76,17 +76,16 @@ export default class GameController extends cc.Component {
     }
 
     private onMovementComplete() {
-        if (this.previousPlatform) {
-            this.platformSpawner.deactivateNode(this.previousPlatform);
-        }
+        this.platformSpawner.deactivateNode(this.previousPlatform);
+
         this.previousPlatform = this.currentPlatform;
         this.currentPlatform = this.platformSpawner.spawnNode();
 
         this.player.reset();
 
-        if (this.doubleSpawner) {
-            this.doubleSpawner.spawnDouble(this.previousPlatform, this.currentPlatform);
-        }
+        const previousWorldPos = this.previousPlatform.parent.convertToWorldSpaceAR(this.previousPlatform.position);
+        const currentWorldPos = this.currentPlatform.parent.convertToWorldSpaceAR(this.currentPlatform.position);
+        this.doubleSpawner.spawnNode(cc.v3(previousWorldPos.x + this.previousPlatform.width), currentWorldPos);
     }
 
     private endGame() {

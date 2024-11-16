@@ -1,6 +1,6 @@
 "use strict";
 cc._RF.push(module, 'c3b0cixdF5MVabBaRW6D38O', 'Spawner');
-// Scripts/Spawner.ts
+// Scripts/Spawner/Spawner.ts
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {

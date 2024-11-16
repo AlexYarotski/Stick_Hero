@@ -24,9 +24,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var PlayerController_1 = require("./PlayerController");
-var PlatformSpawner_1 = require("./PlatformSpawner");
-var StickSpawner_1 = require("./StickSpawner");
-var DoubleSpawner_1 = require("./DoubleSpawner"); // Импорт класса DoubleSpawner
+var PlatformSpawner_1 = require("./Spawner/PlatformSpawner");
+var StickSpawner_1 = require("./Spawner/StickSpawner");
+var DoubleSpawner_1 = require("./Spawner/DoubleSpawner");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameController = /** @class */ (function (_super) {
     __extends(GameController, _super);
@@ -80,15 +80,13 @@ var GameController = /** @class */ (function (_super) {
         }
     };
     GameController.prototype.onMovementComplete = function () {
-        if (this.previousPlatform) {
-            this.platformSpawner.deactivateNode(this.previousPlatform);
-        }
+        this.platformSpawner.deactivateNode(this.previousPlatform);
         this.previousPlatform = this.currentPlatform;
         this.currentPlatform = this.platformSpawner.spawnNode();
         this.player.reset();
-        if (this.doubleSpawner) {
-            this.doubleSpawner.spawnDouble(this.previousPlatform, this.currentPlatform);
-        }
+        var previousWorldPos = this.previousPlatform.parent.convertToWorldSpaceAR(this.previousPlatform.position);
+        var currentWorldPos = this.currentPlatform.parent.convertToWorldSpaceAR(this.currentPlatform.position);
+        this.doubleSpawner.spawnNode(cc.v3(previousWorldPos.x + this.previousPlatform.width), currentWorldPos);
     };
     GameController.prototype.endGame = function () {
         cc.log('Game Over');

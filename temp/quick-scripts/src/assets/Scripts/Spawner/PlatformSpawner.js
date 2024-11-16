@@ -1,6 +1,6 @@
 "use strict";
 cc._RF.push(module, 'bbcd75L1a9BBLSrHghUc+6U', 'PlatformSpawner');
-// Scripts/PlatformSpawner.ts
+// Scripts/Spawner/PlatformSpawner.ts
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -24,7 +24,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var Spawner_1 = require("./Spawner");
-var Platform_1 = require("./Platform");
+var Platform_1 = require("../Platform");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlatformSpawner = /** @class */ (function (_super) {
     __extends(PlatformSpawner, _super);

@@ -1,6 +1,6 @@
 "use strict";
-cc._RF.push(module, '5dbd4rMfm5MgKFgI39UqgKV', 'StickManager');
-// Scripts/StickManager.ts
+cc._RF.push(module, '1e8adRsEU9NoZ2ymCi4kgNR', 'Stick');
+// Scripts/Stick.ts
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -24,9 +24,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var StickManager = /** @class */ (function (_super) {
-    __extends(StickManager, _super);
-    function StickManager() {
+var Stick = /** @class */ (function (_super) {
+    __extends(Stick, _super);
+    function Stick() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.TOUCHED_START = 'touchStart';
         _this.TOUCHED_END = 'touchEnd';
@@ -37,15 +37,15 @@ var StickManager = /** @class */ (function (_super) {
         _this.isStickPlaced = false;
         return _this;
     }
-    StickManager.prototype.onEnable = function () {
+    Stick.prototype.onEnable = function () {
         cc.systemEvent.on(this.TOUCHED_START, this.onTouchStart, this);
         cc.systemEvent.on(this.TOUCHED_END, this.onTouchEnd, this);
     };
-    StickManager.prototype.onDisable = function () {
+    Stick.prototype.onDisable = function () {
         cc.systemEvent.off(this.TOUCHED_START, this.onTouchStart, this);
         cc.systemEvent.off(this.TOUCHED_END, this.onTouchEnd, this);
     };
-    StickManager.prototype.reset = function () {
+    Stick.prototype.reset = function () {
         this.node.width = this.size;
         this.node.height = 0;
         this.node.angle = 0;
@@ -53,37 +53,37 @@ var StickManager = /** @class */ (function (_super) {
         this.isGrowing = false;
         this.isStickPlaced = false;
     };
-    StickManager.prototype.initiateFall = function (fallDuration) {
+    Stick.prototype.initiateFall = function (fallDuration) {
         cc.tween(this.node)
             .to(fallDuration, { position: cc.v3(this.node.x, -1080) })
             .start();
     };
-    StickManager.prototype.onTouchStart = function () {
+    Stick.prototype.onTouchStart = function () {
         if (this.isStickPlaced)
             return;
         this.startGrowing();
     };
-    StickManager.prototype.onTouchEnd = function () {
+    Stick.prototype.onTouchEnd = function () {
         if (this.isStickPlaced)
             return;
         this.stopGrowing();
     };
-    StickManager.prototype.startGrowing = function () {
+    Stick.prototype.startGrowing = function () {
         this.isGrowing = true;
         this.schedule(this.growStick, 0.02);
     };
-    StickManager.prototype.stopGrowing = function () {
+    Stick.prototype.stopGrowing = function () {
         this.isGrowing = false;
         this.unschedule(this.growStick);
         this.rotateStick();
         this.isStickPlaced = true;
     };
-    StickManager.prototype.growStick = function () {
+    Stick.prototype.growStick = function () {
         if (!this.isGrowing)
             return;
         this.node.height += this.growSpeed * 0.2;
     };
-    StickManager.prototype.rotateStick = function () {
+    Stick.prototype.rotateStick = function () {
         var _this = this;
         cc.tween(this.node)
             .to(0.5, { angle: -90 }, { easing: 'cubicOut' })
@@ -92,17 +92,17 @@ var StickManager = /** @class */ (function (_super) {
         })
             .start();
     };
-    StickManager.prototype.emitStickFallenEvent = function () {
+    Stick.prototype.emitStickFallenEvent = function () {
         cc.systemEvent.emit(this.STICK_FALLEN, this.node);
     };
     __decorate([
         property(cc.Float)
-    ], StickManager.prototype, "growSpeed", void 0);
-    StickManager = __decorate([
+    ], Stick.prototype, "growSpeed", void 0);
+    Stick = __decorate([
         ccclass
-    ], StickManager);
-    return StickManager;
+    ], Stick);
+    return Stick;
 }(cc.Component));
-exports.default = StickManager;
+exports.default = Stick;
 
 cc._RF.pop();

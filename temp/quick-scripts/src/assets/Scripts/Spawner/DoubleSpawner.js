@@ -1,6 +1,6 @@
 "use strict";
 cc._RF.push(module, 'b4abenG0CRNlbbL04jUVv03', 'DoubleSpawner');
-// Scripts/DoubleSpawner.ts
+// Scripts/Spawner/DoubleSpawner.ts
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -23,31 +23,39 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var Spawner_1 = require("./Spawner");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var DoubleSpawner = /** @class */ (function (_super) {
     __extends(DoubleSpawner, _super);
     function DoubleSpawner() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.doublePrefab = null;
-        _this.appearanceFrequency = 3; // Частота появления Double
-        _this.counter = 0; // Счётчик для появления
+        _this.posY = -350;
+        _this.appearanceFrequency = 3;
+        _this.counter = 0;
         return _this;
     }
-    DoubleSpawner.prototype.spawnDouble = function (previousPlatform, currentPlatform) {
+    DoubleSpawner.prototype.spawnNode = function (startPos, endPos) {
         this.counter++;
         if (this.counter >= this.appearanceFrequency) {
-            this.counter = 0; // Сброс счётчика
-            var startX = previousPlatform.x;
-            var endX = currentPlatform.x;
-            var midX = (startX + endX) / 2;
-            var doubleNode = cc.instantiate(this.doublePrefab);
+            this.counter = 0;
+            var doubleNode = this.getOrCreateNode();
+            var localStartPos = this.node.convertToNodeSpaceAR(startPos);
+            var localEndPos = this.node.convertToNodeSpaceAR(endPos);
+            var startX = localStartPos.x + doubleNode.width;
+            var endX = localEndPos.x - doubleNode.width;
+            var randomX = startX + Math.random() * (endX - startX);
+            doubleNode.setPosition(randomX, this.posY);
+            cc.log(startX);
+            cc.log(endX);
+            cc.log(doubleNode.x);
+            cc.log(doubleNode.y);
+            cc.log(doubleNode);
+            doubleNode.active = true;
             doubleNode.parent = this.node;
-            doubleNode.setPosition(-291, -350); // Заданная Y-позиция
+            return doubleNode;
         }
+        return null;
     };
-    __decorate([
-        property(cc.Prefab)
-    ], DoubleSpawner.prototype, "doublePrefab", void 0);
     __decorate([
         property
     ], DoubleSpawner.prototype, "appearanceFrequency", void 0);
@@ -55,7 +63,7 @@ var DoubleSpawner = /** @class */ (function (_super) {
         ccclass
     ], DoubleSpawner);
     return DoubleSpawner;
-}(cc.Component));
+}(Spawner_1.Spawner));
 exports.default = DoubleSpawner;
 
 cc._RF.pop();

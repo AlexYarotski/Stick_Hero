@@ -1,7 +1,7 @@
-import StickManager from "./StickManager";
-import StickSpawner from "./StickSpawner";
+import Stick from "./Stick";
 import PlayerFlip from "./PlayerFlip";
-import Platform from "./Platform"; // Добавим импорт Platform для проверки типа объекта
+import Platform from "./Platform";
+import StickSpawner from "./Spawner/StickSpawner";
 
 const { ccclass, property } = cc._decorator;
 
@@ -27,8 +27,8 @@ export default class PlayerController extends cc.Component {
     @property(PlayerFlip)
     private playerFlip: PlayerFlip = null;
 
-    private stick: StickManager = null;
-    private previousStick: StickManager = null;
+    private stick: Stick = null;
+    private previousStick: Stick = null;
 
     private boxCollider: cc.BoxCollider = null;
 
@@ -50,7 +50,7 @@ export default class PlayerController extends cc.Component {
 
     private spawnStick() {
         const position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y + this.offsetStick.y);
-        this.stick = this.stickSpawner.spawnNode(position).getComponent(StickManager);
+        this.stick = this.stickSpawner.spawnNode(position).getComponent(Stick);
         this.stick.node.parent = this.node.parent;
         this.stick.reset();
     }

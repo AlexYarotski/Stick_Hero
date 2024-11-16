@@ -23,25 +23,31 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var PlayerController_1 = require("./PlayerController");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var Double = /** @class */ (function (_super) {
     __extends(Double, _super);
     function Double() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.COLLISION_ENTER = 'collision-enter';
+        _this.MOVEMENT_COMPLETE = 'movementComplete';
         _this.boxCollider = null;
         return _this;
     }
     Double.prototype.onLoad = function () {
         this.boxCollider = this.getComponent(cc.BoxCollider);
         this.boxCollider.node.on(this.COLLISION_ENTER, this.onCollisionEnter, this);
+        cc.systemEvent.on(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
+    };
+    Double.prototype.onDestroy = function () {
+        cc.systemEvent.off(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
     };
     Double.prototype.onCollisionEnter = function (other) {
-        if (other.node.getComponent('PlayerController')) {
-            this.onDoubleCollision();
+        if (other.node.getComponent(PlayerController_1.default)) {
+            this.node.active = false;
         }
     };
-    Double.prototype.onDoubleCollision = function () {
+    Double.prototype.onMovementComplete = function () {
         this.node.active = false;
     };
     Double = __decorate([

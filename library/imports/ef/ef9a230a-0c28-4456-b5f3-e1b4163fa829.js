@@ -1,6 +1,6 @@
 "use strict";
 cc._RF.push(module, 'ef9a2MKDChEVrXz4bQWP6gp', 'StickSpawner');
-// Scripts/StickSpawner.ts
+// Scripts/Spawner/StickSpawner.ts
 
 "use strict";
 var __extends = (this && this.__extends) || (function () {
@@ -28,19 +28,13 @@ var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var StickSpawner = /** @class */ (function (_super) {
     __extends(StickSpawner, _super);
     function StickSpawner() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.stickAppearTime = 0.5;
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
     StickSpawner.prototype.spawnNode = function (position) {
         var newStick = this.getOrCreateNode();
         newStick.setPosition(position);
-        newStick.active = true;
         return newStick;
     };
-    __decorate([
-        property
-    ], StickSpawner.prototype, "stickAppearTime", void 0);
     StickSpawner = __decorate([
         ccclass
     ], StickSpawner);

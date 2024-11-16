@@ -1,7 +1,7 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class StickManager extends cc.Component {
+export default class Stick extends cc.Component{
     private readonly TOUCHED_START: string = 'touchStart';
     private readonly TOUCHED_END: string = 'touchEnd';
     private readonly STICK_FALLEN: string = 'stickFallen';

@@ -1,5 +1,5 @@
 import { Spawner } from "./Spawner";
-import Platform from "./Platform";
+import Platform from "../Platform";
 
 const { ccclass, property } = cc._decorator;
 

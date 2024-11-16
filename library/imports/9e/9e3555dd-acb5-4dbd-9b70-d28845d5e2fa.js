@@ -23,10 +23,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var StickManager_1 = require("./StickManager");
-var StickSpawner_1 = require("./StickSpawner");
+var Stick_1 = require("./Stick");
 var PlayerFlip_1 = require("./PlayerFlip");
-var Platform_1 = require("./Platform"); // Добавим импорт Platform для проверки типа объекта
+var Platform_1 = require("./Platform");
+var StickSpawner_1 = require("./Spawner/StickSpawner");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var PlayerController = /** @class */ (function (_super) {
     __extends(PlayerController, _super);
@@ -60,7 +60,7 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.spawnStick = function () {
         var position = cc.v2(this.node.position.x + this.offsetStick.x, this.node.position.y + this.offsetStick.y);
-        this.stick = this.stickSpawner.spawnNode(position).getComponent(StickManager_1.default);
+        this.stick = this.stickSpawner.spawnNode(position).getComponent(Stick_1.default);
         this.stick.node.parent = this.node.parent;
         this.stick.reset();
     };
