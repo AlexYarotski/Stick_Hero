@@ -24,6 +24,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var MainWindow_1 = require("./MainWindow");
+var GameWindow_1 = require("./GameWindow");
 //import GameWindow from "./GameWindow";
 //import LoseWindow from "./LoseWindow";
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
@@ -32,8 +33,7 @@ var WindowSwitcher = /** @class */ (function (_super) {
     function WindowSwitcher() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.mainWindow = null;
-        // @property(GameWindow)
-        // private gameWindow: GameWindow = null;
+        _this.gameWindow = null;
         // @property(LoseWindow)
         // private loseWindow: LoseWindow = null;
         _this.currentWindow = null;
@@ -62,7 +62,7 @@ var WindowSwitcher = /** @class */ (function (_super) {
     };
     WindowSwitcher.prototype.hideWindowsInChild = function () {
         this.windowMap.set(MainWindow_1.default, this.mainWindow);
-        //this.windowMap.set(GameWindow, this.gameWindow);
+        this.windowMap.set(GameWindow_1.default, this.gameWindow);
         //this.windowMap.set(LoseWindow, this.loseWindow);
         this.windowMap.forEach(function (window) {
             if (window) {
@@ -73,6 +73,9 @@ var WindowSwitcher = /** @class */ (function (_super) {
     __decorate([
         property(MainWindow_1.default)
     ], WindowSwitcher.prototype, "mainWindow", void 0);
+    __decorate([
+        property(GameWindow_1.default)
+    ], WindowSwitcher.prototype, "gameWindow", void 0);
     WindowSwitcher = __decorate([
         ccclass
     ], WindowSwitcher);

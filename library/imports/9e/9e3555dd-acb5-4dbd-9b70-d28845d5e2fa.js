@@ -32,6 +32,7 @@ var PlayerController = /** @class */ (function (_super) {
     __extends(PlayerController, _super);
     function PlayerController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.PLAYER_FALL = 'playerFall';
         _this.COLLISION_ENTER = 'collision-enter';
         _this.offsetPlatformX = -50;
         _this.offsetStick = cc.v2(80, 10);
@@ -101,8 +102,9 @@ var PlayerController = /** @class */ (function (_super) {
             .start();
     };
     PlayerController.prototype.initiateFall = function () {
+        cc.systemEvent.emit(this.PLAYER_FALL);
         cc.tween(this.node)
-            .to(this.fallDuration, { position: cc.v3(this.node.x, -1080) })
+            .to(this.fallDuration, { position: cc.v3(this.node.x, 2000) })
             .start();
         this.stick.initiateFall(this.fallDuration);
     };

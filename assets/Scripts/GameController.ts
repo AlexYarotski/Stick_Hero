@@ -35,13 +35,13 @@ export default class GameController extends cc.Component {
         cc.systemEvent.on(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
     }
 
-    protected start() {
-        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
-    }
-
     protected onDestroy() {
         cc.systemEvent.off(this.Stick_Fallen, this.onStickFallen, this);
         cc.systemEvent.off(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
+    }
+
+    protected start() {
+        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
     }
 
     private initGame() {

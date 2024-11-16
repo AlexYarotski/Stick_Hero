@@ -10,6 +10,7 @@
                     };
                     function __define (exports, require, module) {
                         if (!nodeEnv) {__quick_compile_project__.registerModule(__filename, module);}
+require('./assets/Scripts/DataCounter');
 require('./assets/Scripts/Double');
 require('./assets/Scripts/GameController');
 require('./assets/Scripts/GameMover');
@@ -25,6 +26,7 @@ require('./assets/Scripts/Stick');
 require('./assets/Scripts/SystemManager');
 require('./assets/Scripts/TouchController');
 require('./assets/Scripts/UIManager');
+require('./assets/Scripts/UI/GameWindow');
 require('./assets/Scripts/UI/MainWindow');
 require('./assets/Scripts/UI/Window');
 require('./assets/Scripts/UI/WindowManager');

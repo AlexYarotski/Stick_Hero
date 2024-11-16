@@ -1,4 +1,5 @@
 import Window from "./Window";import MainWindow from "./MainWindow";
+import GameWindow from "./GameWindow";
 //import GameWindow from "./GameWindow";
 //import LoseWindow from "./LoseWindow";
 
@@ -8,8 +9,8 @@ const { ccclass, property } = cc._decorator;
 export default class WindowSwitcher extends cc.Component {
     @property(MainWindow)
     private mainWindow: MainWindow = null;
-    // @property(GameWindow)
-    // private gameWindow: GameWindow = null;
+    @property(GameWindow)
+    private gameWindow: GameWindow = null;
     // @property(LoseWindow)
     // private loseWindow: LoseWindow = null;
 
@@ -44,7 +45,7 @@ export default class WindowSwitcher extends cc.Component {
 
     private hideWindowsInChild() {
         this.windowMap.set(MainWindow, this.mainWindow);
-        //this.windowMap.set(GameWindow, this.gameWindow);
+        this.windowMap.set(GameWindow, this.gameWindow);
         //this.windowMap.set(LoseWindow, this.loseWindow);
 
         this.windowMap.forEach((window) => {

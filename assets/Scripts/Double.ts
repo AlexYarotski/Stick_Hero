@@ -6,9 +6,9 @@ const { ccclass, property } = cc._decorator;
 export default class Double extends cc.Component {
     private readonly COLLISION_ENTER: string = 'collision-enter';
     private readonly MOVEMENT_COMPLETE: string = 'movementComplete';
+    private readonly DOUBLE: string = 'double';
 
     private boxCollider: cc.BoxCollider = null;
-
 
     protected onLoad() {
         this.boxCollider = this.getComponent(cc.BoxCollider);
@@ -25,6 +25,7 @@ export default class Double extends cc.Component {
     private onCollisionEnter(other: cc.Collider) {
         if (other.node.getComponent(PlayerController)) {
             this.node.active = false;
+            cc.systemEvent.emit(this.DOUBLE);
         }
     }
 

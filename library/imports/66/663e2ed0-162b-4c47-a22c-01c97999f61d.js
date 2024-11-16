@@ -31,6 +31,7 @@ var Double = /** @class */ (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.COLLISION_ENTER = 'collision-enter';
         _this.MOVEMENT_COMPLETE = 'movementComplete';
+        _this.DOUBLE = 'double';
         _this.boxCollider = null;
         return _this;
     }
@@ -45,6 +46,7 @@ var Double = /** @class */ (function (_super) {
     Double.prototype.onCollisionEnter = function (other) {
         if (other.node.getComponent(PlayerController_1.default)) {
             this.node.active = false;
+            cc.systemEvent.emit(this.DOUBLE);
         }
     };
     Double.prototype.onMovementComplete = function () {

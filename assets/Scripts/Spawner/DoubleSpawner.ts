@@ -27,12 +27,6 @@ export default class DoubleSpawner extends Spawner {
 
             doubleNode.setPosition(randomX, this.posY);
 
-            cc.log(startX);
-            cc.log(endX);
-            cc.log(doubleNode.x);
-            cc.log(doubleNode.y);
-            cc.log(doubleNode);
-
             doubleNode.active = true;
             doubleNode.parent = this.node;
 

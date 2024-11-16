@@ -500,8 +500,8 @@
     "relativePath": "model\\primitives.fbx"
   },
   "3ce6db62-eb87-4bc6-9393-65dc6904fe72": {
-    "asset": 1731761946584,
-    "meta": 1731762897281,
+    "asset": 1731773187157,
+    "meta": 1731776717911,
     "relativePath": "Scripts"
   },
   "f2c59888-a972-4147-919a-d160c227567c": {
@@ -545,8 +545,8 @@
     "relativePath": "Art\\Sprite\\Hero"
   },
   "d6c20ca4-5af1-40b8-915e-265dbe596131": {
-    "asset": 1731583749676,
-    "meta": 1731583775981,
+    "asset": 1731768894091,
+    "meta": 1731776717913,
     "relativePath": "Art\\Sprite\\UI"
   },
   "19bf6e53-beba-4ee0-a95b-557b18c5a1f1": {
@@ -630,8 +630,8 @@
     "relativePath": "Prefab\\Player.prefab"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731769950701,
-    "meta": 1731769950715,
+    "asset": 1731779175333,
+    "meta": 1731779175345,
     "relativePath": "Scene\\Game.fire"
   },
   "763d902a-a23e-465e-973b-d3491244b529": {
@@ -665,14 +665,9 @@
     "relativePath": "Prefab\\Double.prefab"
   },
   "75066714-4f58-42c2-8ba1-d5e9e074be15": {
-    "asset": 1731762038384,
-    "meta": 1731762897282,
+    "asset": 1731766933775,
+    "meta": 1731776717912,
     "relativePath": "Scripts\\Spawner"
-  },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731761465725,
-    "meta": 1731761468403,
-    "relativePath": "Scripts\\PlayerController.ts"
   },
   "6c5bb808-29e0-43e0-a725-1f54347da26b": {
     "asset": 1731761762120,
@@ -699,19 +694,9 @@
     "meta": 1731766505266,
     "relativePath": "Scripts\\Spawner\\Spawner.ts"
   },
-  "663e2ed0-162b-4c47-a22c-01c97999f61d": {
-    "asset": 1731766508916,
-    "meta": 1731766511307,
-    "relativePath": "Scripts\\Double.ts"
-  },
-  "b4abe9c6-d024-4d95-b6cb-d388d456fd37": {
-    "asset": 1731766933774,
-    "meta": 1731766934442,
-    "relativePath": "Scripts\\Spawner\\DoubleSpawner.ts"
-  },
   "bccb4ac2-6a8d-4040-83e3-861609e0ebcd": {
-    "asset": 1731768506071,
-    "meta": 1731768506088,
+    "asset": 1731773206883,
+    "meta": 1731776717912,
     "relativePath": "Scripts\\UI"
   },
   "cd3286bb-5504-4f6e-af24-01f865c72ad8": {
@@ -719,29 +704,54 @@
     "meta": 1731768506131,
     "relativePath": "Scripts\\UI\\Window.ts"
   },
-  "15d42243-5cba-4015-94ef-1186526083e9": {
-    "asset": 1731769182230,
-    "meta": 1731769185642,
-    "relativePath": "Scripts\\UI\\MainWindow.ts"
-  },
   "91713957-6d37-4701-8dd0-557ea3729f9b": {
     "asset": 1731769371966,
     "meta": 1731769373594,
     "relativePath": "Scripts\\GameMover.ts"
   },
+  "bb1e92af-0585-4376-b235-518c5fc4be70": {
+    "asset": 1731772636703,
+    "meta": 1731772673125,
+    "relativePath": "Scripts\\GameController.ts"
+  },
+  "15d42243-5cba-4015-94ef-1186526083e9": {
+    "asset": 1731772636691,
+    "meta": 1731772673137,
+    "relativePath": "Scripts\\UI\\MainWindow.ts"
+  },
   "1def7989-73b7-4900-8e43-7d1d62b8575b": {
-    "asset": 1731770005385,
-    "meta": 1731770006543,
+    "asset": 1731772636697,
+    "meta": 1731772673155,
     "relativePath": "Scripts\\UI\\WindowManager.ts"
   },
   "030f978a-5879-437f-9b64-3fb24ea5b85f": {
-    "asset": 1731770180204,
-    "meta": 1731770181148,
+    "asset": 1731772445454,
+    "meta": 1731772673176,
     "relativePath": "Scripts\\UI\\WindowSwitcher.ts"
   },
-  "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731771963811,
-    "meta": 1731771964280,
-    "relativePath": "Scripts\\GameController.ts"
+  "b4abe9c6-d024-4d95-b6cb-d388d456fd37": {
+    "asset": 1731777912448,
+    "meta": 1731777915983,
+    "relativePath": "Scripts\\Spawner\\DoubleSpawner.ts"
+  },
+  "663e2ed0-162b-4c47-a22c-01c97999f61d": {
+    "asset": 1731778088986,
+    "meta": 1731778093199,
+    "relativePath": "Scripts\\Double.ts"
+  },
+  "e9a56eda-52fc-4cc9-ae64-4bffd6fd0a26": {
+    "asset": 1731779079401,
+    "meta": 1731779107306,
+    "relativePath": "Scripts\\DataCounter.ts"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731778877014,
+    "meta": 1731779107362,
+    "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "6aa7f33e-c04d-45d9-a024-62c22b316003": {
+    "asset": 1731779164226,
+    "meta": 1731779165822,
+    "relativePath": "Scripts\\UI\\GameWindow.ts"
   }
 }

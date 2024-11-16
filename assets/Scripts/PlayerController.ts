@@ -7,7 +7,9 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class PlayerController extends cc.Component {
-    private static readonly PLAYER_REACHED = 'playerReached';
+    private static readonly PLAYER_REACHED: string = 'playerReached';
+
+    private readonly  PLAYER_FALL: string = 'playerFall';
     private readonly COLLISION_ENTER: string = 'collision-enter';
 
     private readonly offsetPlatformX: number = -50;
@@ -97,8 +99,10 @@ export default class PlayerController extends cc.Component {
     }
 
     private initiateFall() {
+        cc.systemEvent.emit(this.PLAYER_FALL);
+
         cc.tween(this.node)
-            .to(this.fallDuration, { position: cc.v3(this.node.x, -1080) })
+            .to(this.fallDuration, { position: cc.v3(this.node.x, 2000) })
             .start();
 
         this.stick.initiateFall(this.fallDuration);

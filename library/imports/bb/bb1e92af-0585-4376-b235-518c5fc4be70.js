@@ -48,12 +48,12 @@ var GameController = /** @class */ (function (_super) {
         cc.systemEvent.on(this.Stick_Fallen, this.onStickFallen, this);
         cc.systemEvent.on(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
     };
-    GameController.prototype.start = function () {
-        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
-    };
     GameController.prototype.onDestroy = function () {
         cc.systemEvent.off(this.Stick_Fallen, this.onStickFallen, this);
         cc.systemEvent.off(this.MOVEMENT_COMPLETE, this.onMovementComplete, this);
+    };
+    GameController.prototype.start = function () {
+        this.previousPlatform = this.platformSpawner.spawnNode(cc.v2(this.startPlatformPos));
     };
     GameController.prototype.initGame = function () {
         this.resetGame();
@@ -78,17 +78,20 @@ var GameController = /** @class */ (function (_super) {
         }
     };
     GameController.prototype.onMovementComplete = function () {
+        var _a;
         if (!this.currentPlatform) {
             this.player.reset();
             this.currentPlatform = this.platformSpawner.spawnNode();
         }
         else {
-            this.platformSpawner.deactivateNode(this.previousPlatform);
+            if (this.previousPlatform) {
+                this.platformSpawner.deactivateNode(this.previousPlatform);
+            }
             this.previousPlatform = this.currentPlatform;
             this.currentPlatform = this.platformSpawner.spawnNode();
             this.player.reset();
         }
-        var previousWorldPos = this.previousPlatform.parent.convertToWorldSpaceAR(this.previousPlatform.position);
+        var previousWorldPos = (_a = this.previousPlatform) === null || _a === void 0 ? void 0 : _a.parent.convertToWorldSpaceAR(this.previousPlatform.position);
         var currentWorldPos = this.currentPlatform.parent.convertToWorldSpaceAR(this.currentPlatform.position);
         this.doubleSpawner.spawnNode(cc.v3(previousWorldPos.x + this.previousPlatform.width), currentWorldPos);
     };

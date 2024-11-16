@@ -25,14 +25,24 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var WindowSwitcher_1 = require("./WindowSwitcher");
 var MainWindow_1 = require("./MainWindow");
+var GameWindow_1 = require("./GameWindow");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var WindowManager = /** @class */ (function (_super) {
     __extends(WindowManager, _super);
     function WindowManager() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.START_GAME = 'startGame';
         _this.windowSwitcher = null;
         return _this;
     }
+    WindowManager.prototype.onLoad = function () {
+        var _this = this;
+        cc.systemEvent.on(this.START_GAME, function () { return _this.windowSwitcher.show(GameWindow_1.default); }, this);
+    };
+    WindowManager.prototype.onDestroy = function () {
+        var _this = this;
+        cc.systemEvent.off(this.START_GAME, function () { return _this.windowSwitcher.show(GameWindow_1.default); }, this);
+    };
     WindowManager.prototype.start = function () {
         this.windowSwitcher.show(MainWindow_1.default);
     };
