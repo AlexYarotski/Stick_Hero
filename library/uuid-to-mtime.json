@@ -500,8 +500,8 @@
     "relativePath": "model\\primitives.fbx"
   },
   "3ce6db62-eb87-4bc6-9393-65dc6904fe72": {
-    "asset": 1731761946584,
-    "meta": 1731762897281,
+    "asset": 1731789633371,
+    "meta": 1731856350871,
     "relativePath": "Scripts"
   },
   "f2c59888-a972-4147-919a-d160c227567c": {
@@ -545,8 +545,8 @@
     "relativePath": "Art\\Sprite\\Hero"
   },
   "d6c20ca4-5af1-40b8-915e-265dbe596131": {
-    "asset": 1731583749676,
-    "meta": 1731583775981,
+    "asset": 1731781976307,
+    "meta": 1731856350874,
     "relativePath": "Art\\Sprite\\UI"
   },
   "19bf6e53-beba-4ee0-a95b-557b18c5a1f1": {
@@ -589,45 +589,15 @@
     "meta": 1731583776122,
     "relativePath": "Art\\Sprite\\UI\\home_2.png"
   },
-  "c968f6ff-063a-4b74-b642-07c096a7f8a6": {
-    "asset": 1731583749645,
-    "meta": 1731583776131,
-    "relativePath": "Art\\Sprite\\UI\\play.png"
-  },
-  "afe26e31-5e5a-405f-bd2e-0c0ec32e4603": {
-    "asset": 1731583749638,
-    "meta": 1731583776137,
-    "relativePath": "Art\\Sprite\\UI\\home.png"
-  },
   "e9f25312-e7de-48a6-83cd-ddae202d3e2c": {
     "asset": 1731583749649,
     "meta": 1731583776139,
     "relativePath": "Art\\Sprite\\UI\\play_2.png"
   },
-  "516af462-7b15-4fe5-bd4b-50f43224e173": {
-    "asset": 1731583749654,
-    "meta": 1731583776149,
-    "relativePath": "Art\\Sprite\\UI\\restart.png"
-  },
   "113e75a3-e96a-4916-90bb-f20592cdd676": {
     "asset": 1731583749659,
     "meta": 1731583776152,
     "relativePath": "Art\\Sprite\\UI\\restart_2.png"
-  },
-  "0445212e-399c-452c-8f22-dcdd19ca69dd": {
-    "asset": 1731583749664,
-    "meta": 1731583776164,
-    "relativePath": "Art\\Sprite\\UI\\sound_Off.png"
-  },
-  "c2bb4686-a867-4406-a474-e37fac588072": {
-    "asset": 1731583749675,
-    "meta": 1731583776204,
-    "relativePath": "Art\\Sprite\\UI\\sound_On.png"
-  },
-  "a335096c-d0ba-4b8b-bdc3-9871396a2a05": {
-    "asset": 1731583749598,
-    "meta": 1731583776264,
-    "relativePath": "Art\\Sprite\\Background_02.png"
   },
   "0a464bfe-cebd-4fad-8547-564502a219c2": {
     "asset": 1731596530706,
@@ -635,34 +605,24 @@
     "relativePath": "Scripts\\UIManager.ts"
   },
   "38013cd5-3e43-4df6-a0c4-72b8693420cd": {
-    "asset": 1731680016017,
-    "meta": 1731680016037,
+    "asset": 1731787457737,
+    "meta": 1731787457747,
     "relativePath": "Prefab\\Player.prefab"
   },
-  "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731766545397,
-    "meta": 1731766545408,
-    "relativePath": "Scene\\Game.fire"
-  },
   "763d902a-a23e-465e-973b-d3491244b529": {
-    "asset": 1731763323001,
-    "meta": 1731763323011,
+    "asset": 1731787455134,
+    "meta": 1731787455159,
     "relativePath": "Prefab\\Stick.prefab"
   },
   "d99bd238-9712-4279-823e-9a35d9d777ca": {
-    "asset": 1731763314252,
-    "meta": 1731763314263,
+    "asset": 1731787464562,
+    "meta": 1731787464568,
     "relativePath": "Prefab\\Platform.prefab"
   },
   "a25bb01a-000f-4cd2-9277-c3b775c7fce8": {
     "asset": 1731674874080,
     "meta": 1731674892572,
     "relativePath": "Scripts\\ScoreCounter.ts"
-  },
-  "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
-    "asset": 1731678654937,
-    "meta": 1731678663133,
-    "relativePath": "Scripts\\PlayerFlip.ts"
   },
   "2a549eac-ca43-499f-a57d-d4bc6931a925": {
     "asset": 1731680585782,
@@ -675,39 +635,19 @@
     "relativePath": "Prefab\\Double.prefab"
   },
   "75066714-4f58-42c2-8ba1-d5e9e074be15": {
-    "asset": 1731762038384,
-    "meta": 1731762897282,
+    "asset": 1731778314832,
+    "meta": 1731856350872,
     "relativePath": "Scripts\\Spawner"
-  },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731761465725,
-    "meta": 1731761468403,
-    "relativePath": "Scripts\\PlayerController.ts"
   },
   "6c5bb808-29e0-43e0-a725-1f54347da26b": {
     "asset": 1731761762120,
     "meta": 1731761781982,
     "relativePath": "Scripts\\Platform.ts"
   },
-  "1e8ad46c-114f-4da1-9db2-9828b8920351": {
-    "asset": 1731761781263,
-    "meta": 1731761782009,
-    "relativePath": "Scripts\\Stick.ts"
-  },
   "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
     "asset": 1731763403609,
     "meta": 1731763417667,
     "relativePath": "Scripts\\Spawner\\PlatformSpawner.ts"
-  },
-  "91713957-6d37-4701-8dd0-557ea3729f9b": {
-    "asset": 1731763951865,
-    "meta": 1731764064294,
-    "relativePath": "Scripts\\GameMover.ts"
-  },
-  "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731764663330,
-    "meta": 1731764663842,
-    "relativePath": "Scripts\\GameController.ts"
   },
   "ef9a230a-0c28-4456-b5f3-e1b4163fa829": {
     "asset": 1731766043565,
@@ -719,14 +659,99 @@
     "meta": 1731766505266,
     "relativePath": "Scripts\\Spawner\\Spawner.ts"
   },
-  "663e2ed0-162b-4c47-a22c-01c97999f61d": {
-    "asset": 1731766508916,
-    "meta": 1731766511307,
-    "relativePath": "Scripts\\Double.ts"
+  "bccb4ac2-6a8d-4040-83e3-861609e0ebcd": {
+    "asset": 1731783688029,
+    "meta": 1731856350873,
+    "relativePath": "Scripts\\UI"
+  },
+  "cd3286bb-5504-4f6e-af24-01f865c72ad8": {
+    "asset": 1731768360202,
+    "meta": 1731768506131,
+    "relativePath": "Scripts\\UI\\Window.ts"
+  },
+  "15d42243-5cba-4015-94ef-1186526083e9": {
+    "asset": 1731772636691,
+    "meta": 1731772673137,
+    "relativePath": "Scripts\\UI\\MainWindow.ts"
   },
   "b4abe9c6-d024-4d95-b6cb-d388d456fd37": {
-    "asset": 1731766510527,
-    "meta": 1731766511335,
+    "asset": 1731777912448,
+    "meta": 1731777915983,
     "relativePath": "Scripts\\Spawner\\DoubleSpawner.ts"
+  },
+  "663e2ed0-162b-4c47-a22c-01c97999f61d": {
+    "asset": 1731778088986,
+    "meta": 1731778093199,
+    "relativePath": "Scripts\\Double.ts"
+  },
+  "030f978a-5879-437f-9b64-3fb24ea5b85f": {
+    "asset": 1731780269794,
+    "meta": 1731780293288,
+    "relativePath": "Scripts\\UI\\WindowSwitcher.ts"
+  },
+  "1def7989-73b7-4900-8e43-7d1d62b8575b": {
+    "asset": 1731781188506,
+    "meta": 1731781260139,
+    "relativePath": "Scripts\\UI\\WindowManager.ts"
+  },
+  "e9a56eda-52fc-4cc9-ae64-4bffd6fd0a26": {
+    "asset": 1731782946907,
+    "meta": 1731783006816,
+    "relativePath": "Scripts\\DataCounter.ts"
+  },
+  "3ade6174-92bb-4f68-8b0a-4267153ebfc8": {
+    "asset": 1731783616081,
+    "meta": 1731783619898,
+    "relativePath": "Scripts\\UI\\LoseWindow.ts"
+  },
+  "6aa7f33e-c04d-45d9-a024-62c22b316003": {
+    "asset": 1731783688027,
+    "meta": 1731783706029,
+    "relativePath": "Scripts\\UI\\GameWindow.ts"
+  },
+  "1e8ad46c-114f-4da1-9db2-9828b8920351": {
+    "asset": 1731784150734,
+    "meta": 1731784151434,
+    "relativePath": "Scripts\\Stick.ts"
+  },
+  "91713957-6d37-4701-8dd0-557ea3729f9b": {
+    "asset": 1731785579774,
+    "meta": 1731785581777,
+    "relativePath": "Scripts\\GameMover.ts"
+  },
+  "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
+    "asset": 1731856724546,
+    "meta": 1731856742179,
+    "relativePath": "Scripts\\PlayerFlip.ts"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731856796650,
+    "meta": 1731856798459,
+    "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "bb1e92af-0585-4376-b235-518c5fc4be70": {
+    "asset": 1731859414552,
+    "meta": 1731859638741,
+    "relativePath": "Scripts\\GameController.ts"
+  },
+  "3c7d71b9-bc35-40bc-8d6e-2721f2730ad9": {
+    "asset": 1731862481032,
+    "meta": 1731862481171,
+    "relativePath": "Art\\Sprite\\Background_02_Houses.png"
+  },
+  "ffd110ed-6de4-41da-8eea-0333d4ef52f6": {
+    "asset": 1731862487141,
+    "meta": 1731862487247,
+    "relativePath": "Art\\Sprite\\Background_02.png"
+  },
+  "27bd2bd1-1cf6-4050-8035-c5f295753b33": {
+    "asset": 1731863324242,
+    "meta": 1731863352535,
+    "relativePath": "Scripts\\BackgroundManager.ts"
+  },
+  "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
+    "asset": 1731863427182,
+    "meta": 1731863427193,
+    "relativePath": "Scene\\Game.fire"
   }
 }

@@ -17,19 +17,23 @@ export default class PlayerFlip extends cc.Component {
         cc.systemEvent.off(this.TOUCHED_START, this.flipPlayer, this);
     }
 
-    private flipPlayer() {
-        if (this.canFlip) {
-            cc.tween(this.node)
-                .to(this.flipDuration, { scaleY: -this.node.scaleY })
-                .start();
-        }
-    }
-
     public enableFlip() {
         this.canFlip = false;
     }
 
     public disableFlip() {
         this.canFlip = true;
+    }
+
+    public reset(){
+        this.node.scaleY = Math.abs(this.node.scaleY);
+    }
+
+    private flipPlayer() {
+        if (this.canFlip) {
+            cc.tween(this.node)
+                .to(this.flipDuration, { scaleY: -this.node.scaleY })
+                .start();
+        }
     }
 }

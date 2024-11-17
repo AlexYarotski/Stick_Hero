@@ -7,11 +7,14 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class PlayerController extends cc.Component {
-    private static readonly PLAYER_REACHED = 'playerReached';
+    private static readonly PLAYER_REACHED: string = 'playerReached';
+
+    private readonly  PLAYER_FALL: string = 'playerFall';
     private readonly COLLISION_ENTER: string = 'collision-enter';
 
-    private readonly offsetPlatformX: number = -50;
     private readonly offsetStick: cc.Vec2 = cc.v2(80, 10);
+
+    public readonly offsetPlatformX: number = -50;
 
     @property(cc.Prefab)
     stickPrefab: cc.Prefab = null;
@@ -32,6 +35,8 @@ export default class PlayerController extends cc.Component {
 
     private boxCollider: cc.BoxCollider = null;
 
+    private canMove: boolean = null;
+
     protected onLoad(){
         this.boxCollider = this.getComponent(cc.BoxCollider);
 
@@ -40,10 +45,17 @@ export default class PlayerController extends cc.Component {
 
     public reset() {
         this.spawnStick();
+        this.playerFlip.reset();
+
+        this.node.active = true;
+
+        this.canMove = true;
     }
 
     protected onCollisionEnter(other: cc.Collider, self: cc.Collider) {
         if (other.node.getComponent(Platform)) {
+            this.canMove = false;
+
             this.initiateFall();
         }
     }
@@ -75,6 +87,8 @@ export default class PlayerController extends cc.Component {
     }
 
     private onReachEndOfPlatform(distanceTravelled: number) {
+        if(!this.canMove) return;
+
         if (this.previousStick) {
             this.stickSpawner.deactivateNode(this.previousStick.node);
         }
@@ -97,10 +111,14 @@ export default class PlayerController extends cc.Component {
     }
 
     private initiateFall() {
+        cc.systemEvent.emit(this.PLAYER_FALL)
+
+        this.canMove = false;
+
         cc.tween(this.node)
-            .to(this.fallDuration, { position: cc.v3(this.node.x, -1080) })
+            .to(this.fallDuration, { position: cc.v3(this.node.x, -2000) })
             .start();
 
-        this.stick.initiateFall(this.fallDuration);
+        this.stick.initiateFall();
     }
 }

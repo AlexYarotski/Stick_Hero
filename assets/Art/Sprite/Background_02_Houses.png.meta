@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "3c7d71b9-bc35-40bc-8d6e-2721f2730ad9",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 3629,
+  "height": 1920,
+  "platformSettings": {},
+  "subMetas": {
+    "Background_02_Houses": {
+      "ver": "1.0.6",
+      "uuid": "4fc68edb-39fb-4ba7-9c67-49643c9d7a3a",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "3c7d71b9-bc35-40bc-8d6e-2721f2730ad9",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 61,
+      "trimX": 0,
+      "trimY": 279,
+      "width": 3629,
+      "height": 1240,
+      "rawWidth": 3629,
+      "rawHeight": 1920,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

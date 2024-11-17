@@ -1,4 +1,3 @@
-import Double from "../Double";
 import { Spawner } from "./Spawner";
 
 const { ccclass, property } = cc._decorator;
@@ -27,12 +26,6 @@ export default class DoubleSpawner extends Spawner {
             const randomX = startX + Math.random() * (endX - startX);
 
             doubleNode.setPosition(randomX, this.posY);
-
-            cc.log(startX);
-            cc.log(endX);
-            cc.log(doubleNode.x);
-            cc.log(doubleNode.y);
-            cc.log(doubleNode);
 
             doubleNode.active = true;
             doubleNode.parent = this.node;

@@ -32,9 +32,10 @@ var PlayerController = /** @class */ (function (_super) {
     __extends(PlayerController, _super);
     function PlayerController() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.PLAYER_FALL = 'playerFall';
         _this.COLLISION_ENTER = 'collision-enter';
-        _this.offsetPlatformX = -50;
         _this.offsetStick = cc.v2(80, 10);
+        _this.offsetPlatformX = -50;
         _this.stickPrefab = null;
         _this.moveDuration = 1;
         _this.fallDuration = 0.2;
@@ -43,6 +44,7 @@ var PlayerController = /** @class */ (function (_super) {
         _this.stick = null;
         _this.previousStick = null;
         _this.boxCollider = null;
+        _this.canMove = null;
         return _this;
     }
     PlayerController_1 = PlayerController;
@@ -52,9 +54,13 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.reset = function () {
         this.spawnStick();
+        this.playerFlip.reset();
+        this.node.active = true;
+        this.canMove = true;
     };
     PlayerController.prototype.onCollisionEnter = function (other, self) {
         if (other.node.getComponent(Platform_1.default)) {
+            this.canMove = false;
             this.initiateFall();
         }
     };
@@ -82,6 +88,8 @@ var PlayerController = /** @class */ (function (_super) {
         });
     };
     PlayerController.prototype.onReachEndOfPlatform = function (distanceTravelled) {
+        if (!this.canMove)
+            return;
         if (this.previousStick) {
             this.stickSpawner.deactivateNode(this.previousStick.node);
         }
@@ -101,10 +109,12 @@ var PlayerController = /** @class */ (function (_super) {
             .start();
     };
     PlayerController.prototype.initiateFall = function () {
+        cc.systemEvent.emit(this.PLAYER_FALL);
+        this.canMove = false;
         cc.tween(this.node)
-            .to(this.fallDuration, { position: cc.v3(this.node.x, -1080) })
+            .to(this.fallDuration, { position: cc.v3(this.node.x, -2000) })
             .start();
-        this.stick.initiateFall(this.fallDuration);
+        this.stick.initiateFall();
     };
     var PlayerController_1;
     PlayerController.PLAYER_REACHED = 'playerReached';
