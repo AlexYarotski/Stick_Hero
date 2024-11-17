@@ -14,7 +14,6 @@ export default class GameController extends cc.Component {
     private readonly MAIN_CLICKED: string = 'mainClicked';
     private readonly RESTART_CLICKED: string = 'restartClicked';
 
-    private readonly startPlayerPos: cc.Vec2 = new cc.Vec2(-510, -310);
     private readonly startPlatformPos: cc.Vec2 = new cc.Vec2(-105, -1100);
 
     @property(PlayerController)

@@ -35,7 +35,6 @@ var GameController = /** @class */ (function (_super) {
         _this.MOVEMENT_COMPLETE = 'movementComplete';
         _this.MAIN_CLICKED = 'mainClicked';
         _this.RESTART_CLICKED = 'restartClicked';
-        _this.startPlayerPos = new cc.Vec2(-510, -310);
         _this.startPlatformPos = new cc.Vec2(-105, -1100);
         _this.player = null;
         _this.platformSpawner = null;

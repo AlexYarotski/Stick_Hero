@@ -599,11 +599,6 @@
     "meta": 1731583776152,
     "relativePath": "Art\\Sprite\\UI\\restart_2.png"
   },
-  "a335096c-d0ba-4b8b-bdc3-9871396a2a05": {
-    "asset": 1731583749598,
-    "meta": 1731583776264,
-    "relativePath": "Art\\Sprite\\Background_02.png"
-  },
   "0a464bfe-cebd-4fad-8547-564502a219c2": {
     "asset": 1731596530706,
     "meta": 1731596840406,
@@ -724,16 +719,6 @@
     "meta": 1731785581777,
     "relativePath": "Scripts\\GameMover.ts"
   },
-  "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731789635274,
-    "meta": 1731789635289,
-    "relativePath": "Scene\\Game.fire"
-  },
-  "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731788564564,
-    "meta": 1731788579074,
-    "relativePath": "Scripts\\GameController.ts"
-  },
   "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
     "asset": 1731856724546,
     "meta": 1731856742179,
@@ -743,5 +728,30 @@
     "asset": 1731856796650,
     "meta": 1731856798459,
     "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "bb1e92af-0585-4376-b235-518c5fc4be70": {
+    "asset": 1731859414552,
+    "meta": 1731859638741,
+    "relativePath": "Scripts\\GameController.ts"
+  },
+  "3c7d71b9-bc35-40bc-8d6e-2721f2730ad9": {
+    "asset": 1731862481032,
+    "meta": 1731862481171,
+    "relativePath": "Art\\Sprite\\Background_02_Houses.png"
+  },
+  "ffd110ed-6de4-41da-8eea-0333d4ef52f6": {
+    "asset": 1731862487141,
+    "meta": 1731862487247,
+    "relativePath": "Art\\Sprite\\Background_02.png"
+  },
+  "27bd2bd1-1cf6-4050-8035-c5f295753b33": {
+    "asset": 1731863324242,
+    "meta": 1731863352535,
+    "relativePath": "Scripts\\BackgroundManager.ts"
+  },
+  "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
+    "asset": 1731863427182,
+    "meta": 1731863427193,
+    "relativePath": "Scene\\Game.fire"
   }
 }

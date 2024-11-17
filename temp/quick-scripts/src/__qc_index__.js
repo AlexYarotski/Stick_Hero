@@ -1,4 +1,5 @@
 
+require('./assets/Scripts/BackgroundManager');
 require('./assets/Scripts/DataCounter');
 require('./assets/Scripts/Double');
 require('./assets/Scripts/GameController');

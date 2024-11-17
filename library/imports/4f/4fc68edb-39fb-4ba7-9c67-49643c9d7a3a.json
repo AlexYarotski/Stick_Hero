@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "Background_02_Houses",
+    "texture": "3c7d71b9-bc35-40bc-8d6e-2721f2730ad9",
+    "atlas": "",
+    "rect": [
+      0,
+      279,
+      3629,
+      1240
+    ],
+    "offset": [
+      0,
+      61
+    ],
+    "originalSize": [
+      3629,
+      1920
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
