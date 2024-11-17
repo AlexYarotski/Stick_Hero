@@ -39,18 +39,21 @@ var PlayerFlip = /** @class */ (function (_super) {
     PlayerFlip.prototype.onDestroy = function () {
         cc.systemEvent.off(this.TOUCHED_START, this.flipPlayer, this);
     };
+    PlayerFlip.prototype.enableFlip = function () {
+        this.canFlip = false;
+    };
+    PlayerFlip.prototype.disableFlip = function () {
+        this.canFlip = true;
+    };
+    PlayerFlip.prototype.reset = function () {
+        this.node.scaleY = Math.abs(this.node.scaleY);
+    };
     PlayerFlip.prototype.flipPlayer = function () {
         if (this.canFlip) {
             cc.tween(this.node)
                 .to(this.flipDuration, { scaleY: -this.node.scaleY })
                 .start();
         }
-    };
-    PlayerFlip.prototype.enableFlip = function () {
-        this.canFlip = false;
-    };
-    PlayerFlip.prototype.disableFlip = function () {
-        this.canFlip = true;
     };
     __decorate([
         property(cc.Float)

@@ -44,6 +44,7 @@ var PlayerController = /** @class */ (function (_super) {
         _this.stick = null;
         _this.previousStick = null;
         _this.boxCollider = null;
+        _this.canMove = null;
         return _this;
     }
     PlayerController_1 = PlayerController;
@@ -53,10 +54,13 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.reset = function () {
         this.spawnStick();
+        this.playerFlip.reset();
         this.node.active = true;
+        this.canMove = true;
     };
     PlayerController.prototype.onCollisionEnter = function (other, self) {
         if (other.node.getComponent(Platform_1.default)) {
+            this.canMove = false;
             this.initiateFall();
         }
     };
@@ -84,6 +88,8 @@ var PlayerController = /** @class */ (function (_super) {
         });
     };
     PlayerController.prototype.onReachEndOfPlatform = function (distanceTravelled) {
+        if (!this.canMove)
+            return;
         if (this.previousStick) {
             this.stickSpawner.deactivateNode(this.previousStick.node);
         }
@@ -104,6 +110,7 @@ var PlayerController = /** @class */ (function (_super) {
     };
     PlayerController.prototype.initiateFall = function () {
         cc.systemEvent.emit(this.PLAYER_FALL);
+        this.canMove = false;
         cc.tween(this.node)
             .to(this.fallDuration, { position: cc.v3(this.node.x, -2000) })
             .start();

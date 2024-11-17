@@ -14,12 +14,12 @@
         "children": [
           {
             "width": 345,
-            "height": 1281,
+            "height": 1274,
             "type": "dock-v",
             "children": [
               {
                 "width": 345,
-                "height": 586,
+                "height": 582.796875,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -28,7 +28,7 @@
               },
               {
                 "width": 345,
-                "height": 692,
+                "height": 688.203125,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -39,17 +39,17 @@
           },
           {
             "width": 853,
-            "height": 1281,
+            "height": 1274,
             "type": "dock-v",
             "children": [
               {
                 "width": 853,
-                "height": 1008,
+                "height": 1002.484375,
                 "type": "dock-h",
                 "children": [
                   {
                     "width": 385,
-                    "height": 1008,
+                    "height": 1002.484375,
                     "type": "panel",
                     "active": 0,
                     "children": [
@@ -58,7 +58,7 @@
                   },
                   {
                     "width": 465,
-                    "height": 1008,
+                    "height": 1002.484375,
                     "type": "panel",
                     "active": 0,
                     "children": [
@@ -69,7 +69,7 @@
               },
               {
                 "width": 853,
-                "height": 270,
+                "height": 268.515625,
                 "type": "panel",
                 "active": 0,
                 "children": [
@@ -81,7 +81,7 @@
           },
           {
             "width": 514,
-            "height": 1281,
+            "height": 1274,
             "type": "panel",
             "active": 0,
             "children": [
@@ -102,7 +102,7 @@
         "cocos-services"
       ]
     },
-    "window-1731788104040": {
+    "window-1731856799955": {
       "main": false,
       "url": "unpack://static/window.html",
       "windowType": "dockable",

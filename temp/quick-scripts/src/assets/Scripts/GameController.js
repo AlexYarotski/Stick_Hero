@@ -62,8 +62,6 @@ var GameController = /** @class */ (function (_super) {
     };
     GameController.prototype.resetPlayer = function () {
         this.player.node.setPosition(this.playerPos);
-        cc.log(this.node.x);
-        cc.log(this.player.node.x);
         this.player.reset();
     };
     GameController.prototype.onStickFallen = function (stick) {

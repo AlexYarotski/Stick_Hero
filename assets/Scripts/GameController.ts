@@ -55,7 +55,6 @@ export default class GameController extends cc.Component {
         this.player.reset();
     }
 
-
     private onStickFallen(stick: cc.Node) {
         this.currentStick = stick;
         this.playerPos = cc.v2(this.player.node.position.x, this.player.node.position.y);

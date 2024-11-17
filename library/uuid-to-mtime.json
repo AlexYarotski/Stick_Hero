@@ -500,8 +500,8 @@
     "relativePath": "model\\primitives.fbx"
   },
   "3ce6db62-eb87-4bc6-9393-65dc6904fe72": {
-    "asset": 1731773187157,
-    "meta": 1731776717911,
+    "asset": 1731789633371,
+    "meta": 1731856350871,
     "relativePath": "Scripts"
   },
   "f2c59888-a972-4147-919a-d160c227567c": {
@@ -545,8 +545,8 @@
     "relativePath": "Art\\Sprite\\Hero"
   },
   "d6c20ca4-5af1-40b8-915e-265dbe596131": {
-    "asset": 1731768894091,
-    "meta": 1731776717913,
+    "asset": 1731781976307,
+    "meta": 1731856350874,
     "relativePath": "Art\\Sprite\\UI"
   },
   "19bf6e53-beba-4ee0-a95b-557b18c5a1f1": {
@@ -629,11 +629,6 @@
     "meta": 1731674892572,
     "relativePath": "Scripts\\ScoreCounter.ts"
   },
-  "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
-    "asset": 1731678654937,
-    "meta": 1731678663133,
-    "relativePath": "Scripts\\PlayerFlip.ts"
-  },
   "2a549eac-ca43-499f-a57d-d4bc6931a925": {
     "asset": 1731680585782,
     "meta": 1731680588918,
@@ -645,8 +640,8 @@
     "relativePath": "Prefab\\Double.prefab"
   },
   "75066714-4f58-42c2-8ba1-d5e9e074be15": {
-    "asset": 1731766933775,
-    "meta": 1731776717912,
+    "asset": 1731778314832,
+    "meta": 1731856350872,
     "relativePath": "Scripts\\Spawner"
   },
   "6c5bb808-29e0-43e0-a725-1f54347da26b": {
@@ -670,8 +665,8 @@
     "relativePath": "Scripts\\Spawner\\Spawner.ts"
   },
   "bccb4ac2-6a8d-4040-83e3-861609e0ebcd": {
-    "asset": 1731773206883,
-    "meta": 1731776717912,
+    "asset": 1731783688029,
+    "meta": 1731856350873,
     "relativePath": "Scripts\\UI"
   },
   "cd3286bb-5504-4f6e-af24-01f865c72ad8": {
@@ -730,18 +725,23 @@
     "relativePath": "Scripts\\GameMover.ts"
   },
   "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731787852359,
-    "meta": 1731787852381,
+    "asset": 1731789635274,
+    "meta": 1731789635289,
     "relativePath": "Scene\\Game.fire"
   },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731786772790,
-    "meta": 1731786784088,
-    "relativePath": "Scripts\\PlayerController.ts"
-  },
   "bb1e92af-0585-4376-b235-518c5fc4be70": {
-    "asset": 1731788096324,
-    "meta": 1731788097760,
+    "asset": 1731788564564,
+    "meta": 1731788579074,
     "relativePath": "Scripts\\GameController.ts"
+  },
+  "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
+    "asset": 1731856724546,
+    "meta": 1731856742179,
+    "relativePath": "Scripts\\PlayerFlip.ts"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731856796650,
+    "meta": 1731856798459,
+    "relativePath": "Scripts\\PlayerController.ts"
   }
 }
