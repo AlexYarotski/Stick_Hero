@@ -67,12 +67,14 @@ export default class GameWindow extends Window {
 
     private onDouble() {
         this.point++;
-
-        DataCounter.setDoubleCount(DataCounter.getDoubleCount() + 1);
     }
 
     private onPlayerReached() {
         this.point++;
+
+        if (this.point > 1){
+            DataCounter.setDoubleCount(DataCounter.getDoubleCount() + 1);
+        }
 
         this.count += this.point;
         this.updateCounterDisplay();

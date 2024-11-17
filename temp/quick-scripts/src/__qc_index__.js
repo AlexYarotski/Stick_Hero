@@ -1,5 +1,6 @@
 
 require('./assets/Scripts/BackgroundManager');
+require('./assets/Scripts/CameraShake');
 require('./assets/Scripts/DataCounter');
 require('./assets/Scripts/Double');
 require('./assets/Scripts/GameController');
@@ -8,6 +9,7 @@ require('./assets/Scripts/Platform');
 require('./assets/Scripts/PlayerController');
 require('./assets/Scripts/PlayerFlip');
 require('./assets/Scripts/ScoreCounter');
+require('./assets/Scripts/SkinChanger');
 require('./assets/Scripts/Spawner/DoubleSpawner');
 require('./assets/Scripts/Spawner/PlatformSpawner');
 require('./assets/Scripts/Spawner/Spawner');
@@ -19,6 +21,7 @@ require('./assets/Scripts/UIManager');
 require('./assets/Scripts/UI/GameWindow');
 require('./assets/Scripts/UI/LoseWindow');
 require('./assets/Scripts/UI/MainWindow');
+require('./assets/Scripts/UI/SkinSelector');
 require('./assets/Scripts/UI/Window');
 require('./assets/Scripts/UI/WindowManager');
 require('./assets/Scripts/UI/WindowSwitcher');

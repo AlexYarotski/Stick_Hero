@@ -49,9 +49,6 @@ var BackgroundManager = /** @class */ (function (_super) {
         cc.tween(this.endBack)
             .by(this.moveDuration, { position: cc.v3(moveDistance, 0) }, { easing: 'sineInOut' })
             .start();
-        // this.scheduleOnce(() => {
-        //     this.checkAndResetPosition(this.firstBack, this.endBack);
-        // }, this.moveDuration);
         this.checkAndResetPosition(this.firstBack, this.endBack);
     };
     BackgroundManager.prototype.checkAndResetPosition = function (first, end) {

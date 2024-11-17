@@ -78,10 +78,12 @@ var GameWindow = /** @class */ (function (_super) {
     };
     GameWindow.prototype.onDouble = function () {
         this.point++;
-        DataCounter_1.default.setDoubleCount(DataCounter_1.default.getDoubleCount() + 1);
     };
     GameWindow.prototype.onPlayerReached = function () {
         this.point++;
+        if (this.point > 1) {
+            DataCounter_1.default.setDoubleCount(DataCounter_1.default.getDoubleCount() + 1);
+        }
         this.count += this.point;
         this.updateCounterDisplay();
         this.animateCounter();
