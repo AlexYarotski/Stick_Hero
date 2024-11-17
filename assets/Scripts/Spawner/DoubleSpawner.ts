@@ -6,7 +6,7 @@ const { ccclass, property } = cc._decorator;
 export default class DoubleSpawner extends Spawner {
     private readonly posY: number = -350;
 
-    @property
+    @property(cc.Float)
     private appearanceFrequency: number = 3;
 
     private counter: number = 0;

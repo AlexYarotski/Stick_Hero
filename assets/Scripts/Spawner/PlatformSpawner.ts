@@ -7,19 +7,19 @@ const { ccclass, property } = cc._decorator;
 export default class PlatformSpawner extends Spawner {
     private readonly posY: number = -1100;
 
-    @property
+    @property(cc.Float)
     private minWidth: number = 50;
 
-    @property
+    @property(cc.Float)
     private maxWidth: number = 200;
 
-    @property
+    @property(cc.Float)
     private minXOffset: number = 100;
 
-    @property
+    @property(cc.Float)
     private maxXOffset: number = 400;
 
-    @property
+    @property(cc.Float)
     private platformAppearTime: number = 0.5;
 
     private lastPlatform: Platform = null;
@@ -37,7 +37,6 @@ export default class PlatformSpawner extends Spawner {
 
         return newPlatform.node;
     }
-
 
     private setRandomPlatformAttributes(platform: Platform) {
         const platformWidth = this.minWidth + Math.random() * (this.maxWidth - this.minWidth);

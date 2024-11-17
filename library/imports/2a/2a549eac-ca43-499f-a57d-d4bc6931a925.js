@@ -36,7 +36,7 @@ var SystemManager = /** @class */ (function (_super) {
     SystemManager.prototype.onBoxManager = function () {
         var manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        manager.enabledDebugDraw = true;
+        //manager.enabledDebugDraw = true;
         manager.enabledDrawBoundingBox = true;
     };
     SystemManager = __decorate([

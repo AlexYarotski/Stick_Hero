@@ -63,19 +63,19 @@ var PlatformSpawner = /** @class */ (function (_super) {
             .start();
     };
     __decorate([
-        property
+        property(cc.Float)
     ], PlatformSpawner.prototype, "minWidth", void 0);
     __decorate([
-        property
+        property(cc.Float)
     ], PlatformSpawner.prototype, "maxWidth", void 0);
     __decorate([
-        property
+        property(cc.Float)
     ], PlatformSpawner.prototype, "minXOffset", void 0);
     __decorate([
-        property
+        property(cc.Float)
     ], PlatformSpawner.prototype, "maxXOffset", void 0);
     __decorate([
-        property
+        property(cc.Float)
     ], PlatformSpawner.prototype, "platformAppearTime", void 0);
     PlatformSpawner = __decorate([
         ccclass

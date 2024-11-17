@@ -8,7 +8,7 @@ export default class SkinSelector extends cc.Component {
     @property(cc.Button)
     private skinButton2: cc.Button = null;
 
-    private static readonly SKIN_SELECTED_EVENT: string = 'skinSelected';
+    private static readonly SKIN_SELECTED: string = 'skinSelected';
 
     protected onLoad() {
         this.skinButton1.node.on('click', () => this.onSkinSelected(1), this);
@@ -16,6 +16,6 @@ export default class SkinSelector extends cc.Component {
     }
 
     private onSkinSelected(skinId: number) {
-        cc.systemEvent.emit(SkinSelector.SKIN_SELECTED_EVENT, skinId);
+        cc.systemEvent.emit(SkinSelector.SKIN_SELECTED, skinId);
     }
 }

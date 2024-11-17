@@ -15,10 +15,10 @@ export default class GameWindow extends Window {
     @property(Label)
     private bestScore: Label = null;
 
-    @property(Number)
+    @property(cc.Float)
     private scaleDuration: number = 0.5;
 
-    @property(Number)
+    @property(cc.Float)
     private increase: number = 1.5;
 
     private originalScale: number = 0;
@@ -32,7 +32,7 @@ export default class GameWindow extends Window {
     protected onEnable() {
         cc.systemEvent.on(this.PLAYER_REACHED, this.onPlayerReached, this);
         cc.systemEvent.on(this.DOUBLE, this.onDouble, this);
-    }
+    }    
 
     protected onDisable() {
         cc.systemEvent.off(this.PLAYER_REACHED, this.onPlayerReached, this);

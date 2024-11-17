@@ -12,7 +12,7 @@ export default class SystemManager extends cc.Component {
     private onBoxManager(){
         let manager = cc.director.getCollisionManager();
         manager.enabled = true;
-        manager.enabledDebugDraw = true;
+        //manager.enabledDebugDraw = true;
         manager.enabledDrawBoundingBox = true;
     }
 }

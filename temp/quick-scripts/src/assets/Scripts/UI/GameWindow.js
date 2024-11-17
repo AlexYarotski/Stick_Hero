@@ -106,10 +106,10 @@ var GameWindow = /** @class */ (function (_super) {
         property(Label)
     ], GameWindow.prototype, "bestScore", void 0);
     __decorate([
-        property(Number)
+        property(cc.Float)
     ], GameWindow.prototype, "scaleDuration", void 0);
     __decorate([
-        property(Number)
+        property(cc.Float)
     ], GameWindow.prototype, "increase", void 0);
     GameWindow = __decorate([
         ccclass

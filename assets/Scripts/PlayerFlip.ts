@@ -17,16 +17,17 @@ export default class PlayerFlip extends cc.Component {
         cc.systemEvent.off(this.TOUCHED_START, this.flipPlayer, this);
     }
 
-    public enableFlip() {
+    public disableFlip() {
         this.canFlip = false;
     }
 
-    public disableFlip() {
+    public enableFlip() {
         this.canFlip = true;
     }
 
     public reset(){
         this.node.scaleY = Math.abs(this.node.scaleY);
+        this.disableFlip();
     }
 
     private flipPlayer() {

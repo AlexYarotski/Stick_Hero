@@ -39,14 +39,15 @@ var PlayerFlip = /** @class */ (function (_super) {
     PlayerFlip.prototype.onDestroy = function () {
         cc.systemEvent.off(this.TOUCHED_START, this.flipPlayer, this);
     };
-    PlayerFlip.prototype.enableFlip = function () {
+    PlayerFlip.prototype.disableFlip = function () {
         this.canFlip = false;
     };
-    PlayerFlip.prototype.disableFlip = function () {
+    PlayerFlip.prototype.enableFlip = function () {
         this.canFlip = true;
     };
     PlayerFlip.prototype.reset = function () {
         this.node.scaleY = Math.abs(this.node.scaleY);
+        this.disableFlip();
     };
     PlayerFlip.prototype.flipPlayer = function () {
         if (this.canFlip) {

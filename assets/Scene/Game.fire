@@ -434,7 +434,7 @@
     "endBack": {
       "__id__": 7
     },
-    "moveDuration": 1,
+    "moveDuration": 0.7,
     "parallaxFactor": 0.5,
     "_id": "06I7rBR9RBuqYxRF8MX2E2"
   },
@@ -614,6 +614,7 @@
     "playerFlip": {
       "__id__": 15
     },
+    "speed": 600,
     "_id": "bf5PmOTT5PdJ+roiHCuyGc"
   },
   {
@@ -745,12 +746,12 @@
     "tag": 0,
     "_offset": {
       "__type__": "cc.Vec2",
-      "x": 37.4,
+      "x": 35,
       "y": 84
     },
     "_size": {
       "__type__": "cc.Size",
-      "width": 5.3,
+      "width": 10,
       "height": 132.1
     },
     "_id": "082jHIcwhF4bEEB+uSCDH9"
@@ -980,7 +981,7 @@
       "__id__": 10
     },
     "_enabled": true,
-    "moveDuration": 1,
+    "moveDuration": 0.7,
     "_id": "7c09rGeVZBy701v8drJG3l"
   },
   {
@@ -1958,7 +1959,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Background",
+    "_name": "Skin",
     "_objFlags": 512,
     "_parent": {
       "__id__": 44
@@ -1977,14 +1978,14 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 230,
-      "b": 230,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 40,
+      "width": 150,
       "height": 150
     },
     "_anchorPoint": {
@@ -2037,7 +2038,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "c94d2e37-8ee6-49a3-8dc3-746de5072b5a"
+      "__uuid__": "5675cb24-6070-4ed5-94ee-35e4c852295c"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -2064,8 +2065,8 @@
     "alignMode": 0,
     "_target": null,
     "_alignFlags": 45,
-    "_left": 0,
-    "_right": 0,
+    "_left": -55,
+    "_right": -55,
     "_top": 0,
     "_bottom": 0,
     "_verticalCenter": 0,
@@ -2088,7 +2089,9 @@
       "__id__": 44
     },
     "_enabled": true,
-    "_normalMaterial": null,
+    "_normalMaterial": {
+      "__uuid__": "eca5d2f2-8ef6-41c2-bbe6-f9c79d09c432"
+    },
     "_grayMaterial": null,
     "duration": 0.1,
     "zoomScale": 1.2,
@@ -2099,9 +2102,9 @@
     "transition": 1,
     "_N$normalColor": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 230,
-      "b": 230,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_N$pressedColor": {
@@ -2260,7 +2263,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Background",
+    "_name": "Skin",
     "_objFlags": 512,
     "_parent": {
       "__id__": 50
@@ -2286,7 +2289,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 40,
+      "width": 150,
       "height": 150
     },
     "_anchorPoint": {
@@ -2339,7 +2342,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "36e57648-dee8-48a9-ab5e-b6d05b0193ef"
+      "__uuid__": "14133af6-4dc6-49c9-a359-dc031a7717e5"
     },
     "_type": 1,
     "_sizeMode": 0,
@@ -2366,8 +2369,8 @@
     "alignMode": 0,
     "_target": null,
     "_alignFlags": 45,
-    "_left": 0,
-    "_right": 0,
+    "_left": -55,
+    "_right": -55,
     "_top": 0,
     "_bottom": 0,
     "_verticalCenter": 0,
@@ -2397,8 +2400,8 @@
     "clickEvents": [],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
-    "_N$transition": 0,
-    "transition": 0,
+    "_N$transition": 1,
+    "transition": 1,
     "_N$normalColor": {
       "__type__": "cc.Color",
       "r": 230,

@@ -41,10 +41,13 @@ var PlayerController = /** @class */ (function (_super) {
         _this.fallDuration = 0.2;
         _this.stickSpawner = null;
         _this.playerFlip = null;
+        _this.speed = 100;
         _this.stick = null;
         _this.previousStick = null;
         _this.boxCollider = null;
-        _this.canMove = null;
+        _this.canMove = true;
+        _this.targetPosition = null;
+        _this.moveCompleteCallback = null;
         return _this;
     }
     PlayerController_1 = PlayerController;
@@ -52,11 +55,47 @@ var PlayerController = /** @class */ (function (_super) {
         this.boxCollider = this.getComponent(cc.BoxCollider);
         this.boxCollider.node.on(this.COLLISION_ENTER, this.onCollisionEnter, this);
     };
+    PlayerController.prototype.update = function (dt) {
+        if (this.targetPosition && this.canMove) {
+            this.handleMovement(dt);
+        }
+    };
+    PlayerController.prototype.handleMovement = function (dt) {
+        this.playerFlip.enableFlip();
+        var direction = this.calculateDirectionToTarget();
+        var step = this.calculateStep(direction, dt);
+        var distanceToTarget = this.calculateDistanceToTarget();
+        if (this.isTargetReached(step, distanceToTarget)) {
+            this.finalizeMovement();
+        }
+        else {
+            this.moveTowardsTarget(step);
+        }
+    };
     PlayerController.prototype.reset = function () {
         this.spawnStick();
         this.playerFlip.reset();
         this.node.active = true;
         this.canMove = true;
+        this.targetPosition = null;
+    };
+    PlayerController.prototype.moveToEndOfStick = function (xPos) {
+        var _this = this;
+        var targetPosition = cc.v3(xPos, this.node.position.y);
+        this.setMovement(targetPosition, function () {
+            _this.initiateFall();
+        });
+    };
+    PlayerController.prototype.moveToEndOfPlatform = function (xPos) {
+        var _this = this;
+        var worldTargetPosition = cc.v3(xPos + this.offsetPlatformX, this.node.position.y);
+        var localTargetPosition = this.node.parent.convertToNodeSpaceAR(worldTargetPosition);
+        var endPlatformPos = cc.v3(localTargetPosition.x + this.offsetPlatformX, this.node.position.y);
+        var distanceTravelled = Math.abs(this.node.position.x - endPlatformPos.x);
+        this.setMovement(endPlatformPos, function () {
+            _this.onReachEndOfPlatform(distanceTravelled);
+            _this.playerFlip.disableFlip();
+        });
     };
     PlayerController.prototype.onCollisionEnter = function (other, self) {
         if (other.node.getComponent(Platform_1.default)) {
@@ -70,23 +109,6 @@ var PlayerController = /** @class */ (function (_super) {
         this.stick.node.parent = this.node.parent;
         this.stick.reset();
     };
-    PlayerController.prototype.moveToEndOfStick = function (xPos) {
-        var _this = this;
-        var targetPosition = cc.v3(xPos, this.node.position.y);
-        this.moveTowards(targetPosition, function () {
-            _this.initiateFall();
-        });
-    };
-    PlayerController.prototype.moveToEndOfPlatform = function (xPos) {
-        var _this = this;
-        var worldTargetPosition = cc.v3(xPos + this.offsetPlatformX, this.node.position.y);
-        var localTargetPosition = this.node.parent.convertToNodeSpaceAR(worldTargetPosition);
-        var endPlatformPos = cc.v3(localTargetPosition.x + this.offsetPlatformX, this.node.position.y);
-        var distanceTravelled = Math.abs(this.node.position.x - endPlatformPos.x);
-        this.moveTowards(endPlatformPos, function () {
-            _this.onReachEndOfPlatform(distanceTravelled);
-        });
-    };
     PlayerController.prototype.onReachEndOfPlatform = function (distanceTravelled) {
         if (!this.canMove)
             return;
@@ -96,25 +118,40 @@ var PlayerController = /** @class */ (function (_super) {
         this.previousStick = this.stick;
         cc.systemEvent.emit(PlayerController_1.PLAYER_REACHED, distanceTravelled);
     };
-    PlayerController.prototype.moveTowards = function (targetPosition, onComplete) {
-        var _this = this;
-        this.playerFlip.disableFlip();
-        cc.tween(this.node)
-            .to(this.moveDuration, { position: targetPosition }, { easing: 'sineInOut' })
-            .call(function () {
-            if (onComplete)
-                onComplete();
-            _this.playerFlip.enableFlip();
-        })
-            .start();
+    PlayerController.prototype.setMovement = function (targetPosition, onComplete) {
+        this.targetPosition = targetPosition;
+        this.moveCompleteCallback = onComplete;
     };
     PlayerController.prototype.initiateFall = function () {
         cc.systemEvent.emit(this.PLAYER_FALL);
+        this.playerFlip.disableFlip();
         this.canMove = false;
         cc.tween(this.node)
             .to(this.fallDuration, { position: cc.v3(this.node.x, -2000) })
             .start();
         this.stick.initiateFall();
+    };
+    PlayerController.prototype.calculateDirectionToTarget = function () {
+        return this.targetPosition.sub(this.node.position).normalize();
+    };
+    PlayerController.prototype.calculateStep = function (direction, dt) {
+        return direction.mul(this.speed * dt);
+    };
+    PlayerController.prototype.calculateDistanceToTarget = function () {
+        return this.node.position.sub(this.targetPosition).mag();
+    };
+    PlayerController.prototype.isTargetReached = function (step, distanceToTarget) {
+        return step.mag() >= distanceToTarget;
+    };
+    PlayerController.prototype.finalizeMovement = function () {
+        this.node.setPosition(this.targetPosition);
+        this.targetPosition = null;
+        if (this.moveCompleteCallback) {
+            this.moveCompleteCallback();
+        }
+    };
+    PlayerController.prototype.moveTowardsTarget = function (step) {
+        this.node.setPosition(this.node.position.add(step));
     };
     var PlayerController_1;
     PlayerController.PLAYER_REACHED = 'playerReached';
@@ -133,6 +170,9 @@ var PlayerController = /** @class */ (function (_super) {
     __decorate([
         property(PlayerFlip_1.default)
     ], PlayerController.prototype, "playerFlip", void 0);
+    __decorate([
+        property(cc.Float)
+    ], PlayerController.prototype, "speed", void 0);
     PlayerController = PlayerController_1 = __decorate([
         ccclass
     ], PlayerController);

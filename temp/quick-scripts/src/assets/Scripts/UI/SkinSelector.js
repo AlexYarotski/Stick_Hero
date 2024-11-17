@@ -39,10 +39,10 @@ var SkinSelector = /** @class */ (function (_super) {
         this.skinButton2.node.on('click', function () { return _this.onSkinSelected(2); }, this);
     };
     SkinSelector.prototype.onSkinSelected = function (skinId) {
-        cc.systemEvent.emit(SkinSelector_1.SKIN_SELECTED_EVENT, skinId);
+        cc.systemEvent.emit(SkinSelector_1.SKIN_SELECTED, skinId);
     };
     var SkinSelector_1;
-    SkinSelector.SKIN_SELECTED_EVENT = 'skinSelected';
+    SkinSelector.SKIN_SELECTED = 'skinSelected';
     __decorate([
         property(cc.Button)
     ], SkinSelector.prototype, "skinButton1", void 0);

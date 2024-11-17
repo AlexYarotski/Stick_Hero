@@ -52,7 +52,7 @@ var DoubleSpawner = /** @class */ (function (_super) {
         return null;
     };
     __decorate([
-        property
+        property(cc.Float)
     ], DoubleSpawner.prototype, "appearanceFrequency", void 0);
     DoubleSpawner = __decorate([
         ccclass

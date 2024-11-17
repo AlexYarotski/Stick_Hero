@@ -584,25 +584,10 @@
     "meta": 1731583776152,
     "relativePath": "Art\\Sprite\\UI\\restart_2.png"
   },
-  "0a464bfe-cebd-4fad-8547-564502a219c2": {
-    "asset": 1731596530706,
-    "meta": 1731596840406,
-    "relativePath": "Scripts\\UIManager.ts"
-  },
   "d99bd238-9712-4279-823e-9a35d9d777ca": {
     "asset": 1731787464562,
     "meta": 1731787464568,
     "relativePath": "Prefab\\Platform.prefab"
-  },
-  "a25bb01a-000f-4cd2-9277-c3b775c7fce8": {
-    "asset": 1731674874080,
-    "meta": 1731674892572,
-    "relativePath": "Scripts\\ScoreCounter.ts"
-  },
-  "2a549eac-ca43-499f-a57d-d4bc6931a925": {
-    "asset": 1731680585782,
-    "meta": 1731680588918,
-    "relativePath": "Scripts\\SystemManager.ts"
   },
   "99b54ef3-5a8b-43ec-bb0a-acadf8c687fa": {
     "asset": 1731759204426,
@@ -618,11 +603,6 @@
     "asset": 1731761762120,
     "meta": 1731761781982,
     "relativePath": "Scripts\\Platform.ts"
-  },
-  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
-    "asset": 1731763403609,
-    "meta": 1731763417667,
-    "relativePath": "Scripts\\Spawner\\PlatformSpawner.ts"
   },
   "ef9a230a-0c28-4456-b5f3-e1b4163fa829": {
     "asset": 1731766043565,
@@ -658,21 +638,6 @@
     "asset": 1731863500303,
     "meta": 1731863531368,
     "relativePath": "Scripts\\GameMover.ts"
-  },
-  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
-    "asset": 1731863500317,
-    "meta": 1731863531403,
-    "relativePath": "Scripts\\PlayerController.ts"
-  },
-  "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
-    "asset": 1731863500319,
-    "meta": 1731863531416,
-    "relativePath": "Scripts\\PlayerFlip.ts"
-  },
-  "b4abe9c6-d024-4d95-b6cb-d388d456fd37": {
-    "asset": 1731863500332,
-    "meta": 1731863531434,
-    "relativePath": "Scripts\\Spawner\\DoubleSpawner.ts"
   },
   "1e8ad46c-114f-4da1-9db2-9828b8920351": {
     "asset": 1731863500337,
@@ -715,14 +680,9 @@
     "relativePath": "Scripts\\UI\\WindowSwitcher.ts"
   },
   "763d902a-a23e-465e-973b-d3491244b529": {
-    "asset": 1731863500270,
-    "meta": 1731863531634,
+    "asset": 1731872407102,
+    "meta": 1731872407106,
     "relativePath": "Prefab\\Stick.prefab"
-  },
-  "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
-    "asset": 1731866398278,
-    "meta": 1731866398294,
-    "relativePath": "Scene\\Game.fire"
   },
   "3c7d71b9-bc35-40bc-8d6e-2721f2730ad9": {
     "asset": 1731863500250,
@@ -739,29 +699,74 @@
     "meta": 1731863545026,
     "relativePath": "Art\\Sprite\\Hero\\chel.png"
   },
-  "6aa7f33e-c04d-45d9-a024-62c22b316003": {
-    "asset": 1731864205397,
-    "meta": 1731864206668,
-    "relativePath": "Scripts\\UI\\GameWindow.ts"
-  },
   "5f60ad37-01c0-4685-b42e-b56453cb984a": {
     "asset": 1731864695151,
     "meta": 1731864696276,
     "relativePath": "Scripts\\CameraShake.ts"
   },
-  "d41c3337-725b-4e0d-9a11-2aaa80705da0": {
-    "asset": 1731865787087,
-    "meta": 1731865789975,
-    "relativePath": "Scripts\\UI\\SkinSelector.ts"
+  "9a86d163-766a-416f-9b02-af9ade904c67": {
+    "asset": 1731869834925,
+    "meta": 1731869834989,
+    "relativePath": "Art\\Sprite\\UI\\Button1.png"
+  },
+  "512524a6-bf67-48f1-a289-fc22cd4dd0b9": {
+    "asset": 1731869920256,
+    "meta": 1731869921960,
+    "relativePath": "Art\\Sprite\\UI\\Button2.png"
+  },
+  "136f5d6e-06cf-41b0-b916-9a0a1b7e3a2b": {
+    "asset": 1731872430915,
+    "meta": 1731872430931,
+    "relativePath": "Scene\\Game.fire"
+  },
+  "b4abe9c6-d024-4d95-b6cb-d388d456fd37": {
+    "asset": 1731872613339,
+    "meta": 1731872645227,
+    "relativePath": "Scripts\\Spawner\\DoubleSpawner.ts"
+  },
+  "bbcd7e4b-d5af-4104-b4ab-1e085473ee94": {
+    "asset": 1731872643699,
+    "meta": 1731872645272,
+    "relativePath": "Scripts\\Spawner\\PlatformSpawner.ts"
+  },
+  "9e3555dd-acb5-4dbd-9b70-d28845d5e2fa": {
+    "asset": 1731872783013,
+    "meta": 1731872829010,
+    "relativePath": "Scripts\\PlayerController.ts"
+  },
+  "c3be9dfb-8180-450e-8cf0-0e8743c49350": {
+    "asset": 1731872783025,
+    "meta": 1731872829026,
+    "relativePath": "Scripts\\PlayerFlip.ts"
+  },
+  "a25bb01a-000f-4cd2-9277-c3b775c7fce8": {
+    "asset": 1731872783018,
+    "meta": 1731872829038,
+    "relativePath": "Scripts\\ScoreCounter.ts"
   },
   "18a4f659-b2e4-4eba-995c-8b33edcb87eb": {
-    "asset": 1731866248556,
-    "meta": 1731866250303,
+    "asset": 1731872805476,
+    "meta": 1731872829053,
     "relativePath": "Scripts\\SkinChanger.ts"
   },
+  "2a549eac-ca43-499f-a57d-d4bc6931a925": {
+    "asset": 1731872805471,
+    "meta": 1731872829063,
+    "relativePath": "Scripts\\SystemManager.ts"
+  },
   "511f5b68-0dc2-4ca2-94a7-b22c9919671d": {
-    "asset": 1731866231522,
-    "meta": 1731866250323,
+    "asset": 1731872805467,
+    "meta": 1731872829109,
     "relativePath": "Scripts\\TouchController.ts"
+  },
+  "d41c3337-725b-4e0d-9a11-2aaa80705da0": {
+    "asset": 1731872704240,
+    "meta": 1731872829126,
+    "relativePath": "Scripts\\UI\\SkinSelector.ts"
+  },
+  "6aa7f33e-c04d-45d9-a024-62c22b316003": {
+    "asset": 1731872905253,
+    "meta": 1731872905828,
+    "relativePath": "Scripts\\UI\\GameWindow.ts"
   }
 }
